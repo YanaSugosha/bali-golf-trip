@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout — Bali Golf Trip</title>
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="apple-touch-icon" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/light/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages/checkout.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar__inner">
+    <button class="navbar__menu-button" id="global_menu_button" aria-label="Open menu" aria-expanded="false" aria-controls="global_drawer_nav"><i class="ph-light ph-list" aria-hidden="true"></i></button>
+    <a class="navbar__brand" id="global_brand_button" href="index.html" aria-label="Bali Golf Trip — home"><img class="navbar__logo" src="assets/images/logo-bali-golf-trip.png" alt="Bali Golf Trip"></a>
+    <ul class="navbar__menu">
+      <li><a class="navbar__menu-link" id="global_nav_home_button" href="index.html">Home</a></li>
+      <li><a class="navbar__menu-link" id="global_nav_courses_button" href="courses.html">Bali Golf Course</a></li>
+      <li><a class="navbar__menu-link" id="global_nav_blog_button" href="blog.html">Blog</a></li>
+      <li><a class="navbar__menu-link" id="global_nav_contact_button" href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="navbar__right">
+      <a class="cart-link" id="global_cart_button" href="cart.html"><span class="cart-link__label">Cart</span><i class="ph-light ph-shopping-cart-simple cart-link__icon" aria-hidden="true"></i><span class="cart-link__badge">2</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="scrim" id="global_drawer_scrim"></div>
+<aside class="drawer" id="global_drawer_nav" aria-label="Main navigation">
+  <div class="drawer__head"><button class="drawer__close" id="global_drawer_close_button" aria-label="Close menu"><i class="ph-light ph-x" aria-hidden="true"></i></button></div>
+  <nav class="drawer__list">
+    <a class="drawer__link" id="global_drawer_home_button" href="index.html">Home</a>
+    <a class="drawer__link" id="global_drawer_courses_button" href="courses.html">Bali Golf Course</a>
+    <div class="drawer__sublist">
+      <a class="drawer__link drawer__sublink" id="global_drawer_new_kuta_button" href="detail-new-kuta.html">New Kuta Golf</a>
+      <a class="drawer__link drawer__sublink" id="global_drawer_bukit_pandawa_button" href="detail-bukit-pandawa.html">Bukit Pandawa Golf</a>
+      <a class="drawer__link drawer__sublink" id="global_drawer_handara_button" href="detail-handara.html">Bali Handara Golf</a>
+      <a class="drawer__link drawer__sublink" id="global_drawer_bali_beach_button" href="detail-bali-beach.html">Bali Beach · coming soon</a>
+    </div>
+    <a class="drawer__link" id="global_drawer_blog_button" href="blog.html">Blog</a>
+    <a class="drawer__link" id="global_drawer_terms_button" href="terms.html">Terms &amp; Condition</a>
+    <a class="drawer__link" id="global_drawer_contact_button" href="contact.html">Contact Us</a>
+  </nav>
+</aside>
+
+<main>
+  <div class="page-head">
+    <div class="wrap center">
+      <h1 class="display section-intro__title--lg">Checkout</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap checkout-layout">
+      <!-- Fields and section titles after a client reference, 21 Sep 2026,
+           built from the site's existing form classes. The payment option is
+           the site's own. Source: build/data/booking-flow.md -->
+      <form id="checkout_billing_form">
+        <h2 class="heading-sm form__title--flat">Contact information</h2>
+        <div class="form__field"><label for="checkout_email_input">Email address<span class="req">*</span></label><input class="input" id="checkout_email_input" name="email" type="email" autocomplete="email" placeholder="name@email.com" required></div>
+        <p class="text-sm checkout__intro">You are currently checking out as a guest.</p>
+
+        <h2 class="heading-sm form__title--flat">Billing address</h2>
+        <div class="form__field"><label for="checkout_country_dropdown">Country/Region<span class="req">*</span></label><select class="input" id="checkout_country_dropdown" name="country" autocomplete="country-name" required><option value="" selected disabled>Select country</option><option>Australia</option><option>China</option><option>Indonesia</option><option>Singapore</option><option>United Kingdom</option><option>United States (US)</option></select></div>
+        <div class="form-pair">
+          <div class="form__field"><label for="checkout_first_name_input">First name<span class="req">*</span></label><input class="input" id="checkout_first_name_input" name="first_name" type="text" autocomplete="given-name" placeholder="David" required></div>
+          <div class="form__field"><label for="checkout_last_name_input">Last name<span class="req">*</span></label><input class="input" id="checkout_last_name_input" name="last_name" type="text" autocomplete="family-name" placeholder="Reynolds" required></div>
+        </div>
+        <div class="form__field"><label for="checkout_pickup_address_input">Address<span class="req">*</span></label><input class="input" id="checkout_pickup_address_input" name="pickup_address" type="text" autocomplete="address-line1" placeholder="Hotel name and street, for pickup" required></div>
+        <div class="form__field"><label for="checkout_address_line2_input">Apartment, suite, etc. (optional)</label><input class="input" id="checkout_address_line2_input" name="address_line2" type="text" autocomplete="address-line2" placeholder="Villa or room number"></div>
+        <div class="form-pair">
+          <div class="form__field"><label for="checkout_city_input">City</label><input class="input" id="checkout_city_input" name="city" type="text" autocomplete="address-level2" placeholder="Seminyak"></div>
+          <div class="form__field"><label for="checkout_state_input">State</label><input class="input" id="checkout_state_input" name="state" type="text" autocomplete="address-level1" placeholder="Bali"></div>
+        </div>
+        <div class="form-pair">
+          <div class="form__field"><label for="checkout_zip_input">ZIP Code</label><input class="input" id="checkout_zip_input" name="zip" type="text" autocomplete="postal-code" placeholder="80361"></div>
+          <div class="form__field"><label for="checkout_phone_input">Phone / WhatsApp<span class="req">*</span></label><input class="input" id="checkout_phone_input" name="phone" type="tel" autocomplete="tel" placeholder="+61 400 000 000" required></div>
+        </div>
+
+        <h2 class="heading-sm form__title--flat">Payment options</h2>
+        <div class="payment-option is-selected" id="checkout_payment_after_confirmation_item"><span class="payment-option__radio"></span><span class="payment-option__label">Pay after booking confirmed</span></div>
+        <p class="text-sm checkout__payment-note">Make your payment once we have confirmed your booking. We send you a Midtrans payment link.</p>
+        <div class="notice notice--block"><b>Nothing is charged now.</b> We contact you on WhatsApp to talk the round through, then send a Midtrans payment link. Your tee time is booked once that is paid.</div>
+
+        <!-- checkout.js hides the note until the box is ticked. -->
+        <label class="checkbox"><input type="checkbox" id="checkout_add_note_checkbox"><span>Add a note to your order</span></label>
+        <div class="form__field"><label class="visually-hidden" for="checkout_order_notes_input">Order note</label><textarea class="input" id="checkout_order_notes_input" name="order_notes" placeholder="Notes about your order."></textarea></div>
+
+        <hr class="rule">
+        <p class="text-sm cta-spaced--sm">By proceeding with your purchase you agree to our <a class="text-link" id="checkout_terms_link" href="terms.html">Terms and Conditions</a>.</p>
+        <a class="pill pill--fill pill--block cta-spaced--sm" id="checkout_place_order_button" href="received.html">Place order</a>
+      </form>
+
+      <div class="form">
+        <h2 class="heading-sm form__title--flat">Order summary</h2>
+        <!-- Each round as the reference lists a product: name, price per player,
+             the booking in brief, and the line total. Net of the season saving,
+             the same figures as the cart. -->
+        <table class="spec-table">
+          <tr><td class="checkout__thumb"><img src="assets/images/course-new-kuta-island-green.jpg" alt=""></td><td><b class="spec-table__strong">New Kuta Golf</b><br>IDR 2.300.000 / player<br><span class="text-sm spec-table__sub">10 Sep · 6:15 AM · 2 players</span></td><td>IDR 6.300.000</td></tr>
+          <tr><td class="checkout__thumb"><img src="assets/images/course-handara-highland.jpg" alt=""></td><td><b class="spec-table__strong">Bali Handara Golf</b><br>IDR 1.600.000 / player<br><span class="text-sm spec-table__sub">12 Sep · 9:00 AM · 2 players</span></td><td>IDR 5.000.000</td></tr>
+          <tr><td colspan="2">Subtotal</td><td>IDR 11.300.000</td></tr>
+        </table>
+        <div class="summary-row summary-row--total"><span>Total</span><span>IDR 11.300.000</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__logo"><img src="assets/images/logo-bali-golf-trip-light.png" alt="Bali Golf Trip"></div>
+        <p class="text-sm site-footer__blurb"><b class="site-footer__blurb-title">Professional Golf Services</b>Book your Bali Golf Trip With Us.</p>
+        <ul class="text-sm site-footer__points">
+          <li>Discount Green Fee</li>
+          <li>Guarantee Tee Time</li>
+          <li>Premium Club Hire</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Courses</h4>
+        <a id="global_footer_new_kuta_button" href="detail-new-kuta.html">New Kuta Golf</a>
+        <a id="global_footer_bukit_pandawa_button" href="detail-bukit-pandawa.html">Bukit Pandawa Golf</a>
+        <a id="global_footer_handara_button" href="detail-handara.html">Bali Handara Golf</a>
+        <a id="global_footer_bali_beach_button" href="detail-bali-beach.html">Bali Beach</a>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a id="global_footer_home_button" href="index.html">Home</a>
+        <a id="global_footer_courses_button" href="courses.html">Bali Golf Course</a>
+        <a id="global_footer_club_hire_button" href="courses.html#courses_club_hire_section">Club hire</a>
+        <a id="global_footer_lesson_button" href="courses.html#courses_lesson_section">Golf lessons</a>
+        <a id="global_footer_blog_button" href="blog.html">Blog</a>
+        <a id="global_footer_contact_button" href="contact.html">Contact us</a>
+        <a id="global_footer_terms_button" href="terms.html">Terms &amp; Condition</a>
+      </div>
+      <div>
+        <h4>Follow us</h4>
+        <div class="site-footer__social">
+          <a id="global_footer_whatsapp_button" href="https://wa.me/6281337225399" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i></a>
+          <a id="global_footer_instagram_button" href="https://www.instagram.com/baligolftrip" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph-light ph-instagram-logo" aria-hidden="true"></i></a>
+          <a id="global_footer_facebook_button" href="https://www.facebook.com/pongky.subagia" target="_blank" rel="noopener" aria-label="Facebook"><i class="ph-light ph-facebook-logo" aria-hidden="true"></i></a>
+          <a id="global_footer_email_button" href="mailto:pongky@baligolftrip.com" aria-label="Email"><i class="ph-light ph-envelope-simple" aria-hidden="true"></i></a>
+        </div>
+
+        <h4 class="site-footer__heading--spaced">Contact</h4>
+        <address class="text-sm site-footer__address">
+          Jalan Gunung Bromo VIII No. 47,<br>
+          Denpasar, Bali.
+        </address>
+        <a id="global_footer_maps_button" href="https://maps.app.goo.gl/9y1jkE2bgYNraACU8" target="_blank" rel="noopener"><i class="ph-light ph-map-pin" aria-hidden="true"></i>Open in Maps</a>
+        <p class="text-sm site-footer__hours">Open 8:00 AM – 8:00 PM WITA</p>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p class="site-footer__copyright">Copyright © 2026 Bali Golf Trip. All Rights Reserved. Powered by <a id="global_footer_timedoor_button" href="https://timedoor.net/" target="_blank" rel="noopener">PT. Timedoor Indonesia</a>.</p>
+      <p class="site-footer__legal">This site is protected by reCAPTCHA and the Google <a id="global_footer_google_privacy_button" href="https://policies.google.com/privacy?hl=en-GB" target="_blank" rel="noopener">Privacy Policy</a> and <a id="global_footer_google_terms_button" href="https://policies.google.com/terms?hl=en-GB" target="_blank" rel="noopener">Terms of Service</a> apply</p>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="global_lightbox_modal" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox__close" id="global_lightbox_close_button" aria-label="Close"><i class="ph-light ph-x" aria-hidden="true"></i></button>
+  <button class="lightbox__nav lightbox__nav--prev" id="global_lightbox_prev_button" aria-label="Previous photo"><i class="ph-light ph-caret-left" aria-hidden="true"></i></button>
+  <img id="global_lightbox_image" src="" alt="">
+  <button class="lightbox__nav lightbox__nav--next" id="global_lightbox_next_button" aria-label="Next photo"><i class="ph-light ph-caret-right" aria-hidden="true"></i></button>
+  <div class="lightbox__caption" id="global_lightbox_caption_label"></div>
+</div>
+
+<a class="whatsapp-button" id="global_whatsapp_button" href="https://wa.me/6281337225399" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><img src="assets/images/wa-icon.svg" alt=""></a>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/checkout.js"></script>
+</body>
+</html>

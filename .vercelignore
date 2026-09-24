@@ -1,0 +1,20 @@
+# The client's delivery as received: 82MB of originals, two .mp4 clips and a
+# HEIC no browser can render. Every site image is generated from these into
+# output/assets/images/, so no page references this folder.
+# See build/data/images.md.
+output/assets/images/client-images
+
+# Sources and standards — the assembler stitches these into output/, which is
+# what gets served.
+build
+SKILL.md
+CLAUDE.md
+bali-golf-trip-hifi-v14.html
+
+# The brand sheet PDF is a client deliverable, not part of the site.
+bali-golf-trip-brand.pdf
+bali-golf-trip-brand.html
+
+# Second client delivery, 17 Sep 2026: the four course folders as received.
+# Site copies live in output/assets/images/ at house sizes.
+output/assets/images/Lapangan

@@ -1,0 +1,38 @@
+/* ==========================================================================
+   pages/post.css — blog article page only.
+   ========================================================================== */
+
+/* The article runs at 1200px instead of the site's 1600px, and that width
+   overrides the narrower reading measures the wrap modifiers would otherwise
+   give the header and body. Inside main only, so the navbar and footer keep
+   the full site width. The hero image re-asserts its own width below. */
+main .wrap { max-width: 1200px; }
+main .wrap--media { max-width: 1000px; }
+
+.article__lead {
+  font-size: 19px;
+  line-height: 1.75;
+}
+.article__body { margin-top: var(--space-6); }
+.article__body--tight { margin-top: 22px; }
+
+.article__divider { margin: var(--space-12) 0 28px; }
+
+.article__share {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+@media (max-width: 600px) {
+  /* Label and buttons stack on a phone, where space-between just pins one to
+     each end of the column. Centre the pair instead. */
+  .article__share {
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+  .article__share .pill-row { justify-content: center; }
+}

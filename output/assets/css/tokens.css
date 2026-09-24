@@ -1,0 +1,125 @@
+/* ==========================================================================
+   tokens.css — design tokens only. No selectors other than :root.
+   Bali Golf Trip. Values lifted verbatim from the approved hi-fi design
+   (bali-golf-trip-hifi-v14.html), so the rendered result is unchanged.
+   ========================================================================== */
+
+:root {
+
+  /* --- Brand palette ---------------------------------------------------- */
+  --slate: #141A28;        /* primary ink, dark section ground */
+  --fairway: #137C19;      /* primary action green */
+  --forest: #0D5912;       /* action green, hover/pressed */
+  --birdie: #55DA5D;       /* accent green, used on dark grounds */
+  --flag: #CA0C26;         /* alert / promo red */
+  --sunrise: #F2E208;      /* logo yellow — a price that is not set yet. Only
+                              ever a ground with slate ink on it: at 1.34:1 it
+                              is invisible as type on white. */
+
+  /* --- Neutrals --------------------------------------------------------- */
+  --white: #ffffff;
+  --parchment: #EEF7EE;    /* cream section ground */
+  --canvas: #F3FFFF;       /* gallery ground */
+  --mist: #EAECF0;         /* image placeholder, hairlines */
+  --stone: #57637F;        /* secondary text, labels */
+  --body-text: #38404F;    /* default paragraph ink */
+  --muted: #41495A;        /* dense meta text */
+  --faint: #9AA2B0;        /* hints, pending states */
+
+  /* --- Green tints (drawer, selected payment row) ------------------------ */
+  --leaf-tint: #F6FAF6;
+  --leaf-tint-strong: #F1F8F1;
+  --leaf-tint-panel: #FAFCFA;
+  --leaf-tint-selected: #F4FAF4;
+
+  /* --- Rules and borders (ink at alpha) ---------------------------------- */
+  --ink-veil: rgba(20, 26, 40, .55); /* darkens a photo so text can sit on it */
+  --ink-veil-deep: rgba(20, 26, 40, .9); /* the Titleist banner backdrop */
+  --card-scrim: rgba(0, 0, 0, 1);         /* the two ends of the overlay card's */
+  --card-scrim-none: rgba(0, 0, 0, 0);    /* gradient — client value, 11 Sep 2026 */
+  --card-scrim-mid: rgba(0, 0, 0, .55);   /* holds the scrim up on a small card */
+  --line-soft: rgba(20, 26, 40, .12);
+  --line: rgba(20, 26, 40, .14);
+  --line-mid: rgba(20, 26, 40, .20);
+  --line-strong: rgba(20, 26, 40, .35);
+  --field-border: rgba(20, 26, 40, .45);
+
+  /* --- On dark grounds --------------------------------------------------- */
+  --on-dark: rgba(255, 255, 255, .72);
+  --on-dark-body: rgba(255, 255, 255, .78);
+  --on-dark-lead: rgba(255, 255, 255, .88);
+  --on-dark-soft: rgba(255, 255, 255, .60);
+  --on-dark-faint: rgba(255, 255, 255, .50);
+  --on-dark-muted: #ABABAB;  /* flat grey, footer copyright */
+  --on-dark-rule: rgba(255, 255, 255, .18);
+  --on-dark-border: rgba(255, 255, 255, .40);
+
+  /* --- Type ------------------------------------------------------------- */
+  --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --serif: 'Schibsted Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* --- Spacing scale (4px increments) ------------------------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-18: 72px;
+  --space-25: 100px;
+
+  /* --- Layout ------------------------------------------------------------ */
+  --wrap-max: 1600px;
+  --wrap-pad: 40px;
+  --radius-pill: 80px;
+
+  /* Navbar logo: large while the page sits at the top, compact once
+     scrolling starts. --logo-height is the resting (scrolled) size. */
+  --logo-height: 52px;
+  --logo-height-top: 68px;
+
+  /* Navbar box metrics. --navbar-height-top is the navbar's height in its
+     tall (page-at-top) state, derived so it follows the logo tokens instead
+     of being a magic number. The homepage hero subtracts it from 100vh. */
+  --navbar-pad-y: 14px;
+  --navbar-border: 1px;
+  --navbar-height-top: calc(
+    var(--logo-height-top) + 2 * var(--navbar-pad-y) + var(--navbar-border)
+  );
+  /* Compact (scrolled) height — the state the navbar is in after an in-page
+     jump, so anchor targets offset by this to clear it. */
+  --navbar-height: calc(
+    var(--logo-height) + 2 * var(--navbar-pad-y) + var(--navbar-border)
+  );
+}
+
+/* Container padding tightens on smaller viewports. The design's own
+   breakpoints (900px / 600px) are kept rather than the house sm/md/lg scale,
+   because moving them would shift where the layout changes and the brief was
+   to preserve the design exactly.
+   assumption: design fidelity outranks the standard breakpoint scale here. */
+/* The enlarged logo is scaled back on narrow viewports, where vertical space
+   is scarcer than on desktop.
+   assumption: proportions chosen for the small screens, not in the design. */
+@media (max-width: 900px) {
+  :root {
+    --wrap-pad: 22px;
+    --logo-height: 42px;
+    --logo-height-top: 60px;
+    --navbar-pad-y: 11px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --wrap-pad: 18px;
+    --logo-height: 36px;
+    --logo-height-top: 52px;
+    --navbar-pad-y: 10px;
+  }
+}

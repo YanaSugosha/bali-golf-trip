@@ -1,0 +1,10 @@
+# Raw client delivery — never referenced from a page (see CLAUDE.md), 82MB
+output/assets/images/client-images/
+
+# OS cruft
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Vercel link metadata (Vercel's own README says to ignore this)
+.vercel/

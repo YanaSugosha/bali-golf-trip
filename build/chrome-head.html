@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__TITLE__</title>
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="apple-touch-icon" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/light/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+__PAGECSS__
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar__inner">
+    <button class="navbar__menu-button" id="global_menu_button" aria-label="Open menu" aria-expanded="false" aria-controls="global_drawer_nav"><i class="ph-light ph-list" aria-hidden="true"></i></button>
+    <a class="navbar__brand" id="global_brand_button" href="index.html" aria-label="Bali Golf Trip — home"><img class="navbar__logo" src="assets/images/logo-bali-golf-trip.png" alt="Bali Golf Trip"></a>
+    <ul class="navbar__menu">
+      <li><a class="navbar__menu-link__HOME__" id="global_nav_home_button" href="index.html">Home</a></li>
+      <li><a class="navbar__menu-link__COURSES__" id="global_nav_courses_button" href="courses.html">Bali Golf Course</a></li>
+      <li><a class="navbar__menu-link__BLOG__" id="global_nav_blog_button" href="blog.html">Blog</a></li>
+      <li><a class="navbar__menu-link__CONTACT__" id="global_nav_contact_button" href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="navbar__right">
+      <a class="cart-link" id="global_cart_button" href="cart.html"><span class="cart-link__label">Cart</span><i class="ph-light ph-shopping-cart-simple cart-link__icon" aria-hidden="true"></i><span class="cart-link__badge">2</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="scrim" id="global_drawer_scrim"></div>
+<aside class="drawer" id="global_drawer_nav" aria-label="Main navigation">
+  <div class="drawer__head"><button class="drawer__close" id="global_drawer_close_button" aria-label="Close menu"><i class="ph-light ph-x" aria-hidden="true"></i></button></div>
+  <nav class="drawer__list">
+    <a class="drawer__link__HOME__" id="global_drawer_home_button" href="index.html">Home</a>
+    <a class="drawer__link__COURSES__" id="global_drawer_courses_button" href="courses.html">Bali Golf Course</a>
+    <div class="drawer__sublist">
+      <a class="drawer__link drawer__sublink__NEWKUTA__" id="global_drawer_new_kuta_button" href="detail-new-kuta.html">New Kuta Golf</a>
+      <a class="drawer__link drawer__sublink__PANDAWA__" id="global_drawer_bukit_pandawa_button" href="detail-bukit-pandawa.html">Bukit Pandawa Golf</a>
+      <a class="drawer__link drawer__sublink__HANDARA__" id="global_drawer_handara_button" href="detail-handara.html">Bali Handara Golf</a>
+      <a class="drawer__link drawer__sublink__BALIBEACH__" id="global_drawer_bali_beach_button" href="detail-bali-beach.html">Bali Beach · coming soon</a>
+    </div>
+    <a class="drawer__link__BLOG__" id="global_drawer_blog_button" href="blog.html">Blog</a>
+    <a class="drawer__link__TERMS__" id="global_drawer_terms_button" href="terms.html">Terms &amp; Condition</a>
+    <a class="drawer__link__CONTACT__" id="global_drawer_contact_button" href="contact.html">Contact Us</a>
+  </nav>
+</aside>
+
+<main>

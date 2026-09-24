@@ -1,0 +1,26 @@
+/* ==========================================================================
+   pages/blog.css — blog index page only.
+   ========================================================================== */
+
+.blog__result-count {
+  color: var(--stone);
+  margin-top: var(--space-5);
+}
+
+.blog__grid { row-gap: var(--space-14); }
+
+@media (pointer: coarse) {
+  /* "Clear filters" sits inline in the result count — pad it vertically only. */
+  .blog__result-count a {
+    display: inline-block;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  /* The blog index is a filter bar and a card grid — both already carry their
+     own spacing, so the 48px the rest of the site uses on a phone just pushes
+     the first card off the screen. Page-scoped: pages/blog.css loads after
+     components.css, so this wins for the three blog states only. */
+  .section { padding: var(--space-4) 0; }
+}

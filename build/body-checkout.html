@@ -1,0 +1,61 @@
+  <div class="page-head">
+    <div class="wrap center">
+      <h1 class="display section-intro__title--lg">Checkout</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap checkout-layout">
+      <!-- Fields and section titles after a client reference, 21 Sep 2026,
+           built from the site's existing form classes. The payment option is
+           the site's own. Source: build/data/booking-flow.md -->
+      <form id="checkout_billing_form">
+        <h2 class="heading-sm form__title--flat">Contact information</h2>
+        <div class="form__field"><label for="checkout_email_input">Email address<span class="req">*</span></label><input class="input" id="checkout_email_input" name="email" type="email" autocomplete="email" placeholder="name@email.com" required></div>
+        <p class="text-sm checkout__intro">You are currently checking out as a guest.</p>
+
+        <h2 class="heading-sm form__title--flat">Billing address</h2>
+        <div class="form__field"><label for="checkout_country_dropdown">Country/Region<span class="req">*</span></label><select class="input" id="checkout_country_dropdown" name="country" autocomplete="country-name" required><option value="" selected disabled>Select country</option><option>Australia</option><option>China</option><option>Indonesia</option><option>Singapore</option><option>United Kingdom</option><option>United States (US)</option></select></div>
+        <div class="form-pair">
+          <div class="form__field"><label for="checkout_first_name_input">First name<span class="req">*</span></label><input class="input" id="checkout_first_name_input" name="first_name" type="text" autocomplete="given-name" placeholder="David" required></div>
+          <div class="form__field"><label for="checkout_last_name_input">Last name<span class="req">*</span></label><input class="input" id="checkout_last_name_input" name="last_name" type="text" autocomplete="family-name" placeholder="Reynolds" required></div>
+        </div>
+        <div class="form__field"><label for="checkout_pickup_address_input">Address<span class="req">*</span></label><input class="input" id="checkout_pickup_address_input" name="pickup_address" type="text" autocomplete="address-line1" placeholder="Hotel name and street, for pickup" required></div>
+        <div class="form__field"><label for="checkout_address_line2_input">Apartment, suite, etc. (optional)</label><input class="input" id="checkout_address_line2_input" name="address_line2" type="text" autocomplete="address-line2" placeholder="Villa or room number"></div>
+        <div class="form-pair">
+          <div class="form__field"><label for="checkout_city_input">City</label><input class="input" id="checkout_city_input" name="city" type="text" autocomplete="address-level2" placeholder="Seminyak"></div>
+          <div class="form__field"><label for="checkout_state_input">State</label><input class="input" id="checkout_state_input" name="state" type="text" autocomplete="address-level1" placeholder="Bali"></div>
+        </div>
+        <div class="form-pair">
+          <div class="form__field"><label for="checkout_zip_input">ZIP Code</label><input class="input" id="checkout_zip_input" name="zip" type="text" autocomplete="postal-code" placeholder="80361"></div>
+          <div class="form__field"><label for="checkout_phone_input">Phone / WhatsApp<span class="req">*</span></label><input class="input" id="checkout_phone_input" name="phone" type="tel" autocomplete="tel" placeholder="+61 400 000 000" required></div>
+        </div>
+
+        <h2 class="heading-sm form__title--flat">Payment options</h2>
+        <div class="payment-option is-selected" id="checkout_payment_after_confirmation_item"><span class="payment-option__radio"></span><span class="payment-option__label">Pay after booking confirmed</span></div>
+        <p class="text-sm checkout__payment-note">Make your payment once we have confirmed your booking. We send you a Midtrans payment link.</p>
+        <div class="notice notice--block"><b>Nothing is charged now.</b> We contact you on WhatsApp to talk the round through, then send a Midtrans payment link. Your tee time is booked once that is paid.</div>
+
+        <!-- checkout.js hides the note until the box is ticked. -->
+        <label class="checkbox"><input type="checkbox" id="checkout_add_note_checkbox"><span>Add a note to your order</span></label>
+        <div class="form__field"><label class="visually-hidden" for="checkout_order_notes_input">Order note</label><textarea class="input" id="checkout_order_notes_input" name="order_notes" placeholder="Notes about your order."></textarea></div>
+
+        <hr class="rule">
+        <p class="text-sm cta-spaced--sm">By proceeding with your purchase you agree to our <a class="text-link" id="checkout_terms_link" href="terms.html">Terms and Conditions</a>.</p>
+        <a class="pill pill--fill pill--block cta-spaced--sm" id="checkout_place_order_button" href="received.html">Place order</a>
+      </form>
+
+      <div class="form">
+        <h2 class="heading-sm form__title--flat">Order summary</h2>
+        <!-- Each round as the reference lists a product: name, price per player,
+             the booking in brief, and the line total. Net of the season saving,
+             the same figures as the cart. -->
+        <table class="spec-table">
+          <tr><td class="checkout__thumb"><img src="assets/images/course-new-kuta-island-green.jpg" alt=""></td><td><b class="spec-table__strong">New Kuta Golf</b><br>IDR 2.300.000 / player<br><span class="text-sm spec-table__sub">10 Sep · 6:15 AM · 2 players</span></td><td>IDR 6.300.000</td></tr>
+          <tr><td class="checkout__thumb"><img src="assets/images/course-handara-highland.jpg" alt=""></td><td><b class="spec-table__strong">Bali Handara Golf</b><br>IDR 1.600.000 / player<br><span class="text-sm spec-table__sub">12 Sep · 9:00 AM · 2 players</span></td><td>IDR 5.000.000</td></tr>
+          <tr><td colspan="2">Subtotal</td><td>IDR 11.300.000</td></tr>
+        </table>
+        <div class="summary-row summary-row--total"><span>Total</span><span>IDR 11.300.000</span></div>
+      </div>
+    </div>
+  </section>

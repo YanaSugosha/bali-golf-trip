@@ -1,0 +1,20 @@
+/* ==========================================================================
+   pages/failed.css — declined payment page only.
+   ========================================================================== */
+
+.failed__section { padding-top: var(--space-18); }
+
+.failed__title { margin-top: 14px; }
+
+.failed__intro { margin-top: var(--space-4); }
+
+.failed__panel { margin-top: 34px; }
+
+.failed__methods-label { margin: var(--space-6) 0 14px; }
+
+.failed__retry { margin-top: var(--space-5); }
+
+.failed__note {
+  color: var(--stone);
+  margin-top: var(--space-5);
+}

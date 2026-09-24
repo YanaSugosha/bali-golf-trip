@@ -1,0 +1,2210 @@
+/* ==========================================================================
+   components.css — every global / reusable component.
+   Anything used on more than one page lives here. Single-page layout lives
+   in pages/[page].css.
+
+   Breakpoints follow the approved design (900px / 600px) rather than the
+   house sm/md/lg scale, so the layout changes exactly where it did before.
+   assumption: design fidelity outranks the standard breakpoint scale.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Layout primitives
+   ========================================================================== */
+
+.wrap {
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+  padding: 0 var(--wrap-pad);
+}
+
+.wrap--form    { max-width: 520px; }
+.wrap--slim    { max-width: 560px; }
+.wrap--prose   { max-width: 700px; }
+.wrap--article { max-width: 820px; }
+.wrap--media   { max-width: 1000px; }
+
+.center { text-align: center; }
+
+.section { padding: var(--space-25) 0; }
+.section--tight { padding: var(--space-16) 0; }
+
+/* A section used as an in-page anchor target has to clear the sticky navbar.
+   The desktop 100px top padding already would, but it drops to 56px below
+   900px — less than the navbar — so the heading would land underneath it. */
+.section[id] { scroll-margin-top: calc(var(--navbar-height) + var(--space-6)); }
+.section--flush-top { padding-top: var(--space-4); }
+
+.section--dark {
+  background: var(--slate);
+  color: var(--white);
+}
+.section--dark p { color: var(--on-dark-body); }
+
+.section--cream { background: var(--parchment); }
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-8);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+}
+
+/* Two-column page shells shared by more than one page. */
+.checkout-layout {                 /* cart, checkout */
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.aside-layout {                    /* contact: the card leads, the form fills */
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.stick { position: sticky; top: 100px; }
+
+
+/* ==========================================================================
+   2. Typography scale
+   ========================================================================== */
+
+.display-lg { font-size: 62px; line-height: 1.06; letter-spacing: -.032em; }
+.display    { font-size: 46px; line-height: 1.12; letter-spacing: -.028em; }
+.heading-lg { font-size: 40px; line-height: 1.25; }
+.heading    { font-size: 28px; line-height: 1.2; }
+.heading-sm { font-size: 24px; line-height: 1.2; }
+.text-sm    { font-size: 14px; line-height: 1.43; }
+
+.eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .167em;
+  line-height: 1.5;
+}
+.eyebrow--muted  { color: var(--stone); }
+.eyebrow--accent { color: var(--birdie); }
+.eyebrow--alert  { color: var(--flag); }
+
+.meta {
+  font-size: 12px;
+  letter-spacing: .125em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.meta--on-dark { color: var(--on-dark-soft); }
+.meta--action  { color: var(--fairway); }
+
+.lead {
+  max-width: 470px;
+  margin: 0 auto 36px;
+}
+.lead--narrow {
+  max-width: 460px;
+  margin-bottom: 34px;
+}
+.lead--on-dark { color: var(--on-dark-lead); }
+
+/* Paragraph following another paragraph in the same block. */
+.para-spaced { margin-top: 18px; }
+
+/* base.css strips list markers globally; this restores them where the source
+   copy is genuinely a bulleted list. */
+.bullet-list {
+  list-style: disc;
+  padding-left: var(--space-5);
+  margin-top: 18px;
+}
+.bullet-list li {
+  padding: 3px 0;
+  line-height: 1.65;
+}
+.bullet-list li::marker { color: var(--fairway); }
+
+/* Ticked list — what a package includes. The tick is a pseudo-element rather
+   than an icon per item, so the markup stays a plain <ul>. */
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 var(--space-6);
+}
+.check-list li {
+  position: relative;
+  padding: 4px 0 4px 26px;
+  line-height: 1.65;
+}
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  color: var(--fairway);
+  font-weight: 500;
+}
+
+.quote {
+  font-family: var(--serif);
+  font-size: 31px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: -.02em;
+}
+.quote--centered { max-width: 760px; margin: 0 auto; }
+.quote--pull {
+  margin: 44px 0;
+  padding-left: var(--space-6);
+  border-left: 2px solid var(--fairway);
+  font-size: 26px;
+}
+
+.price-from {
+  margin: 18px 0 var(--space-6);
+  font-size: 15px;
+}
+.price-from__amount {
+  font-family: var(--serif);
+  font-size: 21px;
+}
+
+.line {
+  width: 44px;
+  height: 1px;
+  background: var(--fairway);
+  margin: var(--space-5) 0;
+}
+.line--accent { background: var(--birdie); }
+.center .line { margin: var(--space-5) auto; }
+
+.rule {
+  height: 1px;
+  background-color: var(--line);
+  border: 0;
+}
+.section--dark .rule { background-color: var(--on-dark-rule); }
+
+
+/* ==========================================================================
+   3. Ratio boxes
+   ========================================================================== */
+
+.ratio {
+  position: relative;
+  overflow: hidden;
+}
+.ratio > img { position: absolute; inset: 0; }
+
+.ratio--4x3  { padding-top: 75%; }
+.ratio--3x2  { padding-top: 66.6%; }
+.ratio--1x1  { padding-top: 100%; }
+.ratio--16x9 { padding-top: 56.25%; }
+.ratio--16x10 { padding-top: 62.5%; }
+.ratio--banner { padding-top: 32%; }
+
+
+/* ==========================================================================
+   4. Pill button
+   ========================================================================== */
+
+/* inline-flex, not inline-block: pills are often flex items (pagination, pill
+   rows) where they stretch to the tallest sibling. As a block
+   the label would stay on the top padding and read off-centre; centring here
+   keeps it middle-aligned at whatever height the row gives it. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--fairway);
+  color: var(--fairway);
+  background: transparent;
+  border-radius: var(--radius-pill);
+  padding: 13px 30px;
+  font-family: var(--sans);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .167em;
+  cursor: pointer;
+  transition: background .25s, color .25s, border-color .25s;
+  text-decoration: none;
+  line-height: 1;
+}
+.pill:hover {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--white);
+}
+.pill i,
+.pill:hover i { color: inherit; }
+.pill i {
+  font-size: 16px;
+  margin-right: 9px;
+  vertical-align: -.16em;
+}
+
+/* The booking funnel: browse a course, book it, cart, checkout, pay. Every
+   button that moves the customer one step further along that path is filled,
+   so the way forward is never one outline among several. Everything else —
+   contact, WhatsApp, sharing — stays an outline. */
+.pill--fill {
+  background: var(--fairway);
+  border-color: var(--fairway);
+  color: var(--white);
+}
+.pill--fill:hover {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--white);
+}
+
+.pill--ghost {
+  border-color: var(--white);
+  color: var(--white);
+}
+.pill--ghost:hover {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--white);
+}
+
+.pill--alt {
+  border-color: var(--slate);
+  color: var(--slate);
+}
+.pill--alt:hover {
+  background: var(--slate);
+  border-color: var(--slate);
+  color: var(--white);
+}
+
+.pill--current {
+  background: var(--slate);
+  border-color: var(--slate);
+  color: var(--white);
+  cursor: default;
+}
+
+.pill--sm { padding: 10px 22px; font-size: 11px; }
+
+/* For a pill whose label is a literal value — a handle, an address, a phone
+   number. .pill's uppercase would corrupt a username, and its wide tracking
+   makes a number hard to read. */
+.pill--verbatim {
+  text-transform: none;
+  letter-spacing: .04em;
+}
+
+.pill--icon {
+  padding: 11px;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+}
+.pill--icon i { margin: 0; font-size: 18px; }
+
+.pill--sm.pill--icon { padding: 9px; width: 36px; height: 36px; }
+.pill--sm.pill--icon i { font-size: 15px; margin: 0; }
+
+/* Full-width call to action inside a form panel. flex rather than block so it
+   keeps the centring from .pill while still filling the panel. */
+/* An <a> takes no disabled attribute, so the state is a class a script sets;
+   aria-disabled carries it to a screen reader. */
+.pill.is-disabled {
+  pointer-events: none;
+  opacity: .45;
+}
+
+.pill--block {
+  display: flex;
+  text-align: center;
+}
+
+/* Call to action sitting below a block of copy. */
+.cta-spaced { margin-top: 30px; }
+.cta-spaced--lg { margin-top: var(--space-8); }
+.cta-spaced--sm { margin-top: var(--space-5); }
+.cta-spaced--xs { margin-top: var(--space-3); }
+
+.pill-row {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.pill-row--centered { justify-content: center; }
+.pill-row--tight { gap: var(--space-2); }
+
+
+/* ==========================================================================
+   5. Text links
+   ========================================================================== */
+
+.text-link {
+  color: var(--fairway);
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+  text-decoration: none;
+}
+.text-link:hover { border-bottom-color: var(--fairway); }
+
+.plain-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* ==========================================================================
+   6. Navbar
+   ========================================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--white);
+  border-bottom: var(--navbar-border) solid var(--line-soft);
+}
+
+/* Non-sticky variant, for showing the navbar inline in the style guide. */
+.navbar--inline { position: static; }
+
+.navbar__inner {
+  position: relative;
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+  padding: var(--navbar-pad-y) var(--wrap-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Desktop navigates from the inline menu below; the drawer and its trigger are
+   the small-screen equivalent, switched on at 900px. */
+.navbar__menu-button {
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: var(--space-2);
+  cursor: pointer;
+  color: var(--slate);
+  font-size: 26px;
+  line-height: 1;
+  transition: color .2s;
+}
+.navbar__menu-button:hover { color: var(--fairway); }
+
+/* Centred on the bar itself, not on the gap between the brand and the cart.
+   As a flex: 1 item it was centred inside that gap, so the logo shrinking on
+   scroll narrowed the brand and slid the whole menu left with it. Absolute
+   takes it out of that measurement: the links hold their place while the
+   logo changes size. */
+.navbar__menu {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-10);
+  list-style: none;
+  margin: 0;
+}
+.navbar__menu-link {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .125em;
+  color: var(--slate);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  white-space: nowrap;
+  transition: color .2s, border-color .2s;
+}
+.navbar__menu-link:hover { border-bottom-color: var(--fairway); }
+.navbar__menu-link.is-active {
+  color: var(--fairway);
+  border-bottom-color: var(--fairway);
+}
+
+.navbar__brand {
+  display: block;
+  cursor: pointer;
+  line-height: 0;
+}
+/* Resting size is the compact one, so the logo still looks right if the
+   scroll script never runs. main.js adds .is-at-top to enlarge it. */
+.navbar__logo {
+  height: var(--logo-height);
+  width: auto;
+  display: block;
+  transition: height .28s ease, opacity .2s;
+}
+.navbar.is-at-top .navbar__logo { height: var(--logo-height-top); }
+.navbar__brand:hover .navbar__logo { opacity: .72; }
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: .125em;
+  text-transform: uppercase;
+  color: var(--slate);
+  text-decoration: none;
+  transition: color .2s;
+}
+.cart-link:hover { color: var(--fairway); }
+.cart-link__icon { font-size: 21px; }
+.cart-link__badge {
+  position: absolute;
+  top: -8px;
+  right: -13px;
+  background: var(--flag);
+  color: var(--white);
+  font-size: 10px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0;
+}
+
+
+/* ==========================================================================
+   7. Drawer navigation
+   ========================================================================== */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: var(--ink-veil);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+  z-index: 60;
+}
+.scrim.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 344px;
+  max-width: 86vw;
+  background: var(--white);
+  z-index: 70;
+  transform: translateX(-101%);
+  transition: transform .34s cubic-bezier(.4, 0, .2, 1);
+  overflow-y: auto;
+}
+.drawer.is-open { transform: none; }
+
+.drawer__head {
+  display: flex;
+  justify-content: flex-end;
+  padding: 22px var(--space-6) var(--space-3);
+}
+
+.drawer__close {
+  background: transparent;
+  border: 0;
+  font-size: 23px;
+  line-height: 1;
+  color: var(--fairway);
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: color .2s;
+}
+.drawer__close:hover { color: var(--birdie); }
+
+.drawer__link {
+  display: block;
+  padding: 17px var(--space-8);
+  font-size: 12px;
+  letter-spacing: .145em;
+  text-transform: uppercase;
+  color: var(--slate);
+  border-bottom: 1px solid var(--mist);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  transition: color .18s, background .18s, padding-left .18s;
+}
+.drawer__link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--fairway);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform .2s;
+}
+.drawer__link:hover {
+  color: var(--fairway);
+  background: var(--leaf-tint);
+  padding-left: 38px;
+}
+.drawer__link:hover::before { transform: scaleY(.4); }
+.drawer__link.is-active { color: var(--fairway); }
+.drawer__link.is-active::before { transform: scaleY(1); }
+
+.drawer__sublink {
+  padding: 13px var(--space-8) 13px 50px;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+  background: var(--leaf-tint-panel);
+  font-weight: 400;
+}
+.drawer__sublink:hover {
+  padding-left: 56px;
+  background: var(--leaf-tint-strong);
+}
+.drawer__sublink.is-active {
+  background: var(--leaf-tint-strong);
+  font-weight: 500;
+}
+
+
+/* ==========================================================================
+   8. Page head (dark banner)
+   ========================================================================== */
+
+/* Image page header: a full-bleed photo with the title over a gradient at the
+   bottom. Used by courses, lesson, club, blog and contact. The flat .page-head
+   below is the version without a photo, kept for the checkout flow and terms. */
+.banner { position: relative; }
+
+/* The caption is absolutely positioned, so it grows upward out of the image if
+   the image is shorter than the text. At 32% of viewport width the banner gets
+   very short on narrow screens, so hold a floor tall enough for the caption at
+   its roomiest — the courses banner, which also carries a standfirst. */
+.banner .ratio { min-height: 400px; }
+
+/* Vertical padding only, matching .section — the inner .wrap supplies the
+   horizontal gutter, so padding the sides here would double-inset the text. */
+.banner__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--space-25) 0;
+  background: linear-gradient(transparent, rgba(20, 26, 40, .85));
+  color: var(--white);
+}
+.banner__title { margin-top: var(--space-3); }
+
+/* Optional standfirst under the title. Reading measure, not full bleed. */
+.banner__lead {
+  /* Wide enough for the course-list lead to sit on two lines rather than three.
+     Below 900px the .wrap gutters bind first, so this never causes overflow. */
+  max-width: 820px;
+  margin: var(--space-4) auto 0;
+  color: var(--on-dark-lead);
+}
+
+/* Brand banner: the hire spec sheet on the left, the three photographs on the
+   right - the two portraits side by side with the wide shot under them
+   (client mock, 21 Sep 2026). */
+.brand-banner {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  /* min() so the collage gives ground before the lists do: a fixed width kept
+     its size while the copy was squeezed to a single cramped column. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, min(430px, 38%));
+  gap: var(--space-16);
+  align-items: center;
+  padding: var(--space-16) 9.5%;
+  background: var(--slate);
+  color: var(--white);
+}
+
+/* Drained of colour and held under a 90% ink veil (client, 17 Sep 2026), so
+   the type and the three photographs stay the subject. The veil is its own
+   layer rather than opacity on the photograph: at 90% the colour is what does
+   the work, and the photograph underneath keeps its full contrast. */
+.brand-banner__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.brand-banner__backdrop img { filter: grayscale(1); }
+.brand-banner__backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink-veil-deep);
+}
+
+/* Both halves sit above the backdrop. */
+.brand-banner__content,
+.brand-banner__collage {
+  position: relative;
+  z-index: 1;
+}
+
+.brand-banner__collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+/* Row 2 by placement rather than by source order, so the wide shot stays first
+   in the markup and the two portraits fill the row above it. Ratios are the
+   sources' own, so object-fit has nothing to crop. */
+.brand-banner__shot { aspect-ratio: 455 / 547; }
+.brand-banner__shot--wide {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  aspect-ratio: 936 / 406;
+}
+
+/* base.css stretches every img to fill its box; the logo is a fixed lock-up. */
+.brand-banner__logo {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: var(--space-5);
+}
+
+.brand-banner__title { margin-bottom: var(--space-3); }
+
+.brand-banner__text {
+  color: var(--on-dark-lead);
+  margin-bottom: var(--space-6);
+  max-width: 420px;
+}
+
+.brand-banner__rule { background: var(--on-dark-border); }
+
+/* Side by side stops working well before the 900px breakpoint: at 1024 the
+   copy is down to 395px and its two columns start wrapping. Below 1180 the
+   photographs move under the lists instead.
+   assumption: a third width step is worth it here; this panel is the only
+   thing on the site with this much tabular copy. */
+@media (max-width: 1180px) {
+  .brand-banner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-10);
+  }
+  .brand-banner__collage { max-width: 430px; }
+}
+
+/* Stacked, a 430px block of photographs leaves most of the width empty, so in
+   that range they run across it as a strip instead. One height for all three,
+   which means they crop - side by side at a single height their delivered
+   ratios cannot all be kept. Bounded below at 768px: narrower than that,
+   the two side photographs come out around 120px, so the portraits-over-wide
+   block holds instead.
+   Client, 21 Sep 2026. */
+@media (max-width: 1180px) and (min-width: 768px) {
+  .brand-banner__collage {
+    grid-template-columns: 1.7fr 1fr 1fr;
+    max-width: none;
+  }
+  .brand-banner__shot {
+    aspect-ratio: auto;
+    height: clamp(170px, 22vw, 250px);
+  }
+  .brand-banner__shot--wide {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: auto;
+  }
+}
+
+/* The hire spec sheet inside the Titleist banner. auto-fit rather than a fixed
+   three, so the columns thin out on their own as the panel narrows instead of
+   needing a breakpoint at every step - the longest option, "Mens Regular steel
+   Shaff RH", is what sets the 200px floor. The two one-line groups share a
+   cell so neither is left stranded in a row of its own. */
+.club-specs {
+  display: grid;
+  /* Two cells, two columns, capped so they stay a readable measure instead of
+     stretching to 600px each on a wide panel. auto-fit was collapsing to one
+     track at some widths, which is why the count is explicit. */
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  gap: var(--space-8) var(--space-6);
+  align-items: start;
+  margin-top: var(--space-6);
+}
+/* Putter and Ladies stacked in one cell, so Ladies sits under Putter rather
+   than in a second grid row whose height the six-item list sets. */
+.club-specs__stack { display: grid; gap: var(--space-6); align-content: start; }
+
+/* The CTA closes the panel, so it stands off the last list rather than
+   hanging on it. */
+.brand-banner__content .pill { margin-top: var(--space-8); }
+
+/* An outlined chip rather than a heading: these name a shelf of options, not
+   a section of the page, and the banner already has its own h2. */
+.club-specs__label {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--white);
+  border: 1px solid var(--on-dark-border);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+  margin-bottom: var(--space-4);
+}
+
+.club-specs__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--on-dark-lead);
+}
+.club-specs__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: 4px 0;
+  line-height: 1.5;
+}
+.club-specs__list i {
+  color: var(--white);
+  font-size: 15px;
+  /* Holds the tick on the first line when an option wraps. */
+  flex: none;
+  margin-top: 2px;
+}
+
+
+.page-head {
+  background: var(--slate);
+  color: var(--white);
+  padding: 76px 0 var(--space-16);
+  position: relative;
+}
+.page-head p { color: var(--on-dark-body); }
+.page-head__lead {
+  max-width: 460px;
+  margin: var(--space-4) auto 0;
+}
+
+
+/* ==========================================================================
+   9. Cards
+   ========================================================================== */
+
+/* Flex column so .card__footer can be pushed to the bottom of the card. Grid
+   already stretches every card in a row to the same height, so bottom-aligning
+   the footer lines the prices and buttons up across the row regardless of how
+   many lines each title takes. */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__footer { margin-top: auto; }
+/* 20px clears the title (which already carries 12px below it); the gap under
+   the rule is left to .price-from own 18px top margin. */
+.card__rule {
+  margin: var(--space-5) 0 0;
+  background-color: var(--line);
+  background-image: linear-gradient(var(--fairway), var(--fairway));
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0 100%;
+  transition: background-size .35s ease;
+}
+.card .ratio { margin-bottom: 22px; }
+
+/* Deliberately NOT position:relative — an article card's stretched link sits
+   inside the title, and a positioned title would become that link's
+   containing block, shrinking its hit area from the card down to the title. */
+.card__title { margin: 10px 0 var(--space-3); }         /* 10 / 12 */
+.card__title--spaced { margin: var(--space-5) 0 10px; } /* 20 / 10 */
+.card__title--tight { margin: var(--space-5) 0 var(--space-2); } /* 20 / 8 */
+.card__title--flat { margin: 10px 0; }
+.card__title--step { margin: var(--space-3) 0 10px; }   /* 12 / 10 */
+
+/* Card body copy, held to two lines and cut with an ellipsis. A longer
+   description would otherwise run to a third line and push that card's price
+   and button out of line with the cards beside it. */
+.card__excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* The card holds exactly one link — the pill on a course card, the title link
+   on an article card. Stretching that link's hit area over the whole card
+   makes the card clickable without nesting anchors, which would be invalid
+   and would break keyboard navigation. */
+.card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* On an overlay card the link sits inside .card__overlay, which is positioned
+   and therefore becomes the containing block — the hit area stopped at the
+   strip of type. Reaching far above it covers the photograph as well; .ratio
+   has overflow: hidden, so it is clipped back to the card. */
+.card--overlay .card__link::after { inset: -100vh 0 0 0; }
+
+/* Hover treatment is limited to real pointers — on touch these would latch on
+   after a tap and stay stuck until the next one. :focus-within mirrors it so
+   keyboard users get the same feedback when the pill takes focus. */
+@media (hover: hover) and (pointer: fine) {
+  .card .ratio > img { transition: transform .6s ease; }
+  .card:hover .ratio > img,
+  .card:focus-within .ratio > img { transform: scale(1.05); }
+
+  /* The separator carries the hover: a colour wipe left to right along the
+     hairline. Drawn as a background gradient sized from 0, so nothing moves
+     and the rule keeps its place in the layout. */
+  .card:hover .card__rule,
+  .card:focus-within .card__rule { background-size: 100% 100%; }
+
+  /* The article card has no separator to wipe, so its title still takes the
+     colour. */
+  .card__title--flat { transition: color .25s ease; }
+  .card:hover .card__title--flat,
+  .card:focus-within .card__title--flat { color: var(--fairway); }
+
+  /* Where the card's link is a pill, it fills in with the rest of the card
+     rather than only when the cursor is over the pill itself. Scoped to .pill
+     so an article card's plain title link is not given a filled background. */
+  .card:hover .pill.card__link,
+  .card:focus-within .pill.card__link {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--white);
+  }
+}
+
+/* --- Overlay course card -----------------------------------------------
+   The photograph is the card: name, price and button sit on it. The gradient
+   is the client's own value (11 Sep 2026), run bottom-up: solid black at the
+   foot of the image, under the name, price and button, and clear at the top so
+   the photograph still reads. Used on the homepage and on each detail page's
+   "also on the island" row. */
+.card--overlay .ratio { margin-bottom: 0; }
+.card--overlay .ratio::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, var(--card-scrim) 0%, var(--card-scrim-none) 100%);
+}
+
+/* The client's gradient is a straight fade over the card's whole height, which
+   assumes a tall card. The type block does not shrink with the card, so the
+   smaller the card the higher up the area tagline sits and the thinner the
+   scrim is under it: at 1600 it reads at about 48% black, at 1024 only 32%.
+   A mid stop holds the scrim up through the type without touching the wide
+   layout the client approved. */
+@media (max-width: 1280px) {
+  .card--overlay .ratio::after {
+    background: linear-gradient(0deg,
+      var(--card-scrim) 0%,
+      var(--card-scrim-mid) 70%,
+      var(--card-scrim-none) 100%);
+  }
+}
+.card__overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  /* Scales with the card: see the note on .card--overlay .card__title. */
+  padding: clamp(var(--space-5), 2.4vw, var(--space-8));
+  /* The stretched .card__link sits under this, so anything here that is not
+     the link itself must not intercept the click. */
+  pointer-events: none;
+}
+.card__overlay .card__link { pointer-events: auto; }
+
+.card--overlay .meta { color: var(--birdie); }
+/* The name is the first thing to break a small card: at a fixed 28px it wraps
+   to three lines in a 213px column and pushes the block past the photograph.
+   Floors at 19px, which still reads as the card's heading. */
+.card--overlay .card__title {
+  color: var(--white);
+  font-size: clamp(19px, 1.9vw, 28px);
+}
+.card--overlay .rule { background-color: var(--on-dark-rule); }
+/* Two classes, so it outranks .card__rule and keeps the gradient the shorthand
+   above would otherwise discard. Fairway has nothing to read against on a
+   photograph; birdie does. */
+.card--overlay .card__rule {
+  background-image: linear-gradient(var(--birdie), var(--birdie));
+}
+.card--overlay .price-from { color: var(--white); }
+
+/* Bottom right, clear of the name: on a full-bleed photo the ribbon has no
+   white margin to sit against, so it becomes a chip in the free corner. */
+.card--overlay .promo-badge--save {
+  top: var(--space-4);
+  right: var(--space-4);
+  bottom: auto;
+  left: auto;
+  border-radius: var(--radius-pill);
+  padding: 5px var(--space-3);
+}
+
+/* The veil over the whole photo would bury the name it sits on, so on this
+   card the status is a chip in the opposite corner instead. */
+.card--overlay .ratio__soon {
+  /* Top right, the same corner .promo-badge--save takes. No card carries both:
+     a course that is not open has no season saving to advertise. */
+  inset: var(--space-4) var(--space-4) auto auto;
+  background: var(--ink-veil);
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 6px var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+
+/* A course that has not opened yet. The photograph drains to grey so it reads
+   as inactive beside the ones you can book, and the status chip takes the logo
+   yellow. Slate ink on it — yellow scores 1.34:1 on white and only works under
+   dark type. The chip's geometry comes from .card--overlay above; this only
+   recolours it, and is declared after so it wins the background where both
+   selectors score two classes. */
+.ratio--soon > img { filter: grayscale(1); }
+.ratio--soon .ratio__soon {
+  background: var(--sunrise);
+  color: var(--slate);
+}
+
+
+/* Sits inside the card's .ratio box, over the top-left of the image.
+   Out of flow, so an unbadged card keeps the same vertical rhythm.
+   Inset estimated from screenshot, rounded to the spacing scale. */
+.promo-badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+  /* Decorative, and it paints above the card's stretched link — without this
+     it would swallow clicks in that corner of the card. */
+  pointer-events: none;
+  display: inline-block;
+  background: var(--flag);
+  color: var(--white);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 5px var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+/* Seasonal saving, sat on the bottom edge of the photo as a ribbon: square,
+   flush left, so it reads as a sticker on the image rather than a pill. */
+.promo-badge--save {
+  top: auto;
+  bottom: 0;
+  left: 0;
+  border-radius: 0;
+  padding: 7px var(--space-3);
+}
+
+/* Status written over the photo, on a veil dark enough to keep the text
+   readable whatever the image behind it is doing. */
+.ratio__soon {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* Paints above the card's stretched link, so without this it would swallow
+     every click on the image. */
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink-veil);
+  color: var(--white);
+  font-family: var(--serif);
+  font-size: 26px;
+}
+
+.section-intro { margin-bottom: var(--space-12); }
+.section-intro--tight { margin-bottom: 44px; }
+.section-intro__title { margin-top: var(--space-4); }        /* 16px */
+.section-intro__title--tight { margin-top: 14px; }
+.section-intro__title--lg { margin-top: 18px; }
+.section-intro__body {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Heading that opens a column of a two-column section. */
+.block-title { margin: var(--space-4) 0 var(--space-2); }        /* 16 / 8 */
+.block-title--tight { margin: 14px 0 var(--space-2); }           /* 14 / 8 */
+
+
+/* ==========================================================================
+   10. Spec table
+   ========================================================================== */
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-weight: 300;
+}
+.spec-table td {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+.spec-table td:last-child { text-align: right; }
+.spec-table--spaced { margin: var(--space-6) 0; }
+
+/* Stacked variant: label above value, both left aligned, each pair closed by
+   its own rule. Use it for attribute lists; keep the default label-left /
+   value-right for money summaries, where right aligned amounts are scannable.
+   --split adds a two-column grid on top, for wide containers with an even row
+   count. Gridding the implicit <tbody> is what reflows the rows; the rule sits
+   on the <tr> so it spans the whole pair rather than breaking at the cell. */
+.spec-table--stacked > tbody,
+.spec-table--split > tbody {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--space-5);
+}
+.spec-table--stacked > tbody > tr,
+.spec-table--split > tbody > tr {
+  display: block;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.spec-table--stacked > tbody > tr > td,
+.spec-table--split > tbody > tr > td {
+  display: block;
+  padding: 0;
+  border-bottom: 0;
+  text-align: left;
+  line-height: 1.45;
+}
+.spec-table--stacked > tbody > tr > td:first-child,
+.spec-table--split > tbody > tr > td:first-child {
+  font-weight: 500;
+  color: var(--slate);
+  margin-bottom: var(--space-1);
+}
+/* Needs :last-child to outweigh `.spec-table td:last-child`, which right
+   aligns the value in the default variant. Without the pseudo-class this
+   selector scores fewer classes and the right align wins. */
+.spec-table--stacked > tbody > tr > td:last-child,
+.spec-table--split > tbody > tr > td:last-child {
+  font-weight: 400;
+  color: var(--body-text);
+  text-align: left;
+}
+
+@media (min-width: 901px) {
+  .spec-table--split > tbody {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-12);
+  }
+}
+.spec-table--top { margin-top: var(--space-8); }
+.spec-table--top-xs { margin-top: var(--space-4); }
+.spec-table__strong { font-weight: 500; }
+.spec-table__sub { color: var(--stone); }
+
+.section--dark .spec-table td {
+  border-bottom-color: var(--on-dark-rule);
+  color: rgba(255, 255, 255, .85);
+}
+
+
+/* ==========================================================================
+   11. Forms
+   ========================================================================== */
+
+.form {
+  background: var(--white);
+  border: 1px solid var(--slate);
+  padding: 36px;
+}
+.form__title { margin: var(--space-3) 0 26px; }
+/* A form panel that leads with its heading rather than an eyebrow: it
+   carries the panel on its own, so it sits below .heading-sm. */
+.form__title:first-child { margin-top: 0; font-size: 20px; }
+.form__title--tight { margin: 14px 0 22px; }
+.form__title--loose { margin: var(--space-3) 0 22px; }
+.form__title--flat { margin: var(--space-3) 0 var(--space-5); }
+
+/* Label available to screen readers where the design shows none. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form__field { margin-bottom: 22px; }
+.form__field label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .167em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 9px;
+}
+
+/* Marks a required field. The control carries the `required` attribute, which
+   is what a screen reader announces; this is only the visual half, so it is
+   never the sole cue. */
+.req {
+  color: var(--flag);
+  margin-left: 3px;
+}
+
+/* Column gap only: each .form__field carries its own 22px bottom margin, so
+   a row gap as well doubled the space when a pair wrapped onto a second row -
+   44px between the contact form's two rows against 22px everywhere else. */
+.form-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 22px;
+}
+.form-pair--gap { column-gap: 18px; }
+
+.input {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid var(--field-border);
+  background: transparent;
+  padding: var(--space-3) 14px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--slate);
+  border-radius: 0;
+  transition: border-color .2s;
+}
+/* iOS Safari gives a date input a native appearance with its own intrinsic
+   width, and centres the value inside it. In a grid track sized 1fr — whose
+   automatic minimum is the item's min-content width — that intrinsic size
+   widens the track and the field runs past the panel. Strip the native
+   appearance, let it shrink below min-content, and align the value with every
+   other field. */
+input[type="date"].input {
+  -webkit-appearance: none;
+  appearance: none;
+  min-width: 0;
+  text-align: left;
+}
+input[type="date"].input::-webkit-date-and-time-value {
+  text-align: left;
+  min-width: 0;
+}
+/* The calendar glyph Safari adds keeps its own box; without this it can push
+   the value out of the field on a narrow screen. */
+input[type="date"].input::-webkit-calendar-picker-indicator { margin-left: auto; }
+
+/* An unfilled date input is a blank box on iOS Safari: no format hint, no
+   calendar glyph, and with the native appearance stripped above, barely any
+   height either. Draw the placeholder in ourselves, and blank it once there
+   is a value to show (detail.js sets .is-filled). The feature query is
+   iOS-only, so Chrome and Firefox keep printing their own mm/dd/yyyy rather
+   than stacking two hints. */
+@supports (-webkit-touch-callout: none) {
+  input[type="date"].input { position: relative; }
+  /* Out of flow, or Safari lays the placeholder out as a second line above
+     the date itself instead of beside it. Inset to the field's own padding so
+     it starts level with every other value, and transparent to taps so the
+     whole box still opens the picker. */
+  input[type="date"].input::before {
+    content: attr(placeholder);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--stone);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  input[type="date"].input.is-filled::before { content: none; }
+  /* An empty date field has nothing in flow - the placeholder above is out of
+     it - so the box collapses shorter than the selects beside it. A
+     zero-width space gives it a line box, and therefore the same height,
+     without putting anything on screen or taking any width. */
+  input[type="date"].input::after { content: "\200b"; }
+}
+
+.input::placeholder { color: var(--stone); }
+.input:hover { border-color: rgba(20, 26, 40, .7); }
+.input:focus {
+  outline: 0;
+  border-color: var(--fairway);
+  box-shadow: 0 0 0 3px rgba(19, 124, 25, .14);
+}
+
+textarea.input {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Custom select — the design shows its own chevron, not the browser's. */
+select.input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' fill='none' stroke='%23141A28' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px 8px;
+  padding-right: var(--space-10);
+  color: var(--slate);
+}
+
+.filter-bar {
+  display: flex;
+  gap: var(--space-8);
+  align-items: end;
+  flex-wrap: wrap;
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--line);
+}
+/* Apply sits beside the search box, so the two share one height. border-box
+   is global, so this holds whatever padding either of them carries. */
+.filter-bar .input,
+.filter-bar .pill { height: 44px; }
+
+/* No box of its own on a wide screen: the two dropdowns sit directly in the
+   filter row, as they did before the wrapper existed. */
+.filter-bar__fields { display: contents; }
+.filter-bar__toggle { display: none; }
+
+.filter-bar__field { min-width: 190px; }
+.filter-bar__field--grow { flex: 1; min-width: 220px; }
+.filter-bar__label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .167em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 9px;
+}
+
+/* Custom checkbox — real input stays focusable and keyboard operable. */
+.checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+  cursor: pointer;
+}
+.checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  margin: 3px 0 0;
+  border: 1px solid var(--field-border);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  border-radius: 2px;
+}
+.checkbox input[type="checkbox"]:checked {
+  border-color: var(--fairway);
+  background: var(--fairway);
+}
+.checkbox input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--white);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.checkbox input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--fairway);
+  outline-offset: 2px;
+}
+
+/* Custom radio — real input stays focusable and keyboard operable. */
+.radios {
+  display: flex;
+  gap: var(--space-6);
+}
+.radio-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.radio-field input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  border: 1px solid var(--field-border);
+  border-radius: 50%;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+}
+.radio-field input[type="radio"]:checked { border-color: var(--fairway); }
+.radio-field input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--fairway);
+}
+.radio-field input[type="radio"]:focus-visible {
+  outline: 2px solid var(--fairway);
+  outline-offset: 2px;
+}
+
+.notice {
+  border-left: 2px solid var(--fairway);
+  padding: 2px 0 2px var(--space-4);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--slate);
+}
+.notice--panel { margin: 22px 0 var(--space-6); }
+.notice--block { margin: var(--space-6) 0; }
+.notice--top { margin-top: var(--space-6); }
+.notice--terms { margin: var(--space-6) 0 44px; }
+
+
+
+/* ==========================================================================
+   12. Order summary and payment
+   ========================================================================== */
+
+/* A line for an item the customer has deselected: display:flex would beat the
+   UA's [hidden] on its own. */
+.summary-row[hidden] { display: none; }
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 300;
+  padding: var(--space-2) 0;
+  color: var(--slate);
+}
+.summary-row--total {
+  border-top: 1px solid var(--line-mid);
+  margin-top: 10px;
+  padding-top: var(--space-4);
+  font-size: 20px;
+  font-family: var(--serif);
+  font-weight: 700;
+}
+.summary-row--total-tight { margin-top: 14px; }
+
+/* Not a control any more: payment is taken on Midtrans, from a link sent after
+   the booking is agreed, so checkout states the method rather than offering a
+   choice. Kept as a row so it still reads as a payment method. */
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--line-mid);
+  padding: 15px 18px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.payment-option.is-selected {
+  border-color: var(--fairway);
+  background: var(--leaf-tint-selected);
+}
+.payment-option__radio {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  flex: 0 0 16px;
+  position: relative;
+}
+.payment-option.is-selected .payment-option__radio { border-color: var(--fairway); }
+.payment-option.is-selected .payment-option__radio::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--fairway);
+}
+.payment-option__label {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.payment-option__label i {
+  font-size: 20px;
+  color: var(--slate);
+}
+
+.amount {
+  font-family: var(--serif);
+  font-size: 22px;
+}
+.amount--lg {
+  font-size: 34px;
+  letter-spacing: -.028em;
+}
+.amount--xl {
+  font-size: 38px;
+  line-height: 1.15;
+  margin: 14px 0 6px;
+}
+
+
+/* ==========================================================================
+   13. Lightbox (home gallery + course carousel)
+   ========================================================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 26, 40, .94);
+  z-index: 90;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) 80px;
+}
+.lightbox.is-open { display: flex; }
+.lightbox img {
+  max-width: 100%;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-8);
+  background: transparent;
+  border: 0;
+  color: var(--white);
+  font-size: 26px;
+  cursor: pointer;
+  font-family: var(--sans);
+  line-height: 1;
+  transition: color .2s;
+}
+.lightbox__close:hover { color: var(--birdie); }
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .45);
+  background: transparent;
+  color: var(--white);
+  font-size: 17px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: background .2s, border-color .2s, color .2s;
+}
+.lightbox__nav:hover { background: rgba(255, 255, 255, .14); }
+.lightbox__nav--prev { left: var(--space-6); }
+.lightbox__nav--next { right: var(--space-6); }
+
+.lightbox__caption {
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--on-dark-soft);
+  font-size: 11px;
+  letter-spacing: .167em;
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   14. Footer
+   ========================================================================== */
+
+.site-footer {
+  background: var(--slate);
+  color: var(--on-dark);
+  padding: var(--space-18) 0 var(--space-6);
+}
+.site-footer h4 {
+  font-size: 11px;
+  letter-spacing: .167em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 18px;
+  font-family: var(--sans);
+  font-weight: 400;
+}
+.site-footer a {
+  display: block;
+  color: var(--on-dark);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 6px 0;
+  transition: color .2s;
+}
+.site-footer a:hover { color: var(--birdie); }
+.site-footer a i {
+  font-size: 15px;
+  margin-right: var(--space-2);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: var(--space-12);
+}
+
+.site-footer__logo { display: inline-block; }
+.site-footer__logo img {
+  height: 76px;
+  width: auto;
+}
+
+.site-footer__blurb {
+  margin-top: 22px;
+  max-width: 280px;
+  color: rgba(255, 255, 255, .7);
+}
+/* The statement opens with its own line, so the title is a block inside the
+   paragraph rather than a heading: it is one piece of copy, not a section. */
+.site-footer__blurb-title {
+  display: block;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+/* The three selling points the client lists under it. Disc markers, indented
+   just enough to hang under the text rather than the container edge. */
+.site-footer__points {
+  margin: var(--space-3) 0 0;
+  /* base.css strips markers from every ul; the client wrote these as a
+     bulleted list, so this one takes them back. */
+  list-style: disc;
+  padding-left: 18px;
+  max-width: 280px;
+  color: rgba(255, 255, 255, .7);
+  line-height: 1.9;
+}
+
+/* The four channels as icon buttons under Follow us (client mock, 21 Sep
+   2026), where they were a stacked list of values before. Each is icon-only,
+   so the channel name lives in aria-label. */
+.site-footer__social {
+  display: flex;
+  gap: var(--space-3);
+}
+/* .site-footer a is a block with vertical padding, for the stacked link
+   columns. These are circles instead, so all of that is reset. */
+.site-footer__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--on-dark-border);
+  border-radius: 50%;
+  color: var(--white);
+}
+.site-footer__social a:hover {
+  border-color: var(--birdie);
+  color: var(--birdie);
+}
+.site-footer__social a i {
+  font-size: 17px;
+  margin: 0;
+}
+
+/* Second heading in the same column, so it needs the space a column top gives
+   the first one. */
+.site-footer__heading--spaced { margin-top: var(--space-8); }
+
+.site-footer__hours {
+  margin-top: var(--space-4);
+  color: rgba(255, 255, 255, .7);
+}
+
+/* Moved into the Contact column, 21 Sep 2026: the brand column had the
+   statement, three selling points and the address stacked, which made the
+   footer long. The address belongs with the other contact details anyway. */
+/* <address> is italic by default in every browser. */
+.site-footer__address {
+  font-style: normal;
+  margin-top: var(--space-4);
+  color: rgba(255, 255, 255, .7);
+  line-height: 1.9;
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  color: var(--on-dark-faint);
+  margin-top: var(--space-14);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, .16);
+}
+
+/* .site-footer a is a block with its own padding, for the stacked link
+   columns above. Inside a sentence it has to go back to being a word. */
+.site-footer__bottom a {
+  display: inline;
+  padding: 0;
+  color: inherit;
+  text-decoration: underline;
+}
+.site-footer__bottom a:hover { color: var(--birdie); }
+
+/* Both lines carry their own class: base.css styles the bare <p> at 16px in
+   --body-text, and an element selector beats whatever the container sets. */
+.site-footer__copyright {
+  font-size: 14px;
+  line-height: 1;
+  color: var(--on-dark-muted);
+  margin: 0;
+}
+
+/* The reCAPTCHA notice is boilerplate — quieter than the copyright above it. */
+.site-footer__legal {
+  font-size: 11px;
+  color: var(--on-dark-faint);
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   15. Floating WhatsApp button
+   ========================================================================== */
+
+/* The disc, the glyph and the green all come from wa-icon.svg — this only
+   places and sizes it. The asset carries WhatsApp's own brand green, which is
+   deliberately outside the palette, so no colour token applies here. */
+.whatsapp-button {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  z-index: 50;
+  text-decoration: none;
+  transition: filter .2s;
+}
+/* assumption: standard darken-on-hover. The mark can't be recoloured through
+   an <img>, so this dims the whole disc instead. */
+.whatsapp-button:hover { filter: brightness(.92); }
+
+
+/* ==========================================================================
+   16. Pagination
+   ========================================================================== */
+
+.pagination {
+  margin-top: var(--space-16);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+
+/* ==========================================================================
+   17. Scroll reveal
+   ========================================================================== */
+
+/* Both classes are applied by main.js — never author .reveal in markup. The
+   stylesheet must not hide anything on its own, or a page whose script fails
+   to run would render blank. main.js also skips anything already on screen at
+   load, so nothing flashes in and above-the-fold content is never animated. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .7s ease, transform .7s ease;
+  will-change: opacity, transform;
+}
+.reveal--in {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ==========================================================================
+   18. Order summary — received and confirmed pages
+   ========================================================================== */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  padding-bottom: 34px;
+  border-bottom: 1px solid var(--mist);
+}
+.stat-grid__value { margin-top: var(--space-2); }
+
+.order-block { margin-top: 44px; }
+.order-block--loose { margin-top: var(--space-12); }
+.order-block__title { margin: 14px 0 var(--space-1) 0; }
+
+.timeline { margin-top: var(--space-2); }
+.timeline li {
+  display: flex;
+  gap: var(--space-4);
+  padding: 13px 0;
+  font-size: 14px;
+  font-weight: 400;
+  align-items: flex-start;
+}
+.timeline i {
+  font-size: 19px;
+  flex: 0 0 19px;
+  line-height: 1;
+  margin-top: 1px;
+  color: var(--mist);
+}
+.timeline li.is-done i { color: var(--fairway); }
+.timeline li.is-current i { color: var(--flag); }
+.timeline li.is-pending { color: var(--faint); }
+
+.order-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-10);
+  flex-wrap: wrap;
+}
+
+
+/* ==========================================================================
+   19. Breadcrumb
+   ========================================================================== */
+
+/* Sits at the foot of the page, directly above the footer, on a transparent
+   ground. Not on the homepage, which is the root, and not in the checkout
+   flow, where a funnel step is not a place in the hierarchy. */
+.breadcrumb { background: transparent; }
+/* The rule stops at the container edges rather than running the full width. */
+.breadcrumb .wrap { border-top: 1px solid var(--line-soft); }
+
+/* Where the page's last section is --cream, the breadcrumb continues that
+   ground instead of stepping back to white for one strip. */
+.breadcrumb--panel { background: var(--parchment); }
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-2);
+  list-style: none;
+  padding: var(--space-6) 0;
+  margin: 0;
+  font-size: 13px;
+  color: var(--stone);
+}
+/* The separator is decoration, so it is drawn rather than typed — a screen
+   reader reads the list, not a row of slashes. */
+.breadcrumb__list li + li::before {
+  content: "/";
+  margin-right: var(--space-2);
+  color: var(--faint);
+}
+.breadcrumb__list a {
+  color: var(--stone);
+  text-decoration: none;
+  transition: color .2s;
+}
+.breadcrumb__list a:hover { color: var(--fairway); }
+.breadcrumb__list [aria-current="page"] { color: var(--slate); }
+
+
+/* ==========================================================================
+   20. Empty and error states
+   ========================================================================== */
+
+/* One block for every "there is nothing here" page — empty cart, no search
+   results, 404. Icon, one line of explanation, and the way out. */
+.empty-state {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-16) 0;
+  text-align: center;
+}
+.empty-state__icon {
+  font-size: 56px;
+  line-height: 1;
+  color: var(--faint);
+}
+.empty-state__title { margin: var(--space-5) 0 var(--space-4); }
+.empty-state__body { margin-bottom: var(--space-8); }
+.empty-state__actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* The link that reaches a state page from its normal one. Prototype only —
+   strip these before launch, they are not customer-facing navigation. */
+.state-link {
+  display: block;
+  margin-top: var(--space-10);
+  text-align: center;
+  font-size: 13px;
+  color: var(--faint);
+}
+.state-link a { color: inherit; text-decoration: underline; }
+.state-link a:hover { color: var(--fairway); }
+
+
+/* ==========================================================================
+   21. Responsive
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .navbar__inner { padding: var(--navbar-pad-y) 18px; }
+  .navbar__right { gap: var(--space-4); }
+  .cart-link__label { display: none; }
+
+  /* Still hung off the icon's top-right corner, just pulled in. The desktop
+     -13px assumes the "Cart" label is there to absorb it; with the label
+     hidden and the navbar gutter down to 18px (14px at 600), that overhang
+     put the badge on the edge of the screen. */
+  .cart-link__badge { right: -6px; }
+
+  /* Shift the icon alone. A margin would widen .cart-link, and the badge is
+     positioned against that box, so it would travel with it — a transform
+     moves the glyph without touching the layout the badge is pinned to. */
+  .cart-link__icon { transform: translateX(-8px); }
+
+  /* Below 900px the inline menu gives way to the drawer. With the menu out of
+     flow the three remaining children space out to hamburger / brand / cart,
+     which is the layout this navbar had before. */
+  .navbar__menu { display: none; }
+  .navbar__menu-button { display: block; }
+
+  .checkout-layout,
+  .aside-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .stick { position: static; }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Three across becomes two, not one: a full-width card on a tablet makes a
+     six-card blog index six screens long. It drops to one at 600px. */
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Four is too many to collapse straight to one — two keeps the row scannable
+     on a tablet. It drops to a single column at 600px with the rest. */
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+
+  /* An overlay card's type needs room; two of them in a tablet column leaves
+     none, so this one goes straight to a single column. */
+  .grid-2 { grid-template-columns: 1fr; }
+
+  .display-lg { font-size: 36px; }
+  .display    { font-size: 30px; }
+  .heading-lg { font-size: 26px; }
+  .heading    { font-size: 21px; }
+  .heading-sm { font-size: 19px; }
+  .quote      { font-size: 21px; }
+
+  .section { padding: var(--space-14) 0; }
+  .section--tight { padding: var(--space-10) 0; }
+  .banner__caption { padding: var(--space-14) 0; }
+  .brand-banner { padding: var(--space-14) var(--space-10); }
+
+  .form { padding: 22px; }
+  .pill { padding: var(--space-3) var(--space-6); }
+
+  .lightbox { padding: var(--space-14) var(--space-4); }
+  .lightbox__nav { width: 42px; height: 42px; }
+  .lightbox__nav--prev { left: var(--space-2); }
+  .lightbox__nav--next { right: var(--space-2); }
+
+  /* Two columns keeps the footer to about a screen on a tablet; the brand
+     block spans both because the address and Maps link need the width. */
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px var(--space-8);
+  }
+  .site-footer__grid > div:first-child { grid-column: 1 / -1; }
+  .site-footer__bottom { margin-top: 36px; }
+
+  .spec-table td { padding: 11px 0; }
+}
+
+@media (max-width: 600px) {
+  .stat-grid { gap: 14px; }
+
+  .empty-state { padding: var(--space-12) 0; }
+
+  /* A long course name pushed the trail onto a second line and doubled the
+     bar's height. One line that scrolls sideways instead: items stop shrinking
+     and stop wrapping, and the scrollbar is hidden the way the gallery and
+     thumbnail strips hide theirs. */
+  .breadcrumb__list {
+    font-size: 12px;
+    padding: var(--space-5) 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .breadcrumb__list::-webkit-scrollbar { display: none; }
+  .breadcrumb__list li {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .navbar__inner { padding: var(--navbar-pad-y) 14px; }
+
+  .form-pair { grid-template-columns: 1fr; gap: 0; }
+  .grid-4,
+  .grid-3 { grid-template-columns: 1fr; }
+  .site-footer__grid { grid-template-columns: 1fr; }
+
+  /* Flex + min-width left the two fixed-width fields stranded at 190px on a
+     phone, each on its own line with a ragged gap beside it. One column, every
+     control full width, and Apply big enough to hit. */
+  .filter-bar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .filter-bar__field,
+  .filter-bar__field--grow { min-width: 0; }
+  .filter-bar .pill { width: 100%; }
+
+  /* Search and the toggle stay; category and date only appear when asked for.
+     Source order is fields, search, toggle, apply — reordered here so the
+     panel opens underneath the control that opens it. */
+  .filter-bar__field--grow { order: 1; }
+  .filter-bar__toggle {
+    order: 2;
+    display: inline-flex;
+    width: auto;
+    justify-self: start;
+  }
+  .filter-bar__fields {
+    order: 3;
+    display: none;
+  }
+  .filter-bar__fields.is-open {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .filter-bar #blog_apply_filter_button { order: 4; }
+
+  .brand-banner { padding: var(--space-8); }
+  .brand-banner__logo { width: 140px; }
+  .brand-banner__text { max-width: none; }
+  /* "Mens Regular steel Shaff RH" will not sit on one line in half a phone. */
+  .club-specs { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  /* Every pill goes full width below 600; this one is a single short CTA in a
+     panel, and the mock keeps it to its own length. */
+  .brand-banner .pill { width: auto; }
+
+  .display-lg { font-size: 31px; }
+  .display    { font-size: 26px; }
+  .heading-lg { font-size: 23px; }
+  .quote      { font-size: 19px; line-height: 1.5; }
+
+  .pill { padding: var(--space-3) var(--space-5); font-size: 11px; }
+  .pill i { margin-right: 7px; font-size: 15px; }
+
+  /* Full width on a phone: a button is easier to hit and the stack reads as a
+     list of actions. Three exceptions: the hero CTA sits over a photo where a
+     bar edge to edge would fight the image, and pagination and the share row
+     are strips of small controls — one page number per row would be absurd. */
+  .pill { width: 100%; }
+  .hero .pill { width: auto; }
+
+  /* Four labelled buttons wrap to three rows on a phone. Icon only, one line:
+     4 x 44 + 3 x 8 = 200px. The label stays in the markup for wider screens,
+     and each button carries an aria-label so hiding it costs nothing. */
+  .pill-row--tight .pill {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+  }
+  .pill-row--tight .pill i { margin: 0; font-size: 17px; }
+  .pill-row--tight .pill__label { display: none; }
+
+  /* Six controls at their desktop width overrun the gutters on a phone: the
+     numbers carry 20px of side padding and the arrows are held at 44px by the
+     touch block. One square size for all six and a 4px gap:
+     6 x 40 + 5 x 4 = 260px, inside the 306px a 350px screen leaves.
+     Three classes deep because the touch block's .pill--sm.pill--icon scores
+     two and sits later in the file — two would tie and lose. */
+  .pagination { gap: var(--space-1); flex-wrap: wrap; }
+  .pagination .pill.pill--sm {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+  }
+
+  /* Vertical rhythm scaled for a phone. The desktop steps — 56px section
+     padding, a 56px banner caption, 20px either side of every rule — add up to
+     most of a screen between a heading and the content under it. */
+  .section { padding: var(--space-12) 0; }
+  .banner__caption { padding: var(--space-10) 0; }
+  .split { gap: var(--space-5); }
+
+  .line { margin: var(--space-3) 0; }
+  .center .line { margin: var(--space-3) auto; }
+  .spec-table--spaced { margin: var(--space-4) 0; }
+
+  /* One card per row on a phone, so the photograph is no longer competing for
+     width and can stand up. Portrait 4:3 gives the name room to wrap to two
+     lines above the price without crowding the foot of the image. Set on the
+     card, so it beats whichever ratio the markup carries — 16:10 on the
+     homepage, 1:1 on the detail pages. */
+  .card--overlay .ratio { padding-top: 133.33%; }
+  .card__overlay { padding: var(--space-8); }
+  .card--overlay .card__title { font-size: 22px; }
+
+  /* Both badges move to the top left on a phone. They share the slot — no card
+     carries both — so they move together, or the corner would depend on which
+     badge the card happens to have. The inset shorthand above sets all four
+     sides; these two override only the horizontal pair, leaving the 16px top. */
+  .card--overlay .promo-badge--save,
+  .card--overlay .ratio__soon {
+    right: auto;
+    left: var(--space-4);
+  }
+
+  /* Buttons run full width on a phone, but not this one: inside the overlay it
+     would stretch the width of the photograph and stop reading as a button. */
+  .card__overlay .pill { width: auto; }
+
+  /* The 20px above the rule is desktop breathing room; on a phone the card is
+     already tight and the title sits close enough. */
+  .card__rule { margin: 0; }
+  .price-from { margin: var(--space-2) 0 var(--space-4); }
+
+  .spec-table td { font-size: 13px; }
+
+  .drawer { width: 88vw; }
+  .drawer__link { padding: 15px var(--space-6); }
+  .drawer__sublink { padding-left: 42px; }
+}
+
+
+/* ==========================================================================
+   22. Touch targets
+   ========================================================================== */
+
+/* Controls sized for a cursor are too small for a fingertip. Keyed to the
+   pointer type rather than a width, so a desktop window narrowed to phone
+   size keeps its compact controls and only real touch devices get the 44px
+   minimum. Negative margins absorb the extra size so nothing reflows. */
+@media (pointer: coarse) {
+  .pill--icon,
+  .pill--sm.pill--icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .lightbox__nav {
+    width: 48px;
+    height: 48px;
+  }
+
+  .navbar__menu-button {
+    padding: var(--space-3);
+    margin: calc(var(--space-3) * -1) calc(var(--space-3) * -1) calc(var(--space-3) * -1) 0;
+  }
+
+  .drawer__close {
+    padding: 11px;
+    margin: -11px -11px -11px 0;
+  }
+
+  /* Text link in a dense meta block — pad it out without moving the label. */
+  .remove-button {
+    padding: 11px 0;
+    margin-top: 3px;
+  }
+
+  /* 14px text on 6px of padding is a 34px target. The footer is a stack of
+     them, so a mistap lands on the neighbour. */
+  .site-footer a { padding: 11px 0; }
+
+  .breadcrumb__list a { padding: 6px 0; display: inline-block; }
+}

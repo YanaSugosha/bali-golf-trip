@@ -1,0 +1,20 @@
+  <!-- Where Midtrans sends the customer back when the payment link fails.
+       Nothing on this site takes the payment, so the only way forward is to
+       open the link again or ask us to reissue it. -->
+  <section class="section failed__section">
+    <div class="wrap wrap--slim">
+      <div class="eyebrow eyebrow--alert">Payment not completed</div>
+      <h1 class="display failed__title">Your bank declined the payment</h1>
+      <p class="failed__intro">Nothing has been charged. Your booking is still held and everything you agreed with us stands.</p>
+      <div class="form failed__panel">
+        <div class="summary-row"><span>New Kuta Golf · 10 Sep · 6:15 AM</span><span>IDR 6.900.000</span></div>
+        <div class="summary-row"><span>Bali Handara · 12 Sep · 9:00 AM</span><span>IDR 5.800.000</span></div>
+        <div class="summary-row"><span>Season discount</span><span>− IDR 1.400.000</span></div>
+        <div class="summary-row summary-row--total"><span>Due</span><span>IDR 11.300.000</span></div>
+        <div class="notice notice--top">Open the payment link again and pick another method — card, bank transfer, GoPay or QRIS are all offered there. If the link has expired, message us and we will send a new one.</div>
+        <a class="pill pill--fill pill--block failed__retry" id="failed_retry_button" href="payment.html">Open the payment link again</a>
+        <a class="pill pill--alt pill--block cta-spaced--xs" id="failed_whatsapp_button" href="https://wa.me/6281337225399" target="_blank" rel="noopener"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i>Chat us on WhatsApp</a>
+      </div>
+      <p class="text-sm center failed__note">Your tee times stay held while we sort the payment out with you.</p>
+    </div>
+  </section>

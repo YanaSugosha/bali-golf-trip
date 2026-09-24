@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Components — Bali Golf Trip style guide</title>
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="apple-touch-icon" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/light/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- The exact same stylesheets the real pages link. Never its own copies:
+     a change in components.css shows up here automatically. -->
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--accent">Living style guide</div>
+    <h1 class="display section-intro__title--lg">Components</h1>
+    <p class="page-head__lead">Every global token and component in <code>components.css</code>. Page-specific
+      components (hero slider, course carousel, cart rows, timeline) live in
+      <code>assets/css/pages/</code> and are not shown here.</p>
+  </div>
+</div>
+
+<!-- ============ 1. COLOUR PALETTE ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--muted">01</div>
+    <h2 class="heading-lg section-intro__title">Colour palette</h2>
+    <div class="line"></div>
+
+    <h3 class="heading card__title--spaced">Brand</h3>
+    <div class="grid-3">
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--slate)"></div>
+        <p class="text-sm card__title--tight"><b>--slate</b><br>#141A28</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--fairway)"></div>
+        <p class="text-sm card__title--tight"><b>--fairway</b><br>#137C19</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--forest)"></div>
+        <p class="text-sm card__title--tight"><b>--forest</b><br>#0D5912</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--birdie)"></div>
+        <p class="text-sm card__title--tight"><b>--birdie</b><br>#55DA5D</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--sunrise)"></div>
+        <p class="text-sm card__title--tight"><b>--sunrise</b><br>#F2E208</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--flag)"></div>
+        <p class="text-sm card__title--tight"><b>--flag</b><br>#CA0C26</p>
+      </div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Neutrals</h3>
+    <div class="grid-3">
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--white);border:1px solid var(--line)"></div>
+        <p class="text-sm card__title--tight"><b>--white</b><br>#ffffff</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--parchment)"></div>
+        <p class="text-sm card__title--tight"><b>--parchment</b><br>#EEF7EE</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--canvas)"></div>
+        <p class="text-sm card__title--tight"><b>--canvas</b><br>#F3FFFF</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--mist)"></div>
+        <p class="text-sm card__title--tight"><b>--mist</b><br>#EAECF0</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--stone)"></div>
+        <p class="text-sm card__title--tight"><b>--stone</b><br>#57637F</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--body-text)"></div>
+        <p class="text-sm card__title--tight"><b>--body-text</b><br>#38404F</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--muted)"></div>
+        <p class="text-sm card__title--tight"><b>--muted</b><br>#41495A</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--faint)"></div>
+        <p class="text-sm card__title--tight"><b>--faint</b><br>#9AA2B0</p>
+      </div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Green tints</h3>
+    <div class="grid-3">
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--leaf-tint);border:1px solid var(--line)"></div>
+        <p class="text-sm card__title--tight"><b>--leaf-tint</b><br>#F6FAF6</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--leaf-tint-strong);border:1px solid var(--line)"></div>
+        <p class="text-sm card__title--tight"><b>--leaf-tint-strong</b><br>#F1F8F1</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--leaf-tint-panel);border:1px solid var(--line)"></div>
+        <p class="text-sm card__title--tight"><b>--leaf-tint-panel</b><br>#FAFCFA</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2" style="background:var(--leaf-tint-selected);border:1px solid var(--line)"></div>
+        <p class="text-sm card__title--tight"><b>--leaf-tint-selected</b><br>#F4FAF4</p>
+      </div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Rules, borders and on-dark alphas</h3>
+    <table class="spec-table">
+      <tr><td>--line-soft</td><td>rgba(20,26,40,.12)</td></tr>
+      <tr><td>--line</td><td>rgba(20,26,40,.14)</td></tr>
+      <tr><td>--line-mid</td><td>rgba(20,26,40,.20)</td></tr>
+      <tr><td>--line-strong</td><td>rgba(20,26,40,.35)</td></tr>
+      <tr><td>--field-border</td><td>rgba(20,26,40,.45)</td></tr>
+      <tr><td>--on-dark</td><td>rgba(255,255,255,.72)</td></tr>
+      <tr><td>--on-dark-body</td><td>rgba(255,255,255,.78)</td></tr>
+      <tr><td>--on-dark-lead</td><td>rgba(255,255,255,.88)</td></tr>
+      <tr><td>--on-dark-soft</td><td>rgba(255,255,255,.60)</td></tr>
+      <tr><td>--on-dark-faint</td><td>rgba(255,255,255,.50)</td></tr>
+      <tr><td>--on-dark-rule</td><td>rgba(255,255,255,.18)</td></tr>
+      <tr><td>--on-dark-border</td><td>rgba(255,255,255,.40)</td></tr>
+    </table>
+
+    <h3 class="heading card__title--spaced">Spacing scale</h3>
+    <table class="spec-table">
+      <tr><td>--space-1 … --space-6</td><td>4 · 8 · 12 · 16 · 20 · 24 px</td></tr>
+      <tr><td>--space-8 … --space-16</td><td>32 · 40 · 48 · 56 · 64 px</td></tr>
+      <tr><td>--space-18 · --space-25</td><td>72 · 100 px</td></tr>
+      <tr><td>--wrap-max · --wrap-pad</td><td>1600px · 40px (22px ≤900, 18px ≤600)</td></tr>
+      <tr><td>--logo-height</td><td>52px (42px ≤900, 36px ≤600) — scrolled</td></tr>
+      <tr><td>--logo-height-top</td><td>76px (60px ≤900, 52px ≤600) — at page top</td></tr>
+      <tr><td>--navbar-pad-y · --navbar-border</td><td>14px (11px ≤900, 10px ≤600) · 1px</td></tr>
+      <tr><td>--navbar-height-top</td><td>derived: logo + 2×pad + border = 105px desktop</td></tr>
+      <tr><td>--radius-pill</td><td>80px</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 2. TYPOGRAPHY ============ -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--muted">02</div>
+    <h2 class="heading-lg section-intro__title">Typography</h2>
+    <div class="line"></div>
+
+    <p class="display-lg">.display-lg — 62px</p>
+    <p class="display">.display — 46px</p>
+    <p class="heading-lg">.heading-lg — 40px</p>
+    <p class="heading">.heading — 28px</p>
+    <p class="heading-sm">.heading-sm — 24px</p>
+    <p>Body paragraph — 16px / 1.65, colour <code>--body-text</code>. Set in Inter; headings use Schibsted Grotesk via <code>--serif</code>.</p>
+    <p class="text-sm">.text-sm — 14px / 1.43</p>
+    <div class="eyebrow eyebrow--muted">.eyebrow — 12px uppercase, .167em tracking</div>
+    <div class="meta">.meta — 12px uppercase, .125em tracking</div>
+    <p class="quote">.quote — 31px display quote used for testimonials and pull quotes.</p>
+    <p class="price-from">.price-from — From <span class="price-from__amount">IDR 2,300,000</span></p>
+    <div class="line"></div>
+    <p class="text-sm">.line — 44px rule above. <code>.line--accent</code> switches it to <code>--birdie</code> on dark grounds.</p>
+  </div>
+</section>
+
+<!-- ============ 3. BUTTONS ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--muted">03</div>
+    <h2 class="heading-lg section-intro__title">Buttons</h2>
+    <div class="line"></div>
+    <p class="text-sm">Hover states are declared for every variant; hover each to check. <code>.pill--current</code> is the non-interactive selected state used by pagination.</p>
+
+    <h3 class="heading card__title--spaced">On a light ground</h3>
+    <p class="text-sm"><code>.pill--fill</code> marks the way forward through the booking funnel — course, cart, checkout, pay. Everything else is an outline, so on any screen there is one filled button and it is the next step.</p>
+    <div class="pill-row">
+      <a class="pill pill--fill" href="#">.pill--fill</a>
+      <a class="pill" href="#">.pill</a>
+      <a class="pill pill--alt" href="#">.pill--alt</a>
+      <a class="pill pill--fill is-disabled" href="#" aria-disabled="true">.pill.is-disabled</a>
+      <a class="pill pill--sm" href="#">.pill--sm</a>
+      <a class="pill pill--current" href="#">.pill--current</a>
+      <a class="pill pill--icon" href="#" aria-label="Icon button"><i class="ph-light ph-caret-right" aria-hidden="true"></i></a>
+      <a class="pill pill--sm pill--icon" href="#" aria-label="Small icon button"><i class="ph-light ph-caret-right" aria-hidden="true"></i></a>
+      <a class="pill" href="#"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i>With icon</a>
+    </div>
+
+    <h3 class="heading card__title--spaced">Full width</h3>
+    <div style="max-width:340px">
+      <a class="pill pill--fill pill--block" href="#">.pill--fill.pill--block</a>
+      <a class="pill pill--block cta-spaced--xs" href="#">.pill--block</a>
+      <a class="pill pill--alt pill--block cta-spaced--xs" href="#">.pill--alt.pill--block</a>
+    </div>
+
+    <h3 class="heading card__title--spaced">Text links</h3>
+    <p><a class="text-link" href="#">.text-link</a> — underlines on hover. <a class="plain-link" href="#">.plain-link</a> — inherits colour, used on card headings.</p>
+
+    <h3 class="heading card__title--spaced">Pagination</h3>
+    <div class="pagination">
+      <a class="pill pill--sm pill--icon" href="#" aria-label="Previous page"><i class="ph-light ph-caret-left" aria-hidden="true"></i></a>
+      <a class="pill pill--sm pill--current" href="#" aria-current="page">1</a>
+      <a class="pill pill--sm" href="#">2</a>
+      <a class="pill pill--sm" href="#">3</a>
+      <a class="pill pill--sm pill--icon" href="#" aria-label="Next page"><i class="ph-light ph-caret-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--accent">03b</div>
+    <h2 class="heading-lg section-intro__title">Buttons on a dark ground</h2>
+    <div class="line line--accent"></div>
+    <p>The <code>.section--dark</code> ground recolours paragraphs, rules and spec tables automatically.</p>
+    <div class="pill-row cta-spaced">
+      <a class="pill pill--ghost" href="#">.pill--ghost</a>
+      <a class="pill pill--ghost" href="#"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i>With icon</a>
+    </div>
+    <table class="spec-table spec-table--top">
+      <tr><td>Spec table</td><td>on dark</td></tr>
+      <tr><td>Borders</td><td>--on-dark-rule</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 4. FORM ELEMENTS ============ -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--muted">04</div>
+    <h2 class="heading-lg section-intro__title">Form elements</h2>
+    <div class="line"></div>
+    <p class="text-sm">Selects, radios and checkboxes are custom-styled; the real inputs stay focusable and keyboard-operable. Tab through them to check the focus ring.</p>
+
+    <div class="form cta-spaced">
+      <div class="form-pair">
+        <div class="form__field">
+          <label for="guide_text_input">Text input</label>
+          <input class="input" id="guide_text_input" type="text" placeholder="Placeholder text">
+        </div>
+        <div class="form__field">
+          <label for="guide_email_input">Email input</label>
+          <input class="input" id="guide_email_input" type="email" placeholder="name@email.com">
+        </div>
+      </div>
+
+      <div class="form__field">
+        <label for="guide_select_dropdown">Select (custom chevron)<span class="req">*</span></label>
+        <select class="input" id="guide_select_dropdown" required>
+          <option value="" selected disabled>Select an option</option>
+          <option>Option one</option>
+          <option>Option two</option>
+        </select>
+      </div>
+
+      <p class="text-sm">A required field takes <code>.req</code> after the label text and the
+        <code>required</code> attribute on the control — the attribute is what a screen reader
+        announces, the asterisk is only the visual half. A required dropdown opens on a
+        <code>value=""</code> placeholder (“Select …”), so nothing is answered on the user’s behalf.
+        Optional dropdowns keep a real default (“No — I have my own clubs”, “0”, “All categories”):
+        that is an answer, not an empty state.</p>
+
+      <div class="form__field">
+        <label for="guide_textarea_input">Textarea</label>
+        <textarea class="input" id="guide_textarea_input" placeholder="Multi-line input, resizes vertically."></textarea>
+      </div>
+
+      <div class="form__field">
+        <span class="eyebrow eyebrow--muted">Custom radio — .radio-field</span>
+        <div class="radios" role="radiogroup" aria-label="Custom radio example">
+          <label class="radio-field"><input type="radio" name="guide_radio" id="guide_yes_radio" checked><span>Yes</span></label>
+          <label class="radio-field"><input type="radio" name="guide_radio" id="guide_no_radio"><span>No</span></label>
+        </div>
+      </div>
+
+      <label class="text-sm checkbox"><input type="checkbox" id="guide_terms_checkbox"><span>Custom checkbox — .checkbox, with a <a class="text-link" href="#">link inside the label</a></span></label>
+
+      <div class="notice notice--block">.notice — the green-ruled callout used for pre-order and legal notes.</div>
+
+      <div class="summary-row"><span>.summary-row</span><span>IDR 5.800.000</span></div>
+      <div class="summary-row"><span>Season discount</span><span>− IDR 1.400.000</span></div>
+      <div class="summary-row summary-row--total"><span>.summary-row--total</span><span>IDR 4.400.000</span></div>
+
+      <div class="eyebrow eyebrow--muted cta-spaced">Payment method — .payment-option</div>
+      <p class="text-sm">Payment is taken on Midtrans, from a link sent after the booking is agreed, so checkout states the method rather than offering a choice. The row is not interactive; <code>.is-selected</code> is its only state.</p>
+      <div class="payment-option is-selected"><span class="payment-option__radio"></span><span class="payment-option__label">Pay after booking confirmed — .is-selected</span></div>
+      <div class="payment-option"><span class="payment-option__radio"></span><span class="payment-option__label"><i class="ph-light ph-bank" aria-hidden="true"></i>Default</span></div>
+
+      <div class="eyebrow eyebrow--muted cta-spaced">Order summary — .stat-grid, .order-block, .timeline, .order-actions</div>
+      <p class="text-sm">Shared by the booking-request and booking-confirmed pages. <code>.timeline</code> marks each step <code>.is-done</code>, <code>.is-current</code> or <code>.is-pending</code>.</p>
+      <div class="stat-grid">
+        <div><div class="eyebrow eyebrow--muted">Order</div><p class="stat-grid__value">#10428</p></div>
+        <div><div class="eyebrow eyebrow--muted">Date</div><p class="stat-grid__value">8 Sep 2026</p></div>
+        <div><div class="eyebrow eyebrow--muted">To pay</div><p class="stat-grid__value">IDR 8.800.000</p></div>
+        <div><div class="eyebrow eyebrow--muted">Payment</div><p class="stat-grid__value">After booking confirmed</p></div>
+      </div>
+      <div class="order-block">
+        <h4 class="heading-sm order-block__title">.order-block__title</h4>
+        <ul class="timeline">
+          <li class="is-done"><i class="ph-light ph-check-circle" aria-hidden="true"></i><span>.is-done</span></li>
+          <li class="is-current"><i class="ph-light ph-circle-notch" aria-hidden="true"></i><span>.is-current</span></li>
+          <li class="is-pending"><i class="ph-light ph-circle-dashed" aria-hidden="true"></i><span>.is-pending</span></li>
+        </ul>
+        <div class="order-actions">
+          <a class="pill pill--sm" href="#">.order-actions</a>
+          <a class="pill pill--sm pill--alt" href="#">wraps on narrow</a>
+        </div>
+      </div>
+
+      <div class="eyebrow eyebrow--muted cta-spaced">Breadcrumb — .breadcrumb</div>
+      <p class="text-sm">Sits at the foot of the page, above the footer, on a transparent ground, with its rule stopping at the container edges. <code>.breadcrumb--panel</code> swaps the ground for <code>--parchment</code> where the page’s last section is <code>--cream</code>. Not on the homepage and not in the checkout flow. The last crumb is the current page: no link, <code>aria-current="page"</code>. Separators are drawn by CSS, never typed.</p>
+      <nav class="breadcrumb" aria-label="Breadcrumb example">
+        <div class="wrap">
+          <ol class="breadcrumb__list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Bali Golf Course</a></li>
+            <li aria-current="page">New Kuta Golf</li>
+          </ol>
+        </div>
+      </nav>
+
+      <div class="eyebrow eyebrow--muted cta-spaced">Ticked list — .check-list</div>
+      <p class="text-sm">What a package includes. The tick is a <code>::before</code> pseudo-element in <code>--fairway</code>, so the markup stays a plain <code>&lt;ul&gt;</code> with no icon per item.</p>
+      <ul class="check-list">
+        <li>Green fee 18 hole</li>
+        <li>Caddy fee</li>
+      </ul>
+
+      <div class="eyebrow eyebrow--muted cta-spaced">Amounts</div>
+      <div class="amount">.amount — IDR 5.800.000</div>
+      <div class="amount amount--lg">.amount--lg</div>
+      <div class="amount amount--xl">.amount--xl</div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Filter bar — .filter-bar</h3>
+    <p class="text-sm">One row on a wide screen. Below 600px it becomes a single column and the dropdowns collapse into <code>.filter-bar__fields</code>, revealed by <code>.filter-bar__toggle</code> — the search box and Apply stay out in the open. The wrapper is <code>display: contents</code> above that width, so the fields sit directly in the row and the toggle is hidden; <code>main.js</code> only binds when the toggle is on the page.</p>
+    <div class="filter-bar">
+      <div class="filter-bar__fields">
+        <div class="filter-bar__field">
+          <label class="filter-bar__label" for="guide_category_dropdown">Category</label>
+          <select class="input" id="guide_category_dropdown"><option>All categories</option></select>
+        </div>
+        <div class="filter-bar__field">
+          <label class="filter-bar__label" for="guide_date_dropdown">Date</label>
+          <select class="input" id="guide_date_dropdown"><option>Any date</option></select>
+        </div>
+      </div>
+      <div class="filter-bar__field filter-bar__field--grow">
+        <label class="filter-bar__label" for="guide_search_input">Search</label>
+        <input class="input" id="guide_search_input" type="search" placeholder="Search articles">
+      </div>
+      <button class="pill pill--sm filter-bar__toggle" aria-expanded="false">Filters</button>
+      <a class="pill pill--sm" href="#">Apply</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. CARDS ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--muted">05</div>
+    <h2 class="heading-lg section-intro__title">Cards</h2>
+    <div class="line"></div>
+
+    <h3 class="heading card__title--spaced">Overlay course card — .card.card--overlay</h3>
+    <p class="text-sm">The course card the homepage and the detail pages' “also on the island” row use:
+      the photograph is the card, and the name, price and button sit on it inside
+      <code>.card__overlay</code> over a bottom-up gradient. Both badges move to the top right, the corner the
+      type leaves free — <code>.promo-badge--save</code> as it is, <code>.ratio__soon</code> from a
+      full veil to a chip. They never share a card: a course that is not open has no season saving. The pill is <code>.pill--ghost</code>, the rule
+      takes <code>--on-dark-rule</code>, and the hover title turns <code>--birdie</code>, not
+      <code>--fairway</code>, which a photograph would swallow. Laid out in <code>.grid-2</code>
+      on the homepage, which goes to one column at 900px because this card's type needs the width.</p>
+    <p class="text-sm">A course that has not opened adds <code>.ratio--soon</code> to the ratio box,
+      as the second card below: the photograph drains to <code>grayscale(1)</code> so it reads as
+      inactive beside the ones you can book, and the chip takes <code>--sunrise</code>, the logo
+      yellow, with slate ink on it — yellow scores 1.34:1 on white and is never the type. It recolours
+      the chip only; the geometry comes from <code>.card--overlay</code>.</p>
+    <div class="grid-2">
+      <div class="card card--overlay">
+        <div class="ratio ratio--16x10">
+          <img src="assets/images/course-new-kuta-clifftop.jpg" alt="New Kuta clifftop fairway">
+          <div class="promo-badge promo-badge--save">Save IDR 300.000 this season</div>
+          <div class="card__overlay">
+            <div class="meta">Pecatu</div>
+            <h4 class="heading card__title">New Kuta Golf</h4>
+            <hr class="rule card__rule">
+            <p class="price-from">Start from <span class="price-from__amount">IDR 2.300.000</span></p>
+            <a class="pill pill--sm pill--ghost card__link" href="#">View course</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card--overlay">
+        <div class="ratio ratio--16x10 ratio--soon">
+          <img src="assets/images/course-headland-view.jpg" alt="Headland course view">
+          <div class="ratio__soon">Coming Soon</div>
+          <div class="card__overlay">
+            <div class="meta">Sanur, Denpasar</div>
+            <h4 class="heading card__title">Bali Beach Golf and Country Club</h4>
+            <hr class="rule card__rule">
+            <p class="price-from">Start from <span class="price-from__amount">TBD</span></p>
+            <a class="pill pill--sm pill--ghost card__link" href="#">View course</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Course card — .card, with .promo-badge and .ratio__soon</h3>
+    <p class="text-sm">The whole card is one click target. It holds a single link — the pill,
+      marked <code>.card__link</code> — whose hit area is stretched over the card with a
+      pseudo-element, so there are no nested anchors. Hover anywhere on a card below: the image
+      scales to 1.05, the title turns <code>--fairway</code> green, and the pill fills in. All three are limited to <code>(hover: hover)</code> pointers and
+      repeat on <code>:focus-within</code>, so tapping on touch never leaves a card stuck in the
+      hovered state and keyboard users still get the feedback.</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="ratio ratio--4x3">
+          <img src="assets/images/course-new-kuta-clifftop.jpg" alt="New Kuta clifftop fairway">
+          <div class="promo-badge">Popular</div>
+        </div>
+        <div class="meta">Pecatu · 18 holes</div>
+        <h4 class="heading card__title">New Kuta</h4>
+        <p class="text-sm card__excerpt">Card with a promo badge. The badge goes inside the <code>.ratio</code> box and overlays the image's top-left corner. This paragraph uses <code>.card__excerpt</code>, so it is clamped to two lines and the rest is cut with an ellipsis — keeping the price and button level across a row.</p>
+        <hr class="rule card__rule">
+        <p class="price-from">From <span class="price-from__amount">IDR 2,300,000</span></p>
+        <a class="pill pill--sm card__link" href="#">View course</a>
+      </div>
+      <div class="card">
+        <div class="ratio ratio--4x3"><img src="assets/images/course-handara-highland.jpg" alt="Handara highland course"></div>
+        <div class="meta">Bedugul · 18 holes</div>
+        <h4 class="heading card__title">Handara</h4>
+        <p class="text-sm">Same card without a badge. The badge is out of flow, so both cards line up with no extra offset class.</p>
+        <hr class="rule card__rule">
+        <p class="price-from">From <span class="price-from__amount">IDR 1,600,000</span></p>
+        <a class="pill pill--sm card__link" href="#">View course</a>
+      </div>
+      <div class="card">
+        <div class="ratio ratio--4x3">
+          <img src="assets/images/course-bukit-pandawa-greens.jpg" alt="Bukit Pandawa clifftop green">
+          <div class="promo-badge promo-badge--save">Save IDR 300.000 this season</div>
+        </div>
+        <div class="meta">Bukit Peninsula</div>
+        <h4 class="heading card__title">Saving ribbon</h4>
+        <p class="text-sm"><code>.promo-badge--save</code> is the same badge squared off and moved to the bottom-left of the image, for a price offer rather than a status label.</p>
+        <hr class="rule card__rule">
+        <p class="price-from">From <span class="price-from__amount">IDR 1,850,000</span></p>
+        <a class="pill pill--sm card__link" href="#">View course</a>
+      </div>
+      <div class="card">
+        <div class="ratio ratio--4x3">
+          <img src="assets/images/course-headland-view.jpg" alt="Fairway framed by mature trees">
+          <div class="ratio__soon">Coming Soon</div>
+        </div>
+        <div class="meta">Sanur, Denpasar</div>
+        <h4 class="heading card__title">Status over the photo</h4>
+        <p class="text-sm"><code>.ratio__soon</code> covers the <code>.ratio</code> box with a <code>--ink-veil</code> wash and centres the status on it in white. The logo yellow, <code>--sunrise</code>, appears only on the pending price chip — as a ground with slate ink, never as type, since it scores 1.34:1 on white. It is <code>pointer-events: none</code>, so the card stays one click target. <code>.card__rule</code> above the price is the divider used on all four.</p>
+        <hr class="rule card__rule">
+        <p class="price-from">From <span class="price-from__amount">TBD</span></p>
+        <a class="pill pill--sm card__link" href="#">View course</a>
+      </div>
+      <div>
+        <div class="ratio ratio--4x3"><img src="assets/images/club-putter-and-bag.jpg" alt="Putter and cart bag"></div>
+        <h4 class="heading card__title--spaced">Feature card</h4>
+        <p class="text-sm">Image, heading, body. Used on the lesson and club hire pages.</p>
+      </div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Article card</h3>
+    <div class="grid-3">
+      <article class="card">
+        <div class="ratio ratio--4x3"><img src="assets/images/blog-which-course-first.jpg" alt="Fairway at first light"></div>
+        <div class="meta">Courses · 12 August 2026</div>
+        <h4 class="heading card__title--flat"><a class="plain-link card__link" href="#">Which Bali course should you play first?</a></h4>
+        <p class="text-sm">Same <code>.card</code> hover as a course card, but the stretched link is
+          the title anchor rather than a pill — so it takes <code>.plain-link</code> too and keeps
+          the ink colour instead of filling in.</p>
+      </article>
+      <div>
+        <div class="meta meta--action">One</div>
+        <h4 class="heading-sm card__title--step">Numbered step card</h4>
+        <p class="text-sm">No image. The step number uses <code>.meta--action</code>.</p>
+      </div>
+      <div>
+        <div class="ratio ratio--3x2"><img src="assets/images/course-bukit-pandawa-greens.jpg" alt="Greens above the Indian Ocean"></div>
+        <h4 class="heading card__title--tight">Related course card</h4>
+        <p class="text-sm">3:2 ratio variant.</p>
+        <a class="pill pill--sm cta-spaced--sm" href="#">View</a>
+      </div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Ratio boxes</h3>
+    <div class="grid-3">
+      <div><div class="ratio ratio--4x3" style="background:var(--mist)"></div><p class="text-sm card__title--tight">.ratio--4x3</p></div>
+      <div><div class="ratio ratio--3x2" style="background:var(--mist)"></div><p class="text-sm card__title--tight">.ratio--3x2</p></div>
+      <div><div class="ratio ratio--1x1" style="background:var(--mist)"></div><p class="text-sm card__title--tight">.ratio--1x1</p></div>
+      <div><div class="ratio ratio--16x9" style="background:var(--mist)"></div><p class="text-sm card__title--tight">.ratio--16x9</p></div>
+      <div><div class="ratio ratio--banner" style="background:var(--mist)"></div><p class="text-sm card__title--tight">.ratio--banner (32%)</p></div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Spec table</h3>
+    <p class="text-sm">Three variants. Pick by what the rows contain, not by where they sit.</p>
+    <p class="text-sm"><b>Default</b> — label left, value right on one line. Reserved for money
+      summaries (cart totals, checkout, order received), where right aligned amounts line up and
+      can be scanned down the column.</p>
+    <p class="text-sm"><b><code>.spec-table--stacked</code></b> — label above value, both left
+      aligned, each pair closed by its own rule. The house style for attribute lists: course specs,
+      lesson details, club hire, contact details.</p>
+    <p class="text-sm"><b><code>.spec-table--split</code></b> — stacked, plus two columns above
+      900px, pairing left to right so rows 1 and 2 sit side by side. The default for attribute
+      lists wherever the container is wide enough: course detail, the course list, lesson and club
+      hire. An odd row count simply leaves the last pair alone on the left.</p>
+    <p class="text-sm">The threshold is the viewport, not the container, so check the column the
+      table actually sits in before adding it. Contact keeps <code>--stacked</code> because its
+      table is inside a 380px panel, which leaves about 130px per column — too narrow to split.</p>
+
+    <h4 class="heading-sm card__title--step">.spec-table--stacked</h4>
+    <table class="spec-table spec-table--stacked spec-table--top-xs">
+      <tr><td>Brand</td><td>Titleist</td></tr>
+      <tr><td>Clubs per set</td><td>14</td></tr>
+      <tr><td>Sets per golfer</td><td>1</td></tr>
+    </table>
+
+    <h4 class="heading-sm card__title--step">.spec-table--split</h4>
+    <table class="spec-table spec-table--split spec-table--top-xs">
+      <tr><td>Green fee</td><td>from IDR 2,300,000 per player</td></tr>
+      <tr><td>Designer</td><td>Ronald Fream, opened 2007</td></tr>
+      <tr><td>Tee windows</td><td>6:15 – 7:30 AM · 12:30 – 2:00 PM</td></tr>
+      <tr><td>Season offer</td><td>Save IDR 400,000 per player</td></tr>
+      <tr><td>Premium of Club Hire</td><td>Titleist, 13 clubs, one bag per golfer</td></tr>
+      <tr><td>Transport</td><td>IDR 500,000 per car, flat rate</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 6. INTERACTIVE COMPONENTS ============ -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--muted">06</div>
+    <h2 class="heading-lg section-intro__title">Interactive components</h2>
+    <div class="line"></div>
+    <p class="text-sm">Shown in their default state. The navbar, drawer and lightbox on this page are the live components from <code>components.css</code>, driven by <code>assets/js/main.js</code> on real pages.</p>
+
+    <h3 class="heading card__title--spaced">Navbar</h3>
+    <p class="text-sm">Above 900px: brand left, inline menu centred, cart right. The menu takes
+      <code>flex: 1</code> so it centres in the space between brand and cart. Below 900px the menu
+      is hidden and <code>.navbar__menu-button</code> appears instead, opening the drawer — the
+      three remaining children then space out to hamburger / brand / cart. The active item is
+      stamped by <code>assemble.sh</code> from the same page key that drives the drawer, so both
+      stay in step.</p>
+    <p class="text-sm">The logo has two sizes. <code>main.js</code> adds <code>.is-at-top</code> to
+      <code>.navbar</code> near the top of the page and removes it once scrolling starts, so the
+      logo goes <code>--logo-height-top</code> → <code>--logo-height</code> over a 280ms height
+      transition. The compact size is the CSS default, so a navbar with no script still looks
+      correct. This first example is live — scroll the page and watch it shrink.</p>
+    <p class="text-sm">It enlarges below 4px of scroll and shrinks past 64px. The two thresholds
+      are deliberate: resizing the logo changes the navbar's height, and a single threshold
+      would sit inside that shift, so the state would flip back and forth and stutter. Any
+      change to the logo tokens must keep the threshold gap wider than the height difference,
+      and <code>body</code> keeps <code>overflow-anchor: none</code> for the same reason.</p>
+    <nav class="navbar navbar--inline">
+      <div class="navbar__inner">
+        <button class="navbar__menu-button" aria-label="Open menu"><i class="ph-light ph-list" aria-hidden="true"></i></button>
+        <span class="navbar__brand"><img class="navbar__logo" src="assets/images/logo-bali-golf-trip.png" alt="Bali Golf Trip"></span>
+        <ul class="navbar__menu">
+          <li><a class="navbar__menu-link" href="#">Home</a></li>
+          <li><a class="navbar__menu-link is-active" href="#">Bali Golf Course</a></li>
+          <li><a class="navbar__menu-link" href="#">Blog</a></li>
+          <li><a class="navbar__menu-link" href="#">Contact Us</a></li>
+        </ul>
+        <div class="navbar__right">
+          <span class="cart-link"><span class="cart-link__label">Cart</span><i class="ph-light ph-shopping-cart-simple cart-link__icon" aria-hidden="true"></i><span class="cart-link__badge">2</span></span>
+        </div>
+      </div>
+    </nav>
+
+    <p class="text-sm card__title--spaced">Held in the <code>.is-at-top</code> state for comparison:</p>
+    <nav class="navbar navbar--inline is-at-top">
+      <div class="navbar__inner">
+        <button class="navbar__menu-button" aria-label="Open menu"><i class="ph-light ph-list" aria-hidden="true"></i></button>
+        <span class="navbar__brand"><img class="navbar__logo" src="assets/images/logo-bali-golf-trip.png" alt="Bali Golf Trip"></span>
+        <ul class="navbar__menu">
+          <li><a class="navbar__menu-link" href="#">Home</a></li>
+          <li><a class="navbar__menu-link is-active" href="#">Bali Golf Course</a></li>
+          <li><a class="navbar__menu-link" href="#">Blog</a></li>
+          <li><a class="navbar__menu-link" href="#">Contact Us</a></li>
+        </ul>
+        <div class="navbar__right">
+          <span class="cart-link"><span class="cart-link__label">Cart</span><i class="ph-light ph-shopping-cart-simple cart-link__icon" aria-hidden="true"></i><span class="cart-link__badge">2</span></span>
+        </div>
+      </div>
+    </nav>
+
+    <h3 class="heading card__title--spaced">Drawer navigation</h3>
+    <p class="text-sm">Shown inline here; on real pages it slides in from the left over a <code>.scrim</code>.</p>
+    <div style="max-width:344px;border:1px solid var(--line);background:var(--white)">
+      <div class="drawer__head"><button class="drawer__close" aria-label="Close menu"><i class="ph-light ph-x" aria-hidden="true"></i></button></div>
+      <nav class="drawer__list">
+        <a class="drawer__link" href="#">Home</a>
+        <a class="drawer__link is-active" href="#">Bali Golf Course — .is-active</a>
+        <div class="drawer__sublist">
+          <a class="drawer__link drawer__sublink is-active" href="#">New Kuta — sublink .is-active</a>
+          <a class="drawer__link drawer__sublink" href="#">Bukit Pandawa</a>
+        </div>
+        <a class="drawer__link" href="#">Club Hire</a>
+      </nav>
+    </div>
+
+    <h3 class="heading card__title--spaced">Lightbox</h3>
+    <p class="text-sm">Fixed overlay, hidden until <code>.is-open</code>. Opened by the home gallery and the course carousel through <code>window.bgtLightbox.open(list, index)</code>; closes on Escape, backdrop click or swipe.</p>
+
+    <h3 class="heading card__title--spaced">Brand banner</h3>
+    <p class="text-sm">A wide photo with a logo lock-up and one short statement held to the left, over a
+      gradient that keeps the type legible against the image. The media box is set to the source
+      asset's own ratio so nothing is cropped. Used on the course list for the club-hire brand
+      statement.</p>
+    <div class="brand-banner">
+      <!-- The same bags as the photographs, drained of colour behind a veil,
+           so the type and the three shots stay the subject. -->
+      <div class="brand-banner__backdrop"><img src="assets/images/banner/titleist-bags-backdrop.webp" alt=""></div>
+      <div class="brand-banner__content">
+        <img class="brand-banner__logo" src="assets/images/banner/titleist-logo.svg" alt="Titleist">
+        <h2 class="heading-lg brand-banner__title">Premium Titleist club hire</h2>
+        <div class="line brand-banner__rule"></div>
+        <div class="club-specs">
+          <div class="club-specs__stack">
+            <div class="club-specs__group">
+              <span class="club-specs__label">Brand Titleist</span>
+              <ul class="club-specs__list">
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Driver : TSI2 &amp; TSR2</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Wood 3 : TSi2 &amp; TSR2</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Rescue : TSi2 &amp; TSR2</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Iron Set : T150 T200 T300</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Putter</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Titleist Golf Bag</li>
+              </ul>
+            </div>
+            <div class="club-specs__group">
+              <span class="club-specs__label">Ladies</span>
+              <ul class="club-specs__list">
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Fullset Callaway</li>
+              </ul>
+            </div>
+          </div>
+          <div class="club-specs__group">
+            <span class="club-specs__label">Choose from</span>
+            <ul class="club-specs__list">
+              <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Steel Shaff RH</li>
+              <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Grafhite Shaff RH</li>
+              <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Stiff Steel Shaff RH</li>
+              <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Regular steel Shaff RH</li>
+              <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Grafhite LH</li>
+              <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Ladies Grafhite Shaff RH</li>
+            </ul>
+          </div>
+        </div>
+        <a class="pill pill--ghost" href="#courses_list_section">View &amp; book</a>
+      </div>
+      <div class="brand-banner__collage">
+        <img class="brand-banner__shot brand-banner__shot--wide" src="assets/images/banner/titleist-bags-row.webp" alt="A row of Titleist bags ready on the clubhouse deck">
+        <img class="brand-banner__shot" src="assets/images/banner/titleist-bag-sunset.webp" alt="A Titleist stand bag on the grass at sunset">
+        <img class="brand-banner__shot" src="assets/images/banner/titleist-clubs.webp" alt="Titleist woods and irons in the bag">
+      </div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Page head</h3>
+    <div class="page-head">
+      <div class="wrap">
+        <div class="eyebrow eyebrow--accent">Eyebrow</div>
+        <h4 class="display section-intro__title--lg">.page-head</h4>
+        <p class="page-head__lead">Optional lead paragraph, <code>.page-head__lead</code>.</p>
+      </div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Floating WhatsApp button</h3>
+    <p class="text-sm">Present on every page as <code>.whatsapp-button</code>, fixed bottom-right — visible at the corner of this page.</p>
+
+    <h3 class="heading card__title--spaced">Scroll reveal</h3>
+    <p class="text-sm">Blocks fade up as they scroll into view — this page included. It runs off a
+      selector list in <code>main.js</code> (<code>.section &gt; .wrap &gt; *</code>, grid and split
+      children, the page head, the course carousel, the contact banner), so pages get it without any
+      markup attributes. Where a grid and its cards both match, only the deepest match animates.
+      Siblings inside a grid or flex row stagger by 80ms up to 5 items; stacked content does not
+      stagger, since it scrolls in one item at a time.</p>
+    <p class="text-sm">The <code>.reveal</code> / <code>.reveal--in</code> pair is applied by script
+      and must never be authored in markup — the stylesheet hides nothing on its own, so a page
+      whose JS fails still renders in full. Anything already on screen at load is skipped, so
+      nothing flashes, and the whole effect is off under <code>prefers-reduced-motion</code>.</p>
+
+    <div class="notice notice--top">Not in this design: accordion and tabs. Add them to <code>components.css</code> and to this page in the same task if a future page needs them.</div>
+  </div>
+</section>
+
+<!-- ============ 7. FOOTER ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--muted">07</div>
+    <h2 class="heading-lg section-intro__title">Footer</h2>
+    <div class="line"></div>
+    <p class="text-sm">The global footer, identical on every page.</p>
+  </div>
+</section>
+
+<!-- ============ EMPTY AND ERROR STATES ============ -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="eyebrow eyebrow--muted">States</div>
+    <h2 class="heading-lg section-intro__title">Empty and error states</h2>
+    <div class="line"></div>
+    <p class="text-sm">Every "there is nothing here" page uses <code>.empty-state</code> — icon, eyebrow if it needs one, title, one line of explanation, and the way out. The primary action is <code>.pill--fill</code>, as everywhere else.</p>
+
+    <div class="empty-state">
+      <i class="ph-light ph-shopping-cart-simple empty-state__icon" aria-hidden="true"></i>
+      <h3 class="heading-lg empty-state__title">.empty-state__title</h3>
+      <p class="empty-state__body">.empty-state__body — one sentence, no apology.</p>
+      <div class="empty-state__actions">
+        <a class="pill pill--fill" href="#">Primary way out</a>
+        <a class="pill" href="#">Secondary</a>
+      </div>
+    </div>
+
+    <h3 class="heading card__title--spaced">Every state page in this prototype</h3>
+    <p class="text-sm">Each is reached through the control that would produce it, not a link bolted to the page: <b>Apply</b> on the blog goes to the results, <b>Apply</b> there goes to no results, <b>Send message</b> goes to the sent state, <b>Remove</b> empties the cart. Only the failed payment has no such control — both outcomes follow the same Pay button — so it keeps one <code>.state-link</code>. <b>Strip that link before launch.</b></p>
+    <table class="spec-table spec-table--top">
+      <tr><td><a class="text-link" href="cart-empty.html">cart-empty.html</a></td><td>Cart with nothing in it</td></tr>
+      <tr><td><a class="text-link" href="blog-search-results.html">blog-search-results.html</a></td><td>Search and filters matched, fewer cards and no pagination</td></tr>
+      <tr><td><a class="text-link" href="blog-no-results.html">blog-no-results.html</a></td><td>Search and filters matched no article</td></tr>
+      <tr><td><a class="text-link" href="contact-sent.html">contact-sent.html</a></td><td>Contact form submitted</td></tr>
+      <tr><td><a class="text-link" href="404.html">404.html</a></td><td>Page not found</td></tr>
+      <tr><td><a class="text-link" href="received.html">received.html</a></td><td>Booking request placed, nothing charged</td></tr>
+      <tr><td><a class="text-link" href="confirmed.html">confirmed.html</a></td><td>Payment received, booking confirmed</td></tr>
+      <tr><td><a class="text-link" href="failed.html">failed.html</a></td><td>Midtrans declined the payment</td></tr>
+      <tr><td><a class="text-link" href="detail-bali-beach.html">detail-bali-beach.html</a></td><td>Course readable but not bookable</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__logo"><img src="assets/images/logo-bali-golf-trip-light.png" alt="Bali Golf Trip"></div>
+        <p class="text-sm site-footer__blurb"><b class="site-footer__blurb-title">Professional Golf Services</b>Book your Bali Golf Trip With Us.</p>
+        <ul class="text-sm site-footer__points">
+          <li>Discount Green Fee</li>
+          <li>Guarantee Tee Time</li>
+          <li>Premium Club Hire</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Courses</h4>
+        <a href="detail-new-kuta.html">New Kuta Golf</a>
+        <a href="detail-bukit-pandawa.html">Bukit Pandawa Golf</a>
+        <a href="detail-handara.html">Bali Handara Golf</a>
+        <a href="detail-bali-beach.html">Bali Beach</a>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="courses.html#courses_club_hire_section">Club hire</a>
+        <a href="courses.html#courses_lesson_section">Golf lessons</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact us</a>
+        <a href="terms.html">Terms &amp; Condition</a>
+      </div>
+      <div>
+        <h4>Follow us</h4>
+        <div class="site-footer__social">
+          <a href="#" aria-label="WhatsApp"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="ph-light ph-instagram-logo" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Facebook"><i class="ph-light ph-facebook-logo" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Email"><i class="ph-light ph-envelope-simple" aria-hidden="true"></i></a>
+        </div>
+
+        <h4 class="site-footer__heading--spaced">Contact</h4>
+        <address class="text-sm site-footer__address">
+          Jalan Gunung Bromo VIII No. 47,<br>
+          Denpasar, Bali.
+        </address>
+        <a href="#"><i class="ph-light ph-map-pin" aria-hidden="true"></i>Open in Maps</a>
+        <p class="text-sm site-footer__hours">Open 8:00 AM – 8:00 PM WITA</p>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p class="site-footer__copyright">Copyright © 2026 Bali Golf Trip. All Rights Reserved. Powered by <a href="https://timedoor.net/" target="_blank" rel="noopener">PT. Timedoor Indonesia</a>.</p>
+      <p class="site-footer__legal">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy?hl=en-GB" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://policies.google.com/terms?hl=en-GB" target="_blank" rel="noopener">Terms of Service</a> apply</p>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-button" href="#" aria-label="Chat on WhatsApp"><img src="assets/images/wa-icon.svg" alt=""></a>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

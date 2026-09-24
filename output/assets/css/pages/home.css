@@ -1,0 +1,434 @@
+/* ==========================================================================
+   pages/home.css — homepage only: the hero slider, the testimonial slider
+   and the gallery strip. Nothing here is used by a second page.
+   ========================================================================== */
+
+
+/* --- Hero slider ---------------------------------------------------------- */
+
+.hero {
+  background: var(--slate);
+  color: var(--white);
+  position: relative;
+  /* Navbar + hero together fill exactly one screen. The navbar sits in flow
+     above the hero, so its height comes out of the 100vh rather than adding
+     to it. Measured against the navbar's tall state, which is what's on
+     screen while the page is at the top.
+     Desktop only — the 900px and 600px blocks below keep their own heights. */
+  min-height: calc(100vh - var(--navbar-height-top));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 140px 0 120px;
+
+  /* The arrows and dots are positioned against .hero, not nested inside
+     .wrap, so they measure in from the viewport to land on the container's
+     content edge. Once the viewport is narrower than the container this
+     collapses to the plain gutter, matching every other section. */
+  --hero-control-inset: max(
+    var(--wrap-pad),
+    calc(50% - var(--wrap-max) / 2 + var(--wrap-pad))
+  );
+}
+
+.hero__bg { position: absolute; inset: 0; }
+.hero__bg img {
+  position: absolute;
+  inset: 0;
+  filter: saturate(.92) contrast(1.02);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.hero__bg img.is-active { opacity: 1; }
+
+.hero__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(20, 26, 40, .72) 0%,
+    rgba(20, 26, 40, .42) 42%,
+    rgba(20, 26, 40, .78) 100%);
+}
+
+/* .hero is a flex container, so this needs an explicit width — without it the
+   wrap shrink-wraps to its content and .hero__text's max-width never binds. */
+.hero__wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero__text {
+  max-width: 704px;   /* 470 × 1.5, rounded to the 4px grid */
+  margin: 0 auto;
+  transition: opacity .45s ease, transform .45s ease;
+}
+.hero__text.is-swapping {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.hero h1 { text-shadow: 0 1px 30px rgba(20, 26, 40, .35); }
+.hero__title { margin-top: 22px; }
+
+.hero__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .75);
+  color: var(--white);
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.hero__arrow:hover { background: rgba(255, 255, 255, .14); }
+.hero__arrow--prev { left: var(--hero-control-inset); }
+.hero__arrow--next { right: var(--hero-control-inset); }
+
+.hero__dots {
+  position: absolute;
+  right: var(--hero-control-inset);
+  bottom: 38px;
+  z-index: 3;
+  display: flex;
+  gap: 9px;
+}
+.hero__dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .42);
+  cursor: pointer;
+  transition: background .25s, width .25s;
+}
+.hero__dots button.is-active {
+  background: var(--sunrise);
+  width: 24px;
+  border-radius: var(--space-1);
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  background: transparent;
+  border: 0;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .167em;
+  text-transform: uppercase;
+  color: var(--on-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  cursor: pointer;
+  padding: var(--space-2);
+}
+.hero__scroll:hover { color: var(--white); }
+.hero__scroll i {
+  font-size: 19px;
+  color: var(--birdie);
+  animation: hero-bob 2.2s ease-in-out infinite;
+}
+
+@keyframes hero-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
+
+
+/* --- Testimonial slider --------------------------------------------------- */
+
+.testimonials { overflow: hidden; margin-top: var(--space-8); }
+
+.testimonials__track {
+  display: flex;
+  transition: transform .55s cubic-bezier(.4, 0, .2, 1);
+  will-change: transform;
+}
+
+.testimonials__slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 0 var(--space-2);
+  opacity: .25;
+  transition: opacity .45s ease;
+}
+.testimonials__slide.is-active { opacity: 1; }
+
+.testimonials__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto var(--space-5);
+  background: var(--mist);
+  border: 1px solid var(--on-dark-border);
+}
+
+.testimonials__title { margin-bottom: var(--space-5); }
+
+/* home.js trims the text to three lines and puts Read more on the end of the
+   last one, so no clamp here - a -webkit-box would lay the inline button out
+   as a box child and break that. max-height is the floor for a reader whose
+   script never runs: three lines, no button, nothing spilling. Expanding
+   releases it, which grows the slide and with it the whole panel, since the
+   track is a flex row and every slide shares the height. */
+.testimonials__body {
+  max-width: 860px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--on-dark-body);
+  max-height: calc(1.6em * 3);
+  overflow: hidden;
+}
+.testimonials__body.is-expanded {
+  max-height: none;
+  overflow: visible;
+}
+
+/* Inline, so it sits beside the last words rather than under the paragraph.
+   home.js shows it only on a review that is actually cut off. */
+.testimonials__more {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--sans);
+  font-size: inherit;
+  line-height: inherit;
+  color: var(--birdie);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+  cursor: pointer;
+  /* Separates it from the last word, in the trimmed state and the expanded
+     one alike, so neither has to carry a trailing space. */
+  padding-left: .4em;
+}
+/* display: inline above is an author rule and would otherwise beat the user
+   agent's [hidden] { display: none }, leaving Read more on a review that is
+   already showing in full. */
+.testimonials__more[hidden] { display: none; }
+.testimonials__more:hover { color: var(--white); }
+
+.testimonials__attribution { margin-top: var(--space-8); }
+
+.testimonials__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.testimonials__arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--on-dark-border);
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 15px;
+  font-family: var(--sans);
+  transition: background .2s, border-color .2s, color .2s;
+}
+.testimonials__arrow:hover {
+  background: rgba(255, 255, 255, .14);
+  border-color: var(--birdie);
+}
+
+.dots {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+}
+.dots button {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(20, 26, 40, .22);
+  display: block;
+  cursor: pointer;
+}
+.dots button.is-active { background: var(--sunrise); }
+.section--dark .dots button { background: rgba(255, 255, 255, .3); }
+.section--dark .dots button.is-active { background: var(--sunrise); }
+
+
+/* --- Gallery strip -------------------------------------------------------- */
+
+.gallery { position: relative; }
+
+.gallery__track {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.gallery__track::-webkit-scrollbar { display: none; }
+
+.gallery__item {
+  flex: 0 0 calc((100% - 24px) / 4);
+  position: relative;
+  padding-top: calc((100% - 24px) / 4);
+  scroll-snap-align: start;
+  cursor: zoom-in;
+  overflow: hidden;
+  background: var(--mist);
+  border: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  transition: opacity .2s;
+}
+.gallery__item:hover { opacity: .94; }
+.gallery__item img {
+  position: absolute;
+  inset: 0;
+  transition: transform .5s ease;
+}
+.gallery__item:hover img { transform: scale(1.05); }
+
+.gallery__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line-mid);
+  background: var(--white);
+  color: var(--slate);
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--sans);
+  z-index: 4;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.gallery__arrow:hover {
+  border-color: var(--fairway);
+  color: var(--fairway);
+}
+.gallery__arrow--prev { left: -20px; }
+.gallery__arrow--next { right: -20px; }
+
+.gallery__hint {
+  color: var(--stone);
+  margin-top: var(--space-5);
+}
+
+
+/* --- Responsive ----------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 76vh;
+    padding: 96px 0 80px;
+  }
+  .hero__scroll { display: none; }
+
+  /* The About section is the only .split on this page. Stacked, its markup
+     order puts the copy first; the photo should lead. */
+  .split > .ratio { order: -1; }
+
+  /* The arrows move from the vertical middle — where they would sit on top of
+     the headline on a narrow screen — down to the bottom corners, with the
+     dots centred between them. Both rows share a centre line 46px up. */
+  .hero__arrow {
+    display: flex;
+    top: auto;
+    bottom: 28px;
+    transform: none;
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+  .hero__arrow--prev { left: var(--wrap-pad); }
+  .hero__arrow--next { right: var(--wrap-pad); }
+
+  .hero__dots {
+    left: 0;
+    right: 0;
+    bottom: 42px;
+    justify-content: center;
+    gap: var(--space-5);
+  }
+
+  .testimonials__nav { gap: 14px; }
+
+  .gallery__item { flex: 0 0 68%; padding-top: 68%; }
+  .gallery__arrow--prev { left: 2px; }
+  .gallery__arrow--next { right: 2px; }
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 82vh; padding: 80px 0 var(--space-18); }
+  .testimonials__avatar { width: 48px; height: 48px; margin-bottom: var(--space-4); }
+  .testimonials__arrow { width: 38px; height: 38px; }
+  .gallery__item { flex: 0 0 82%; padding-top: 82%; }
+}
+
+
+/* --- Touch targets -------------------------------------------------------- */
+
+/* The dots read as 7-8px marks; that is the visual, not the control. On touch
+   the button keeps its size but a transparent pseudo-element extends the tap
+   area to 44px, and the row is spaced so neighbouring areas cannot overlap
+   and swallow each other's taps. */
+@media (pointer: coarse) {
+  .hero__dots,
+  .dots { gap: var(--space-10); }
+
+  .hero__dots button,
+  .dots button { position: relative; }
+
+  .hero__dots button::after,
+  .dots button::after {
+    content: "";
+    position: absolute;
+    inset: -18px;
+  }
+
+  .testimonials__arrow,
+  .gallery__arrow {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* The 40px gap above exists so neighbouring tap areas cannot overlap. In the
+   hero on a phone that spreads five dots across the whole width, and the
+   arrows are the primary control there anyway — so the dots close up and their
+   tap areas shrink to match, still touching rather than overlapping. */
+@media (max-width: 900px) and (pointer: coarse) {
+  .hero__dots { gap: var(--space-5); }
+  .hero__dots button::after { inset: -10px; }
+
+  /* The testimonial dots sit between two 48px arrows, which are the control
+     here — so they close up to 4px and read as a position indicator. Their tap
+     areas narrow to match so neighbours cannot swallow each other, but stay
+     tall, since nothing sits above or below them. */
+  .dots { gap: var(--space-1); }
+  .dots button::after { inset: -14px -2px; }
+}

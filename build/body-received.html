@@ -1,0 +1,55 @@
+  <div class="page-head">
+    <div class="wrap center">
+      <h1 class="display section-intro__title--lg">Thank you</h1>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap wrap--article">
+      <!-- Layout after a client reference, 21 Sep 2026: an order strip, a short
+           next-step line, then the order details as a table. Built from existing
+           classes. Figures are net of the season saving, as on cart and checkout.
+           Source: build/data/booking-flow.md -->
+      <p>Thank you. Your booking request has been received.</p>
+
+      <hr class="rule cta-spaced">
+      <div class="stat-grid cta-spaced--sm">
+        <div><div class="eyebrow eyebrow--muted">No. Order</div><p class="stat-grid__value" id="received_order_number_label">#10428</p></div>
+        <div><div class="eyebrow eyebrow--muted">Date</div><p class="stat-grid__value">8 Sep 2026</p></div>
+        <div><div class="eyebrow eyebrow--muted">Total</div><p class="stat-grid__value">IDR 11.300.000</p></div>
+        <div><div class="eyebrow eyebrow--muted">Payment method</div><p class="stat-grid__value">After booking confirmed</p></div>
+      </div>
+
+      <p class="text-sm cta-spaced--sm">Nothing has been charged. We message you on WhatsApp to agree the round, then send a Midtrans payment link. Cancellation charges are set out in our <a class="text-link" id="received_terms_link" href="terms.html">terms &amp; conditions</a>.</p>
+
+      <!-- Where the reference lists bank details: payment here is a link we
+           send later, so this block says what happens next instead. -->
+      <div class="order-block order-block--loose">
+        <h2 class="heading-lg order-block__title">What happens next</h2>
+        <ul class="timeline" id="received_booking_status_list">
+          <li class="is-done"><i class="ph-light ph-check-circle" aria-hidden="true"></i><span>Booking request received — 8:12 AM WITA</span></li>
+          <li class="is-current"><i class="ph-light ph-circle-notch" aria-hidden="true"></i><span>We message you on WhatsApp to go through the round with you</span></li>
+          <li class="is-pending"><i class="ph-light ph-circle-dashed" aria-hidden="true"></i><span>Once it is agreed, we send you a Midtrans payment link</span></li>
+          <li class="is-pending"><i class="ph-light ph-circle-dashed" aria-hidden="true"></i><span>Pay the link and your tee time is booked</span></li>
+        </ul>
+      </div>
+
+      <div class="order-block order-block--loose">
+        <h2 class="heading-lg order-block__title">Order details</h2>
+        <table class="spec-table cta-spaced--sm">
+          <tr><td><span class="eyebrow">Product</span></td><td><span class="eyebrow">Subtotal</span></td></tr>
+          <tr><td>New Kuta Golf — 10 Sep, 6:15 AM<br><span class="text-sm spec-table__sub">2 players · 2 Titleist sets · return transport</span></td><td>IDR 6.300.000</td></tr>
+          <tr><td>Bali Handara Golf — 12 Sep, 9:00 AM<br><span class="text-sm spec-table__sub">2 players · 2 Titleist sets · return transport</span></td><td>IDR 5.000.000</td></tr>
+          <tr><td><b class="spec-table__strong">Subtotal</b></td><td><b class="spec-table__strong">IDR 11.300.000</b></td></tr>
+          <tr><td><b class="spec-table__strong">Payment method</b></td><td>Pay after booking confirmed</td></tr>
+          <tr><td><b class="spec-table__strong">Total</b></td><td><b class="spec-table__strong">IDR 11.300.000</b></td></tr>
+        </table>
+        <p class="text-sm cta-spaced--sm">Final figures are confirmed with you before the payment link is sent.</p>
+      </div>
+
+      <div class="order-actions">
+        <a class="pill" id="received_whatsapp_button" href="https://wa.me/6281337225399" target="_blank" rel="noopener"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i>Chat us on WhatsApp</a>
+        <a class="pill pill--alt" id="received_courses_button" href="courses.html">Add another round</a>
+      </div>
+    </div>
+  </section>

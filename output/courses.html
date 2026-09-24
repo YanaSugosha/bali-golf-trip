@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bali Golf Course — New Kuta, Bukit Pandawa, Handara</title>
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="apple-touch-icon" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/light/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages/courses.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar__inner">
+    <button class="navbar__menu-button" id="global_menu_button" aria-label="Open menu" aria-expanded="false" aria-controls="global_drawer_nav"><i class="ph-light ph-list" aria-hidden="true"></i></button>
+    <a class="navbar__brand" id="global_brand_button" href="index.html" aria-label="Bali Golf Trip — home"><img class="navbar__logo" src="assets/images/logo-bali-golf-trip.png" alt="Bali Golf Trip"></a>
+    <ul class="navbar__menu">
+      <li><a class="navbar__menu-link" id="global_nav_home_button" href="index.html">Home</a></li>
+      <li><a class="navbar__menu-link is-active" id="global_nav_courses_button" href="courses.html">Bali Golf Course</a></li>
+      <li><a class="navbar__menu-link" id="global_nav_blog_button" href="blog.html">Blog</a></li>
+      <li><a class="navbar__menu-link" id="global_nav_contact_button" href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="navbar__right">
+      <a class="cart-link" id="global_cart_button" href="cart.html"><span class="cart-link__label">Cart</span><i class="ph-light ph-shopping-cart-simple cart-link__icon" aria-hidden="true"></i><span class="cart-link__badge">2</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="scrim" id="global_drawer_scrim"></div>
+<aside class="drawer" id="global_drawer_nav" aria-label="Main navigation">
+  <div class="drawer__head"><button class="drawer__close" id="global_drawer_close_button" aria-label="Close menu"><i class="ph-light ph-x" aria-hidden="true"></i></button></div>
+  <nav class="drawer__list">
+    <a class="drawer__link" id="global_drawer_home_button" href="index.html">Home</a>
+    <a class="drawer__link is-active" id="global_drawer_courses_button" href="courses.html">Bali Golf Course</a>
+    <div class="drawer__sublist">
+      <a class="drawer__link drawer__sublink" id="global_drawer_new_kuta_button" href="detail-new-kuta.html">New Kuta Golf</a>
+      <a class="drawer__link drawer__sublink" id="global_drawer_bukit_pandawa_button" href="detail-bukit-pandawa.html">Bukit Pandawa Golf</a>
+      <a class="drawer__link drawer__sublink" id="global_drawer_handara_button" href="detail-handara.html">Bali Handara Golf</a>
+      <a class="drawer__link drawer__sublink" id="global_drawer_bali_beach_button" href="detail-bali-beach.html">Bali Beach · coming soon</a>
+    </div>
+    <a class="drawer__link" id="global_drawer_blog_button" href="blog.html">Blog</a>
+    <a class="drawer__link" id="global_drawer_terms_button" href="terms.html">Terms &amp; Condition</a>
+    <a class="drawer__link" id="global_drawer_contact_button" href="contact.html">Contact Us</a>
+  </nav>
+</aside>
+
+<main>
+  <div class="banner">
+    <div class="ratio ratio--banner"><img src="assets/images/course-new-kuta-island-green-full.jpg" alt="The island green at New Kuta Golf"></div>
+    <div class="banner__caption">
+      <div class="wrap center">
+        <div class="eyebrow eyebrow--accent">Bali Golf Trip</div>
+        <h1 class="display banner__title">Bali Golf Course</h1>
+        <p class="banner__lead">Three courses within two hours of each other, and no two alike, with a fourth opening soon. All green fees below are per player and include the round; club hire and hotel transport are added when you book.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- One course per row, image and copy swapping sides down the list. Every
+       course carries the same two spec rows in the same order — Tee windows,
+       Format — with the green fee below them, just above the CTA. Source:
+       build/data/courses.md. -->
+  <section class="section" id="courses_list_section">
+    <div class="wrap course-rows">
+
+      <div class="split">
+        <div class="ratio ratio--4x3">
+          <img src="assets/images/course-new-kuta-water-carry.webp" alt="">
+          <div class="promo-badge promo-badge--save" id="courses_saving_badge_new_kuta">Save IDR 300.000 this season</div>
+        </div>
+        <div>
+          <div class="eyebrow eyebrow--muted">Pecatu</div>
+          <h2 class="heading-lg section-intro__title">New Kuta Golf</h2>
+          <div class="line"></div>
+          <p class="course-rows__excerpt">New Kuta Golf is a championship standard course and the first links style layout in Indonesia. It will challenge both the low handicapper and reward the novice. With five sets of tees, there’s enough variety to ensure a satisfying experience for all skill levels.</p>
+          <table class="spec-table spec-table--split spec-table--spaced">
+            <tr><td>Tee windows</td><td>6:15 – 7:30 AM · 12:30 – 2:00 PM</td></tr>
+            <tr><td>Format</td><td>18 holes, par 72</td></tr>
+          </table>
+          <p class="price-from">Start from <span class="price-from__amount">IDR 2.300.000</span></p>
+          <a class="pill pill--fill" id="courses_view_button_new_kuta" href="detail-new-kuta.html">View &amp; book</a>
+        </div>
+      </div>
+
+      <div class="split">
+        <div>
+          <div class="eyebrow eyebrow--muted">Bukit Peninsula</div>
+          <h2 class="heading-lg section-intro__title">Bukit Pandawa Golf</h2>
+          <div class="line"></div>
+          <p class="course-rows__excerpt">Opened in October 2016, Bukit Pandawa Golf &amp; Country Club is the latest addition to Bali’s growing collection of world-class golf courses. Situated on a limestone cliff-top overlooking the world-famous surf breaks of Bukit Peninsula, the singular venue offers 18 championship caliber par-3 golf holes, many of which are back-dropped by rustic architectural relics and spectacular views of the Indian Ocean, with a clubhouse inspired by the many grand temples Bali is renowned for.</p>
+          <table class="spec-table spec-table--split spec-table--spaced">
+            <tr><td>Tee windows</td><td>6:00 AM – 3:00 PM</td></tr>
+            <tr><td>Format</td><td>18 holes, all par 3</td></tr>
+          </table>
+          <p class="price-from">Start from <span class="price-from__amount">IDR 1.850.000</span></p>
+          <a class="pill pill--fill" id="courses_view_button_bukit_pandawa" href="detail-bukit-pandawa.html">View &amp; book</a>
+        </div>
+        <div class="ratio ratio--4x3"><img src="assets/images/course-bukit-pandawa-13th.webp" alt=""></div>
+      </div>
+
+      <div class="split">
+        <div class="ratio ratio--4x3">
+          <img src="assets/images/course-handara-terrace-view.webp" alt="">
+          <div class="promo-badge promo-badge--save" id="courses_saving_badge_handara">Save IDR 400.000 this season</div>
+        </div>
+        <div>
+          <div class="eyebrow eyebrow--muted">Bedugul</div>
+          <h2 class="heading-lg section-intro__title">Bali Handara Golf</h2>
+          <div class="line"></div>
+          <p class="course-rows__excerpt">Bali Handara Golf Country Club &amp; Resort Bali is an award-winning Golf Getaway that attracts golfers from around the world. Recognized as one of Asia’s most iconic courses, it was ranked among the “Top 50 Greatest Golf Courses in The World.” by Golf Magazine and chosen as the 2015 winner of the “Best Golf Hotel in Indonesia” by the prestigious World Golf Awards.</p>
+          <table class="spec-table spec-table--split spec-table--spaced">
+            <tr><td>Tee windows</td><td>6:00 AM – 3:00 PM</td></tr>
+            <tr><td>Format</td><td>18 holes, par 72</td></tr>
+          </table>
+          <p class="price-from">Start from <span class="price-from__amount">IDR 1.600.000</span></p>
+          <a class="pill pill--fill" id="courses_view_button_handara" href="detail-handara.html">View &amp; book</a>
+        </div>
+      </div>
+
+      <!-- Not yet bookable: same rows for comparison, but no "View & book" CTA
+           and no detail page to link to. The status is written over the photo,
+           the same treatment the homepage card uses. -->
+      <div class="split" id="courses_bali_beach_section">
+        <div>
+          <div class="eyebrow eyebrow--muted">Sanur, Denpasar</div>
+          <h2 class="heading-lg section-intro__title">Bali Beach Golf and Country Club</h2>
+          <div class="line"></div>
+          <p class="course-rows__excerpt">The Bali Beach Golf and Country Club Course, set in an environment of very mature, tall trees, has been given a face lift, with the introduction of lakes, mounding and features, including newly designed and constructed greens all of which add to the aesthetic beauty of the course. It is a course that will provide challenges to all golfers of all skill levels.</p>
+          <table class="spec-table spec-table--split spec-table--spaced">
+            <tr><td>Tee windows</td><td>TBD</td></tr>
+          </table>
+          <p class="price-from">Start from <span class="price-from__amount">TBD</span></p>
+          <a class="pill pill--fill" id="courses_view_button_bali_beach" href="detail-bali-beach.html">View details</a>
+        </div>
+        <div class="ratio ratio--4x3">
+          <img src="assets/images/course-bali-beach-flame-trees.webp" alt="A green at Bali Beach framed by flame trees">
+          <div class="ratio__soon" id="courses_bali_beach_status_panel">Coming Soon</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- Brand statement, informational: tells visitors which clubs we hire.
+       Club hire itself is added inside the booking form on a course page. -->
+  <section class="section section--flush-top" id="courses_club_hire_section">
+    <div class="wrap">
+      <div class="brand-banner">
+        <!-- The same bags as the photographs, drained of colour behind a veil,
+             so the type and the three shots stay the subject. -->
+        <div class="brand-banner__backdrop"><img src="assets/images/banner/titleist-bags-backdrop.webp" alt=""></div>
+        <div class="brand-banner__content">
+          <img class="brand-banner__logo" src="assets/images/banner/titleist-logo.svg" alt="Titleist">
+          <h2 class="heading-lg brand-banner__title">Premium Titleist club hire</h2>
+          <div class="line brand-banner__rule"></div>
+          <div class="club-specs">
+            <div class="club-specs__stack">
+              <div class="club-specs__group">
+                <span class="club-specs__label">Brand Titleist</span>
+                <ul class="club-specs__list">
+                  <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Driver : TSI2 &amp; TSR2</li>
+                  <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Wood 3 : TSi2 &amp; TSR2</li>
+                  <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Rescue : TSi2 &amp; TSR2</li>
+                  <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Iron Set : T150 T200 T300</li>
+                  <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Putter</li>
+                  <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Titleist Golf Bag</li>
+                </ul>
+              </div>
+              <div class="club-specs__group">
+                <span class="club-specs__label">Ladies</span>
+                <ul class="club-specs__list">
+                  <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Fullset Callaway</li>
+                </ul>
+              </div>
+            </div>
+            <div class="club-specs__group">
+              <span class="club-specs__label">Choose from</span>
+              <ul class="club-specs__list">
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Steel Shaff RH</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Grafhite Shaff RH</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Stiff Steel Shaff RH</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Regular steel Shaff RH</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Mens Grafhite LH</li>
+                <li><i class="ph-fill ph-check-circle" aria-hidden="true"></i>Ladies Grafhite Shaff RH</li>
+              </ul>
+            </div>
+          </div>
+          <a class="pill pill--ghost" id="courses_titleist_button" href="#courses_list_section">View &amp; book</a>
+        </div>
+        <div class="brand-banner__collage">
+          <img class="brand-banner__shot brand-banner__shot--wide" src="assets/images/banner/titleist-bags-row.webp" alt="A row of Titleist bags ready on the clubhouse deck">
+          <img class="brand-banner__shot" src="assets/images/banner/titleist-bag-sunset.webp" alt="A Titleist stand bag on the grass at sunset">
+          <img class="brand-banner__shot" src="assets/images/banner/titleist-clubs.webp" alt="Titleist woods and irons in the bag">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream" id="courses_lesson_section">
+    <div class="wrap split">
+      <div class="ratio ratio--4x3"><img src="assets/images/lesson-practice-ground.jpg" alt=""></div>
+      <div>
+        <div class="eyebrow eyebrow--muted">Bali golf lesson</div>
+        <h2 class="heading-lg section-intro__title">Learn where you're staying</h2>
+        <div class="line"></div>
+        <p>Private lessons for first-timers and for anyone wanting to fix something before the round. Beginners welcome, and so are people who have played for thirty years and still slice.</p>
+        <p class="para-spaced">Lessons run on the practice ground before your tee time, or as a standalone session on a day you are not playing. Every one is arranged directly with our team, so we match the coach, the course and the time to you.</p>
+        <div class="pill-row cta-spaced">
+          <a class="pill" id="courses_lesson_whatsapp_button" href="https://wa.me/6281337225399" target="_blank" rel="noopener"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i>Chat WhatsApp</a>
+          <a class="pill" id="courses_lesson_contact_button" href="contact.html">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="breadcrumb breadcrumb--panel" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ol class="breadcrumb__list">
+        <li><a id="courses_breadcrumb_home_button" href="index.html">Home</a></li>
+        <li aria-current="page">Bali Golf Course</li>
+      </ol>
+    </div>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__logo"><img src="assets/images/logo-bali-golf-trip-light.png" alt="Bali Golf Trip"></div>
+        <p class="text-sm site-footer__blurb"><b class="site-footer__blurb-title">Professional Golf Services</b>Book your Bali Golf Trip With Us.</p>
+        <ul class="text-sm site-footer__points">
+          <li>Discount Green Fee</li>
+          <li>Guarantee Tee Time</li>
+          <li>Premium Club Hire</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Courses</h4>
+        <a id="global_footer_new_kuta_button" href="detail-new-kuta.html">New Kuta Golf</a>
+        <a id="global_footer_bukit_pandawa_button" href="detail-bukit-pandawa.html">Bukit Pandawa Golf</a>
+        <a id="global_footer_handara_button" href="detail-handara.html">Bali Handara Golf</a>
+        <a id="global_footer_bali_beach_button" href="detail-bali-beach.html">Bali Beach</a>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a id="global_footer_home_button" href="index.html">Home</a>
+        <a id="global_footer_courses_button" href="courses.html">Bali Golf Course</a>
+        <a id="global_footer_club_hire_button" href="courses.html#courses_club_hire_section">Club hire</a>
+        <a id="global_footer_lesson_button" href="courses.html#courses_lesson_section">Golf lessons</a>
+        <a id="global_footer_blog_button" href="blog.html">Blog</a>
+        <a id="global_footer_contact_button" href="contact.html">Contact us</a>
+        <a id="global_footer_terms_button" href="terms.html">Terms &amp; Condition</a>
+      </div>
+      <div>
+        <h4>Follow us</h4>
+        <div class="site-footer__social">
+          <a id="global_footer_whatsapp_button" href="https://wa.me/6281337225399" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i></a>
+          <a id="global_footer_instagram_button" href="https://www.instagram.com/baligolftrip" target="_blank" rel="noopener" aria-label="Instagram"><i class="ph-light ph-instagram-logo" aria-hidden="true"></i></a>
+          <a id="global_footer_facebook_button" href="https://www.facebook.com/pongky.subagia" target="_blank" rel="noopener" aria-label="Facebook"><i class="ph-light ph-facebook-logo" aria-hidden="true"></i></a>
+          <a id="global_footer_email_button" href="mailto:pongky@baligolftrip.com" aria-label="Email"><i class="ph-light ph-envelope-simple" aria-hidden="true"></i></a>
+        </div>
+
+        <h4 class="site-footer__heading--spaced">Contact</h4>
+        <address class="text-sm site-footer__address">
+          Jalan Gunung Bromo VIII No. 47,<br>
+          Denpasar, Bali.
+        </address>
+        <a id="global_footer_maps_button" href="https://maps.app.goo.gl/9y1jkE2bgYNraACU8" target="_blank" rel="noopener"><i class="ph-light ph-map-pin" aria-hidden="true"></i>Open in Maps</a>
+        <p class="text-sm site-footer__hours">Open 8:00 AM – 8:00 PM WITA</p>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <p class="site-footer__copyright">Copyright © 2026 Bali Golf Trip. All Rights Reserved. Powered by <a id="global_footer_timedoor_button" href="https://timedoor.net/" target="_blank" rel="noopener">PT. Timedoor Indonesia</a>.</p>
+      <p class="site-footer__legal">This site is protected by reCAPTCHA and the Google <a id="global_footer_google_privacy_button" href="https://policies.google.com/privacy?hl=en-GB" target="_blank" rel="noopener">Privacy Policy</a> and <a id="global_footer_google_terms_button" href="https://policies.google.com/terms?hl=en-GB" target="_blank" rel="noopener">Terms of Service</a> apply</p>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="global_lightbox_modal" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox__close" id="global_lightbox_close_button" aria-label="Close"><i class="ph-light ph-x" aria-hidden="true"></i></button>
+  <button class="lightbox__nav lightbox__nav--prev" id="global_lightbox_prev_button" aria-label="Previous photo"><i class="ph-light ph-caret-left" aria-hidden="true"></i></button>
+  <img id="global_lightbox_image" src="" alt="">
+  <button class="lightbox__nav lightbox__nav--next" id="global_lightbox_next_button" aria-label="Next photo"><i class="ph-light ph-caret-right" aria-hidden="true"></i></button>
+  <div class="lightbox__caption" id="global_lightbox_caption_label"></div>
+</div>
+
+<a class="whatsapp-button" id="global_whatsapp_button" href="https://wa.me/6281337225399" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><img src="assets/images/wa-icon.svg" alt=""></a>
+
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

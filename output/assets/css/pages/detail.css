@@ -1,0 +1,427 @@
+/* ==========================================================================
+   pages/detail.css — course detail page only: the image carousel and the
+   booking form's two-column rows.
+   ========================================================================== */
+
+
+/* --- Page shell ----------------------------------------------------------- */
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 430px;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+/* --- Course carousel ------------------------------------------------------ */
+
+/* Sits inside the left column, under the page title — not full-bleed. Height
+   comes from an aspect ratio so the strip scales with the column instead of
+   the viewport, keeping the four visible slides in proportion at any width. */
+.course-gallery {
+  position: relative;
+  margin: var(--space-8) 0 var(--space-10);
+}
+
+.course-gallery__strip {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 5;
+}
+
+.course-gallery__track {
+  display: flex;
+  gap: var(--space-3);
+  height: 100%;
+  transition: transform .7s cubic-bezier(.65, 0, .35, 1);
+  will-change: transform;
+}
+
+.course-gallery__slide {
+  flex: 0 0 25%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: var(--mist);
+  cursor: zoom-in;
+  opacity: .72;
+  transition: opacity .6s ease;
+}
+.course-gallery__slide.is-active { opacity: 1; }
+.course-gallery__slide img { position: absolute; inset: 0; }
+
+.course-gallery__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .6);
+  background: rgba(20, 26, 40, .28);
+  color: var(--white);
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--sans);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s;
+}
+.course-gallery__arrow:hover {
+  background: rgba(20, 26, 40, .6);
+  border-color: var(--birdie);
+}
+.course-gallery__arrow--prev { left: 28px; }
+.course-gallery__arrow--next { right: 28px; }
+
+/* Zoom affordance is a mobile-only control; the desktop slides are click-to-zoom. */
+.course-gallery__zoom { display: none; }
+
+.course-gallery__dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--space-5);
+  display: flex;
+  gap: 9px;
+  justify-content: center;
+  z-index: 3;
+}
+.course-gallery__dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .62);
+  cursor: pointer;
+  transition: background .25s, width .25s;
+}
+.course-gallery__dots button.is-active {
+  background: var(--sunrise);
+  width: 24px;
+  border-radius: var(--space-1);
+}
+
+/* Bali Beach is not open, so the veil sits on each photograph rather than once
+   over the whole strip. Two adjustments follow from that: the label now has a
+   quarter of the strip to fit into on desktop, and z-index drops below the
+   arrows and zoom button, which are later siblings of the track with no
+   z-index of their own and would otherwise paint underneath it. */
+.course-gallery__slide .ratio__soon {
+  z-index: 1;
+  font-size: clamp(13px, 1.1vw, 18px);
+}
+
+/* Thumbnail strip replaces the dots below 900px. */
+.course-gallery__thumbs { display: none; }
+
+
+/* --- Booking form rows ---------------------------------------------------- */
+
+.course-package__title { margin-top: var(--space-10); }
+.course-package__includes-title { margin-top: var(--space-8); }
+
+/* A course with only one supplied photograph gets a still, not a one-slide
+   carousel with arrows that go nowhere. */
+.course-still { margin-bottom: var(--space-8); }
+
+.booking-row {
+  display: grid;
+  /* minmax(0, …) rather than 1fr: a plain 1fr floors at the item's min-content
+     width, which a native date input on iOS reports as wider than the panel. */
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 18px;
+  /* Top, not centre: Club hire carries a note under its select and Transport a
+     hint under its label, so a centred label drifts away from the field it
+     names. */
+  align-items: start;
+  margin-bottom: var(--space-3);
+}
+.booking-row > label,
+.booking-row__label {
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  line-height: 1.5;
+}
+/* Aligned to the field's first line of text rather than to its border, so the
+   label reads level with the value. 1px border + 12px field padding + half the
+   difference between the two line boxes. */
+.booking-row > label { padding-top: calc(var(--space-3) + 4px); }
+/* The radios have no border or padding of their own. */
+.booking-row__label { padding-top: 3px; }
+/* Club hire is the one label that wraps to two lines over a hint — it already
+   fills the cell, so the nudge only opens a gap above it. */
+.booking-row > label[for="detail_club_hire_dropdown"] { padding-top: 0; }
+
+/* Transport is the one row whose control is a pair of radios rather than a
+   field: it has no border or padding to line a top-aligned label up against,
+   so the label and its hint centre on the radios instead. */
+.booking-row--center { align-items: center; }
+.booking-row--center .booking-row__label { padding-top: 0; }
+
+.booking-row__hint {
+  display: block;
+  letter-spacing: .02em;
+  text-transform: none;
+  font-size: 11.5px;
+  color: var(--faint);
+  margin-top: var(--space-1);
+}
+.booking-row select.input,
+.booking-row input.input { width: 100%; }
+/* The whole box opens the picker (detail.js), so it reads as pressable. */
+.booking-row input[type="date"] { cursor: pointer; }
+
+.booking-row__with-price {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.booking-row__with-price select { flex: 1; }
+.booking-row__price {
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--slate);
+  white-space: nowrap;
+  min-width: 64px;
+  text-align: right;
+}
+
+
+.booking-total { margin-top: 0; }
+.booking-total__amount {
+  font-family: var(--serif);
+  font-size: 32px;
+  letter-spacing: -.028em;
+  margin-top: var(--space-2);
+}
+/* Struck price beside the total, on the two courses with a season saving.
+   Baseline-aligned so the two figures sit on the same line however the serif
+   and sans faces differ in height. */
+.booking-total__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.booking-total__was {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--faint);
+}
+
+/* The coming-soon course has no price. A yellow chip marks it as pending
+   rather than missing — yellow as a ground, slate as the ink, because the
+   panel is white. */
+.booking-total__amount--pending {
+  display: inline-block;
+  background: var(--sunrise);
+  color: var(--slate);
+  font-size: 22px;
+  padding: 2px 14px;
+  margin-top: var(--space-3);
+}
+
+.booking-total__summary {
+  color: var(--stone);
+  margin-top: 6px;
+}
+
+.booking-divider { margin: 28px 0 var(--space-5); }
+
+/* Side by side while the panel can take both, stacked the moment it cannot.
+   The flex-basis decides that, so no breakpoint has to: the panel is 358px of
+   content on desktop and the pair needs about 332px, and on a phone the
+   width: 100% every pill takes below 600px forces them onto their own rows. */
+/* Tighter than the 36px .form uses elsewhere - this panel sits in a narrow
+   column beside the description. */
+.detail-layout .form { padding: var(--space-8); }
+
+/* The panel follows the reader down the description, then stops level with the
+   bottom of it. No end-marker needed: the form is a grid item, so it can only
+   travel inside its own grid area, and that area is the row - which the taller
+   left column sizes. It releases exactly where the left column ends.
+   Gated on height as well as width because a stuck element cannot be scrolled:
+   the panel is 662px, and under roughly 800px of viewport its total and both
+   buttons would sit below the fold with no way to reach them. Short screens
+   keep the static panel. */
+@media (min-width: 901px) and (min-height: 800px) {
+  .detail-layout .form {
+    position: sticky;
+    top: calc(var(--navbar-height) + var(--space-5));
+  }
+}
+
+/* The removed "No payment now" callout used to hold the buttons off the
+   total; this replaces its spacing. */
+.booking-actions {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.booking-actions .pill {
+  flex: 1 1 150px;
+  /* Half the panel is 173px and .pill carries 30px of side padding, which
+     leaves too little for "Add to cart" and its icon — the label broke onto a
+     second line. Tighter here, and never wrapped. */
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+  white-space: nowrap;
+}
+
+/* On a bookable course a summary line and a notice sit between the total and
+   the CTA. The coming-soon panel has neither, so the button would otherwise
+   land straight under the amount. */
+.booking-total + .pill { margin-top: var(--space-6); }
+
+
+/* --- Responsive ----------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* One slide at a time; the slide's own 4:3 sets the height, so the strip's
+     desktop aspect ratio has to be released rather than just overridden. */
+  .course-gallery__strip {
+    aspect-ratio: auto;
+    height: auto;
+    border: 1px solid var(--mist);
+  }
+  .course-gallery__track {
+    gap: 0;
+    transition: transform .45s cubic-bezier(.4, 0, .2, 1);
+  }
+  .course-gallery__slide {
+    flex: 0 0 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    opacity: 1;
+    background: var(--mist);
+  }
+
+  .course-gallery__arrow {
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, .92);
+    border-color: var(--line-soft);
+    color: var(--slate);
+  }
+  .course-gallery__arrow:hover {
+    background: var(--white);
+    border-color: var(--fairway);
+  }
+  .course-gallery__arrow--prev { left: 10px; }
+  .course-gallery__arrow--next { right: 10px; }
+
+  .course-gallery__zoom {
+    display: flex;
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    width: var(--space-10);
+    height: var(--space-10);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    border: 1px solid var(--line-soft);
+    color: var(--slate);
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 3;
+  }
+  .course-gallery__zoom:hover { color: var(--fairway); }
+
+  .course-gallery__slide .ratio__soon { font-size: 22px; }
+  .course-gallery__dots { display: none; }
+
+  .course-gallery__thumbs {
+    display: flex;
+    gap: var(--space-2);
+    overflow-x: auto;
+    padding: 10px 0 2px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .course-gallery__thumbs::-webkit-scrollbar { display: none; }
+
+  .course-gallery__thumb {
+    flex: 0 0 23%;
+    aspect-ratio: 4 / 3;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    padding: 0;
+    margin: 0;
+    background: var(--mist);
+    cursor: pointer;
+    opacity: .72;
+    transition: opacity .2s, border-color .2s;
+  }
+  .course-gallery__thumb.is-active {
+    border-color: var(--slate);
+    opacity: 1;
+  }
+  .course-gallery__thumb img { position: absolute; inset: 0; }
+}
+
+@media (max-width: 600px) {
+  .course-gallery__thumb { flex: 0 0 28%; }
+
+  /* Stack label over field. Side by side, the 104px label column leaves only
+     ~173px for the select inside a 295px form — too narrow for its options. */
+  .booking-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2);
+  }
+  /* Stacked, the label is above the field: the nudge would just be a gap. */
+  .booking-row > label,
+  .booking-row__label { padding-top: 0; }
+}
+
+
+/* --- Touch targets -------------------------------------------------------- */
+
+/* Carousel controls sit over the image on a phone, where a 42px circle is
+   under the tap minimum. The dots are hidden below 900px (thumbnails take
+   over) but are covered here for tablets in the 901px+ coarse-pointer range. */
+@media (pointer: coarse) {
+  .course-gallery__arrow,
+  .course-gallery__zoom {
+    width: 48px;
+    height: 48px;
+  }
+
+  .course-gallery__dots { gap: var(--space-10); }
+  .course-gallery__dots button { position: relative; }
+  .course-gallery__dots button::after {
+    content: "";
+    position: absolute;
+    inset: -18px;
+  }
+}
+
+/* "Also on the island" sits three across, so each card is roughly half the
+   width of the two on the homepage. At 16:10 that left the name, price and
+   button crowded into a shallow strip at the foot of the photograph; square
+   gives the type room, and the inset opens from 32px to 40px to match. The
+   homepage grid keeps its own proportions. All four detail pages carry it. */
+.related-grid .card__overlay { padding: clamp(var(--space-5), 2.6vw, var(--space-10)); }
+
+@media (max-width: 600px) {
+  /* One per row: the 40px inset that suits three across is too much of a 324px
+     card. Matches the homepage. */
+  .related-grid .card__overlay { padding: var(--space-8); }
+}

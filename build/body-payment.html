@@ -1,0 +1,34 @@
+  <!-- What the Midtrans payment link opens, once we have agreed the booking
+       with the customer. Reached from the link we send, never from checkout. -->
+  <section class="section payment__section">
+    <div class="wrap wrap--form">
+      <div class="form">
+        <div class="payment__header">
+          <div class="eyebrow eyebrow--muted">Midtrans secure payment</div>
+          <span class="text-sm payment__order-number">Order #10428</span>
+        </div>
+        <div class="amount amount--lg">IDR 11.300.000</div>
+        <p class="text-sm payment__caption">Bali Golf Trip · 2 rounds, as agreed on WhatsApp</p>
+        <hr class="rule payment__divider">
+        <form id="payment_card_form">
+          <div class="form__field">
+            <label for="payment_card_number_input">Card number<span class="req">*</span></label>
+            <input class="input" id="payment_card_number_input" name="card_number" type="text" inputmode="numeric" autocomplete="off" placeholder="0000 0000 0000 0000" required>
+          </div>
+          <div class="form-pair form-pair--gap">
+            <div class="form__field">
+              <label for="payment_expiry_input">Expiry<span class="req">*</span></label>
+              <input class="input" id="payment_expiry_input" name="expiry" type="text" inputmode="numeric" autocomplete="off" placeholder="MM / YY" required>
+            </div>
+            <div class="form__field">
+              <label for="payment_cvv_input">CVV<span class="req">*</span></label>
+              <input class="input" id="payment_cvv_input" name="cvv" type="text" inputmode="numeric" autocomplete="off" placeholder="123" required>
+            </div>
+          </div>
+          <a class="pill pill--fill pill--block payment__submit" id="payment_pay_button" href="confirmed.html">Pay IDR 11.300.000</a>
+        </form>
+        <p class="text-sm center payment__note">3-D Secure may ask your bank to confirm. Do not close this window.</p>
+        <p class="state-link"><a id="payment_failed_state_button" href="failed.html">Prototype: see the failed payment state</a></p>
+      </div>
+    </div>
+  </section>

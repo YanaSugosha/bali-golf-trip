@@ -1,0 +1,66 @@
+  <div class="banner">
+    <div class="ratio ratio--banner"><img src="assets/images/gallery-interclub-new-kuta-full.jpg" alt="Interclub group at New Kuta"></div>
+    <div class="banner__caption">
+      <div class="wrap center">
+        <div class="eyebrow eyebrow--accent">Journal</div>
+        <h1 class="display banner__title">Blog</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Same filter bar as blog.html, carrying the search that found nothing so
+       the customer can see what was asked for and change it. -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="filter-bar">
+        <!-- Category and date collapse behind a toggle on a phone; the search
+             stays out in the open. display:contents puts them straight back
+             into the filter row on wider screens. -->
+        <div class="filter-bar__fields" id="blog_filter_fields">
+          <div class="filter-bar__field">
+            <label class="filter-bar__label" for="blog_category_dropdown">Category</label>
+            <select class="input" id="blog_category_dropdown">
+              <option>All categories</option><option selected>Equipment</option><option>Courses</option><option>Travel</option>
+            </select>
+          </div>
+          <div class="filter-bar__field">
+            <label class="filter-bar__label" for="blog_date_dropdown">Date</label>
+            <select class="input" id="blog_date_dropdown">
+              <option>Any date</option><option selected>2025</option><option>2026</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-bar__field filter-bar__field--grow">
+          <label class="filter-bar__label" for="blog_search_input">Search</label>
+          <input class="input" id="blog_search_input" type="search" placeholder="Search articles" value="left-handed rental">
+        </div>
+        <button class="pill pill--sm filter-bar__toggle" id="blog_filter_toggle_button" aria-expanded="false" aria-controls="blog_filter_fields"><i class="ph-light ph-sliders-horizontal" aria-hidden="true"></i>Filters</button>
+        <a class="pill pill--sm" id="blog_apply_filter_button" href="blog.html">Apply</a>
+      </div>
+      <p class="text-sm blog__result-count">No articles match “left-handed rental” in Equipment, 2025</p>
+    </div>
+  </section>
+
+  <section class="section section--flush-top">
+    <div class="wrap">
+      <div class="empty-state">
+        <i class="ph-light ph-magnifying-glass empty-state__icon" aria-hidden="true"></i>
+        <h2 class="heading-lg empty-state__title">Nothing found</h2>
+        <p class="empty-state__body">No article matches all three filters. Try a shorter search, widen the date, or clear the category.</p>
+        <div class="empty-state__actions">
+          <a class="pill pill--fill" id="blog_clear_filter_button" href="blog.html">Clear filters</a>
+          <a class="pill" id="blog_no_results_contact_button" href="contact.html">Ask us instead</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ol class="breadcrumb__list">
+        <li><a id="blog_breadcrumb_home_button" href="index.html">Home</a></li>
+        <li><a id="blog_breadcrumb_blog_button" href="blog.html">Blog</a></li>
+        <li aria-current="page">Search results</li>
+      </ol>
+    </div>
+  </nav>

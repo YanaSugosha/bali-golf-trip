@@ -1,0 +1,185 @@
+  <div class="hero">
+    <!-- Five banner texts, client-supplied. The <img> list, the heroCopy array
+         in home.js and the dots below are index-parallel. -->
+    <div class="hero__bg" id="home_hero_background">
+      <img class="is-active" src="assets/images/course-new-kuta-island-green-full.jpg" alt="The island green at New Kuta Golf">
+      <img src="assets/images/course-new-kuta-island-green-aerial-full.jpg" alt="New Kuta’s island green from above">
+      <img src="assets/images/course-bukit-pandawa-greens-full.jpg" alt="Bukit Pandawa from the air">
+      <img src="assets/images/course-new-kuta-clifftop-green-full.webp" alt="A clifftop green above the Indian Ocean at New Kuta Golf">
+      <img src="assets/images/course-bukit-pandawa-hole-13-full.jpg" alt="The 13th green at Bukit Pandawa">
+    </div>
+    <div class="hero__veil"></div>
+    <div class="wrap hero__wrap">
+      <div class="center hero__text" id="home_hero_text">
+        <h1 class="display-lg" id="home_hero_title_label">Professional Golf Tours with Excellent Services</h1>
+        <div class="line line--accent"></div>
+        <a class="pill pill--fill" id="home_hero_book_button" href="courses.html">Book a tee time</a>
+      </div>
+    </div>
+    <button class="hero__arrow hero__arrow--prev" id="home_hero_prev_button" aria-label="Previous slide"><i class="ph-light ph-caret-left" aria-hidden="true"></i></button>
+    <button class="hero__arrow hero__arrow--next" id="home_hero_next_button" aria-label="Next slide"><i class="ph-light ph-caret-right" aria-hidden="true"></i></button>
+    <div class="hero__dots" id="home_hero_dots_nav">
+      <button class="is-active" aria-label="Show slide 1" aria-current="true"></button>
+      <button aria-label="Show slide 2" aria-current="false"></button>
+      <button aria-label="Show slide 3" aria-current="false"></button>
+      <button aria-label="Show slide 4" aria-current="false"></button>
+      <button aria-label="Show slide 5" aria-current="false"></button>
+    </div>
+    <button class="hero__scroll" id="home_hero_scroll_button">Scroll<i class="ph-light ph-caret-down" aria-hidden="true"></i></button>
+  </div>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <!-- Client copy, verbatim. Source: build/data/homepage.md -->
+        <h2 class="heading-lg">About Bali Golf Trip</h2>
+        <div class="line"></div>
+        <p>Bali is a world-class golf destination with 4 golf courses, offering unique play, stunning landscape and challenging play for beginner and experienced golfers. Bali Golf Trip offers one stop services including discounted green fee, guaranteed tee time and free transports. Let us do the work for you and make your golf experience very satisfying with the best services!</p>
+        <a class="pill pill--fill cta-spaced--lg" id="home_about_courses_button" href="courses.html">Our courses</a>
+      </div>
+      <div class="ratio ratio--4x3"><img src="assets/images/about-bali-golf-trip.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="wrap">
+      <div class="center section-intro">
+        <h2 class="display section-intro__title">Bali Golf Course</h2>
+        <div class="line"></div>
+      </div>
+      <!-- Names and prices client-supplied, verbatim. Source: build/data/homepage.md -->
+      <div class="grid-2">
+        <div class="card card--overlay" id="home_course_card_new_kuta">
+          <div class="ratio ratio--16x10">
+            <img src="assets/images/course-new-kuta-water-carry.webp" alt="">
+            <div class="promo-badge promo-badge--save" id="home_course_saving_badge_new_kuta">Save IDR 300.000 this season</div>
+            <div class="card__overlay">
+              <div class="meta">Pecatu</div>
+              <h3 class="heading card__title">New Kuta Golf</h3>
+              <hr class="rule card__rule">
+              <p class="price-from">Start from <span class="price-from__amount">IDR 2.300.000</span></p>
+              <a class="pill pill--sm pill--ghost card__link" id="home_course_view_button_new_kuta" href="detail-new-kuta.html">View course</a>
+            </div>
+          </div>
+        </div>
+        <div class="card card--overlay" id="home_course_card_bukit_pandawa">
+          <div class="ratio ratio--16x10">
+            <img src="assets/images/course-bukit-pandawa-13th.webp" alt="">
+            <div class="card__overlay">
+              <div class="meta">Bukit Peninsula</div>
+              <h3 class="heading card__title">Bukit Pandawa Golf</h3>
+              <hr class="rule card__rule">
+              <p class="price-from">Start from <span class="price-from__amount">IDR 1.850.000</span></p>
+              <a class="pill pill--sm pill--ghost card__link" id="home_course_view_button_bukit_pandawa" href="detail-bukit-pandawa.html">View course</a>
+            </div>
+          </div>
+        </div>
+        <div class="card card--overlay" id="home_course_card_handara">
+          <div class="ratio ratio--16x10">
+            <img src="assets/images/course-handara-terrace-view.webp" alt="">
+            <div class="promo-badge promo-badge--save" id="home_course_saving_badge_handara">Save IDR 400.000 this season</div>
+            <div class="card__overlay">
+              <div class="meta">Bedugul</div>
+              <h3 class="heading card__title">Bali Handara Golf</h3>
+              <hr class="rule card__rule">
+              <p class="price-from">Start from <span class="price-from__amount">IDR 1.600.000</span></p>
+              <a class="pill pill--sm pill--ghost card__link" id="home_course_view_button_handara" href="detail-handara.html">View course</a>
+            </div>
+          </div>
+        </div>
+        <div class="card card--overlay" id="home_course_card_bali_beach">
+          <div class="ratio ratio--16x10 ratio--soon">
+            <img src="assets/images/course-bali-beach-flame-trees.webp" alt="">
+            <div class="ratio__soon" id="home_course_status_panel_bali_beach">Coming Soon</div>
+            <div class="card__overlay">
+              <div class="meta">Sanur, Denpasar</div>
+              <h3 class="heading card__title">Bali Beach Golf and Country Club</h3>
+              <hr class="rule card__rule">
+              <p class="price-from">Start from <span class="price-from__amount">TBD</span></p>
+              <a class="pill pill--sm pill--ghost card__link" id="home_course_read_button_bali_beach" href="detail-bali-beach.html">View course</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="wrap center">
+      <div class="eyebrow eyebrow--accent">Testimonials</div>
+      <div class="testimonials">
+        <div class="testimonials__track" id="home_testimonial_track">
+          <!-- Client reviews, verbatim, 17 Sep 2026. Their own spelling and
+               punctuation stands. Source: build/data/testimonials.md. -->
+          <div class="testimonials__slide is-active">
+            <div class="testimonials__avatar"><img src="assets/images/testimoni-1.png" alt=""></div>
+            <h3 class="heading-sm testimonials__title">Play golf in Bali</h3>
+            <p class="testimonials__body" id="home_testimonial_text_pieter">Mr. Pongky of Baligolftrip.com has organized our golf trip to Bali very efficient and perfectly on time. We played Bali National and Handara golfclub, tee times, cart and caddies were arranged to our convenience and Mr. Pongky was present on spot. Transport from our Nusa Dua Hotel was made by comfortable Toyota car driven by Mr Pongky. During the trip he showed us highlights of Bali like waterfalls, rice fields and temples. He explained about religious festivities taking place that day. Payment for the trip was made with Visacard and was exactly the amount offered by Baligolftrip.com via internet. Our gratitude to Mr. Pongky for making our golf trip a great succes. We would like to do the trip again in the future. Best of luck for you and your family Mr. Pongky. From Judi and Pieter Sterrenburg.</p>
+            <button class="testimonials__more" id="home_testimonial_more_button_pieter" type="button" aria-expanded="false" aria-controls="home_testimonial_text_pieter" hidden>Read more</button>
+            <div class="meta meta--on-dark testimonials__attribution">Pieter · Jakarta, Indonesia</div>
+          </div>
+          <div class="testimonials__slide">
+            <div class="testimonials__avatar"><img src="assets/images/testimoni-2.png" alt=""></div>
+            <h3 class="heading-sm testimonials__title">Excellent service and quality</h3>
+            <p class="testimonials__body" id="home_testimonial_text_john_anna">Great service and enjoyable day. Our villa booked a golf game for me through Bali Golf Trip. Pongky (the owner) picked us up and took us to the Bali National Golf club. He explained the layout in detail. The hire clubs provided were high quality - Taylor Made SIM2. The caddy provided, Triana, was awesome. She knew intimately the course layout, provided excellent tips on distance and club choice and read the greens very well. Made the day so enjoyable.</p>
+            <button class="testimonials__more" id="home_testimonial_more_button_john_anna" type="button" aria-expanded="false" aria-controls="home_testimonial_text_john_anna" hidden>Read more</button>
+            <div class="meta meta--on-dark testimonials__attribution">John &amp; Anna · Newcastle, Australia</div>
+          </div>
+          <div class="testimonials__slide">
+            <div class="testimonials__avatar"><img src="assets/images/testimoni-3.png" alt=""></div>
+            <h3 class="heading-sm testimonials__title">Great experience with a perfect organization</h3>
+            <p class="testimonials__body" id="home_testimonial_text_victoria">I would like to say a huge thank to Pongky for arranging everything Quick response, perfect golf organization, no issues - which is amazing especially on holidays I highly recommend Pongky if you are looking for the best golf experience in Bali</p>
+            <button class="testimonials__more" id="home_testimonial_more_button_victoria" type="button" aria-expanded="false" aria-controls="home_testimonial_text_victoria" hidden>Read more</button>
+            <div class="meta meta--on-dark testimonials__attribution">Victoria K · Moscow, Russia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonials__nav">
+        <button class="testimonials__arrow" id="home_testimonial_prev_button" aria-label="Previous testimonial"><i class="ph-light ph-caret-left" aria-hidden="true"></i></button>
+        <div class="dots" id="home_testimonial_dots_nav">
+          <button class="is-active" aria-label="Show testimonial 1" aria-current="true"></button>
+          <button aria-label="Show testimonial 2" aria-current="false"></button>
+          <button aria-label="Show testimonial 3" aria-current="false"></button>
+        </div>
+        <button class="testimonials__arrow" id="home_testimonial_next_button" aria-label="Next testimonial"><i class="ph-light ph-caret-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center section-intro--tight">
+        <div class="eyebrow eyebrow--muted">Gallery</div>
+        <h2 class="heading-lg section-intro__title">The groups we play with</h2>
+      </div>
+      <div class="gallery">
+        <button class="gallery__arrow gallery__arrow--prev" id="home_gallery_prev_button" aria-label="Scroll gallery left"><i class="ph-light ph-caret-left" aria-hidden="true"></i></button>
+        <div class="gallery__track" id="home_gallery_track">
+          <button class="gallery__item" id="home_gallery_item_interclub"><img src="assets/images/gallery-group-new-kuta-sign.jpg" data-full="assets/images/gallery-group-new-kuta-sign-full.jpg" alt="A group at the New Kuta Golf entrance"></button>
+          <button class="gallery__item" id="home_gallery_item_black_tee"><img src="assets/images/gallery-group-on-fairway.jpg" data-full="assets/images/gallery-group-on-fairway-full.jpg" alt="A playing group out on the fairway"></button>
+          <button class="gallery__item" id="home_gallery_item_pandawa_par_3"><img src="assets/images/course-bukit-pandawa-hole-13.jpg" data-full="assets/images/course-bukit-pandawa-hole-13-full.jpg" alt="Bukit Pandawa, the 13th"></button>
+          <button class="gallery__item" id="home_gallery_item_client_new_kuta"><img src="assets/images/gallery-players-and-caddies.webp" data-full="assets/images/gallery-players-and-caddies.webp" alt="Players and caddies before the round"></button>
+          <button class="gallery__item" id="home_gallery_item_third_round"><img src="assets/images/gallery-group-highland-deck.jpg" data-full="assets/images/gallery-group-highland-deck-full.jpg" alt="A group on the clubhouse deck"></button>
+          <button class="gallery__item" id="home_gallery_item_handara_crater"><img src="assets/images/gallery-clubhouse-terrace.webp" data-full="assets/images/gallery-clubhouse-terrace.webp" alt="After the round, under the palms"></button>
+          <button class="gallery__item" id="home_gallery_item_pga_member"><img src="assets/images/gallery-buggy-line-up.jpg" data-full="assets/images/gallery-buggy-line-up-full.jpg" alt="Buggies lined up before a shotgun start"></button>
+          <button class="gallery__item" id="home_gallery_item_happy_golfers"><img src="assets/images/gallery-ladies-group-new-kuta.jpg" data-full="assets/images/gallery-ladies-group-new-kuta-full.jpg" alt="A ladies’ group at New Kuta Golf"></button>
+          <button class="gallery__item" id="home_gallery_item_corporate_day"><img src="assets/images/gallery-corporate-day-new-kuta.webp" data-full="assets/images/gallery-corporate-day-new-kuta.webp" alt="A corporate day at New Kuta Golf"></button>
+        </div>
+        <button class="gallery__arrow gallery__arrow--next" id="home_gallery_next_button" aria-label="Scroll gallery right"><i class="ph-light ph-caret-right" aria-hidden="true"></i></button>
+      </div>
+      <p class="text-sm center gallery__hint">Tap any photo to open it full size</p>
+    </div>
+  </section>
+
+  <section class="section section--cream center">
+    <div class="wrap">
+      <div class="eyebrow eyebrow--muted">Plan your round</div>
+      <h2 class="display section-intro__title">Tell us when you're here</h2>
+      <div class="line"></div>
+      <p class="lead lead--narrow">We answer on WhatsApp between 8:00 AM and 8:00 PM WITA, usually within the hour.</p>
+      <div class="pill-row pill-row--centered">
+        <a class="pill" id="home_contact_button" href="contact.html">Contact us</a>
+        <a class="pill" id="home_whatsapp_button" href="https://wa.me/6281337225399" target="_blank" rel="noopener"><i class="ph-light ph-whatsapp-logo" aria-hidden="true"></i>Chat WhatsApp</a>
+      </div>
+    </div>
+  </section>

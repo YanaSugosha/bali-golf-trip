@@ -1,0 +1,75 @@
+  <div class="banner">
+    <div class="ratio ratio--banner"><img src="assets/images/gallery-interclub-new-kuta-full.jpg" alt="Interclub group at New Kuta"></div>
+    <div class="banner__caption">
+      <div class="wrap center">
+        <div class="eyebrow eyebrow--accent">Journal</div>
+        <h1 class="display banner__title">Blog</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search results: the same filter bar as blog.html, holding the query that
+       produced this list, with the count and a way to clear it. -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="filter-bar">
+        <!-- Category and date collapse behind a toggle on a phone; the search
+             stays out in the open. display:contents puts them straight back
+             into the filter row on wider screens. -->
+        <div class="filter-bar__fields" id="blog_filter_fields">
+          <div class="filter-bar__field">
+            <label class="filter-bar__label" for="blog_category_dropdown">Category</label>
+            <select class="input" id="blog_category_dropdown">
+              <option>All categories</option><option selected>Courses</option><option>Travel</option><option>Equipment</option>
+            </select>
+          </div>
+          <div class="filter-bar__field">
+            <label class="filter-bar__label" for="blog_date_dropdown">Date</label>
+            <select class="input" id="blog_date_dropdown">
+              <option selected>Any date</option><option>2026</option><option>2025</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-bar__field filter-bar__field--grow">
+          <label class="filter-bar__label" for="blog_search_input">Search</label>
+          <input class="input" id="blog_search_input" type="search" placeholder="Search articles" value="course">
+        </div>
+        <button class="pill pill--sm filter-bar__toggle" id="blog_filter_toggle_button" aria-expanded="false" aria-controls="blog_filter_fields"><i class="ph-light ph-sliders-horizontal" aria-hidden="true"></i>Filters</button>
+        <a class="pill pill--sm" id="blog_apply_filter_button" href="blog-no-results.html">Apply</a>
+      </div>
+      <p class="text-sm blog__result-count">Showing 3 of 3 articles for “course” in Courses · <a class="text-link" id="blog_clear_filter_button" href="blog.html">Clear filters</a></p>
+    </div>
+  </section>
+
+  <section class="section section--flush-top">
+    <div class="wrap grid-3 blog__grid">
+      <article class="card" id="blog_post_card_which_course_first">
+        <div class="ratio ratio--4x3"><img src="assets/images/blog-which-course-first.jpg" alt=""></div>
+        <div class="meta">Courses · 12 August 2026</div>
+        <h2 class="heading card__title--flat"><a class="plain-link card__link" id="blog_post_link_which_course_first" href="post.html">Which Bali course should you play first?</a></h2>
+        <p class="text-sm">Cliff, headland or caldera — a straight answer depending on how long you are here and who you are playing with.</p>
+      </article>
+      <article class="card" id="blog_post_card_handara_crater">
+        <div class="ratio ratio--4x3"><img src="assets/images/blog-handara-crater.jpg" alt=""></div>
+        <div class="meta">Courses · 28 July 2026</div>
+        <h2 class="heading card__title--flat"><a class="plain-link card__link" id="blog_post_link_handara_crater" href="post.html">Handara: the only course played inside a crater</a></h2>
+        <p class="text-sm">Ranked top 50 in the world in 1980, and still the only course anywhere laid inside a volcanic crater.</p>
+      </article>
+      <article class="card" id="blog_post_card_best_par_3">
+        <div class="ratio ratio--4x3"><img src="assets/images/gallery-handara-crater.jpg" alt=""></div>
+        <div class="meta">Courses · 14 July 2026</div>
+        <h2 class="heading card__title--flat"><a class="plain-link card__link" id="blog_post_link_best_par_3" href="post.html">Why the world's best par 3 course is in Bali</a></h2>
+        <p class="text-sm">Bukit Pandawa took the World Golf Awards title in 2017. Eighteen par 3s, and not one of them filler.</p>
+      </article>
+    </div>
+  </section>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ol class="breadcrumb__list">
+        <li><a id="blog_breadcrumb_home_button" href="index.html">Home</a></li>
+        <li><a id="blog_breadcrumb_blog_button" href="blog.html">Blog</a></li>
+        <li aria-current="page">Search results</li>
+      </ol>
+    </div>
+  </nav>

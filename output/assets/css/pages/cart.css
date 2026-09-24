@@ -1,0 +1,121 @@
+/* ==========================================================================
+   pages/cart.css — cart page only: the line-item rows.
+   ========================================================================== */
+
+.cart-row {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  gap: var(--space-6);
+  padding: 28px 0;
+  border-bottom: 1px solid var(--mist);
+  align-items: start;
+}
+
+.cart-row__title { margin-bottom: var(--space-3); }
+/* The course name reads as a title and turns green only on hover (client,
+   21 Sep 2026); .text-link is green at rest, so it cannot be reused here. */
+.cart-row__title a {
+  color: var(--slate);
+  text-decoration: none;
+  transition: color .2s;
+}
+.cart-row__title a:hover { color: var(--fairway); }
+
+.cart-row__meta {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-weight: 400;
+}
+.cart-row__meta span {
+  color: var(--stone);
+  display: inline-block;
+  min-width: 104px;
+}
+
+.cart-row__price {
+  text-align: right;
+  white-space: nowrap;
+}
+.cart-row__note {
+  color: var(--stone);
+  margin-top: 6px;
+}
+
+/* Icon-only, in a ring so it reads as a button (client, 21 Sep 2026). */
+.remove-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-top: 14px;
+  padding: 0;
+  border: 1px solid var(--line-mid);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--stone);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+.remove-button:hover {
+  color: var(--flag);
+  border-color: var(--flag);
+}
+.remove-button i { font-size: 16px; }
+
+@media (max-width: 900px) {
+  /* The remove button sits in the row's top-right corner on tablet and phone
+     (client, 21 Sep 2026), level with the row's top padding. The title keeps
+     clear of it. */
+  .cart-row { position: relative; }
+  .remove-button {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    margin-top: 0;
+  }
+  .cart-row__title { padding-right: 48px; }
+  .cart-row {
+    grid-template-columns: 84px 1fr;
+    gap: var(--space-4);
+    row-gap: var(--space-2);
+  }
+  .cart-row__price {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Photo first, then the details at full width: beside the copy at 84px the
+     meta list wraps every line. The thumbnail keeps its 84px square, so only
+     its position changes. */
+  .cart-row {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-4);
+  }
+  .cart-row__price { grid-column: 1; }
+  /* .ratio--1x1 makes its square with padding-top: 100%, and a percentage
+     padding resolves against the grid area's width, not the element's own. In
+     a single 1fr column that is the whole row, so a fixed width alone left an
+     84px-wide, column-height sliver. Give it the height outright. */
+  .cart-row > .ratio {
+    width: 84px;
+    height: 84px;
+    padding-top: 0;
+  }
+  /* Label and value were inline, so a value long enough to wrap carried on
+     under the label and the column went ragged. Two tracks per line instead:
+     the value keeps its own column however many lines it runs to. The bare
+     text node after each <span> becomes the second grid item on its own. */
+  .cart-row__meta { line-height: 1.6; }
+  .cart-row__meta > div {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    column-gap: var(--space-2);
+    padding: 2px 0;
+  }
+  .cart-row__meta span { min-width: 0; }
+}

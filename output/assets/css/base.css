@@ -1,0 +1,92 @@
+/* ==========================================================================
+   base.css — reset and base element styles only.
+   Component and page rules live in components.css / pages/*.css.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  letter-spacing: -.005em;
+  color: var(--slate);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  /* The navbar changes height as its logo resizes, which moves everything
+     below it. Without this, the browser "helpfully" adjusts scrollTop to
+     compensate, bouncing the scroll position back across the navbar's own
+     threshold and making the logo flip size repeatedly. */
+  overflow-anchor: none;
+}
+
+/* Images always fill their ratio box; .ratio positions them. */
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -.022em;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 400;
+  color: var(--body-text);
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+hr {
+  border: 0;
+}
+
+button {
+  font-family: var(--sans);
+}
+
+/* Phosphor icon font baseline correction. */
+[class^="ph-"],
+[class*=" ph-"] {
+  line-height: 1;
+  display: inline-block;
+  vertical-align: -.12em;
+}
+
+/* Keyboard focus is never removed, only restyled per component. */
+:focus-visible {
+  outline: 2px solid var(--fairway);
+  outline-offset: 2px;
+}

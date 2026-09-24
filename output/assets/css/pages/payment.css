@@ -1,0 +1,28 @@
+/* ==========================================================================
+   pages/payment.css — Midtrans payment page only.
+   ========================================================================== */
+
+.payment__section { padding-top: var(--space-16); }
+
+.payment__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+.payment__order-number { color: var(--stone); }
+
+.payment__caption {
+  color: var(--stone);
+  margin-top: 6px;
+}
+
+.payment__divider { margin: var(--space-6) 0; }
+
+.payment__submit { margin-top: var(--space-2); }
+
+.payment__note {
+  color: var(--stone);
+  margin-top: 18px;
+}
+

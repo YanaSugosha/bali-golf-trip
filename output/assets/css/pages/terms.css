@@ -1,0 +1,77 @@
+/* ==========================================================================
+   pages/terms.css — terms page only: table-of-contents layout.
+   ========================================================================== */
+
+.toc-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.toc__label { margin-bottom: var(--space-4); }
+.toc__list { line-height: 2.4; }
+
+.toc__link {
+  color: var(--slate);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.toc__link:hover {
+  color: var(--fairway);
+  border-bottom-color: var(--fairway);
+}
+/* Set by terms.js on the section being read. */
+.toc__link.is-active {
+  color: var(--fairway);
+  font-weight: 500;
+}
+
+/* .terms__body carries no width — it fills the 1fr column of .toc-layout. */
+.terms__updated {
+  color: var(--stone);
+  /* It is the first line in the body; without this it sits on the heading. */
+  margin-bottom: var(--space-8);
+}
+.terms__heading { margin: var(--space-10) 0 var(--space-3); }
+.terms__heading--first { margin-bottom: var(--space-3); }
+
+/* Jump targets for the table of contents. Without this the sticky navbar
+   would sit on top of the heading the browser just scrolled to. */
+.terms__heading,
+.terms__heading--first {
+  scroll-margin-top: calc(var(--navbar-height) + var(--space-6));
+}
+
+/* The client numbers both lists, so they are <ol>. .bullet-list is disc and
+   lives in components.css for the course pages; this is the only page with a
+   numbered list. */
+.numbered-list {
+  list-style: decimal;
+  padding-left: var(--space-5);
+  margin-top: 18px;
+}
+.numbered-list li {
+  padding: 5px 0;
+  line-height: 1.65;
+}
+.numbered-list li::marker { color: var(--fairway); }
+
+.terms__signoff { margin-top: var(--space-12); }
+
+@media (max-width: 900px) {
+  .toc-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .stick { position: static; }
+
+  /* Stacked, the contents list runs straight into the document it indexes —
+     a hairline keeps the two apart. Applied from 900 down, which is where the
+     two columns become one. */
+  .toc-layout > .stick {
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+}

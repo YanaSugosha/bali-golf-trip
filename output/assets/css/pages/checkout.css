@@ -1,0 +1,47 @@
+/* ==========================================================================
+   pages/checkout.css — checkout page only.
+   ========================================================================== */
+
+.checkout__intro { margin-bottom: var(--space-8); }
+
+.checkout__payment-note {
+  color: var(--stone);
+  margin-top: 14px;
+}
+
+/* Order summary (client, 21 Sep 2026). Each round leads with its course photo.
+   Table cells centre their content vertically by default, so the name block and
+   the line total sit level with the middle of the photo. */
+/* Two classes, to outrank the padding on .spec-table td. 80px because
+   box-sizing is border-box site-wide, so the width includes the 16px gap and
+   the photo gets the other 64. */
+.spec-table .checkout__thumb {
+  width: 80px;
+  padding-right: var(--space-4);
+}
+.checkout__thumb img {
+  width: 64px;
+  height: 64px;
+}
+
+/* Subtotal is the table's last row, so the cell padding centres it between its
+   two rules. The table's own bottom rule already separates it from Total, which
+   would otherwise draw a second line 10px under the first. */
+.spec-table + .summary-row--total {
+  border-top: 0;
+  margin-top: 0;
+}
+
+/* Amounts on one line. With the photo column taking width, a narrow panel
+   pushed "IDR" up onto a line of its own above the figure. */
+.checkout-layout > .form .spec-table td:last-child { white-space: nowrap; }
+
+/* The summary stays in view while the form scrolls past it (client, 21 Sep
+   2026). Desktop only: below 900px the layout is one column and it sits above
+   the form. The grid already aligns items to the start, which sticky needs. */
+@media (min-width: 901px) {
+  .checkout-layout > .form {
+    position: sticky;
+    top: calc(var(--navbar-height) + var(--space-5));
+  }
+}

@@ -1,0 +1,57 @@
+/* ==========================================================================
+   pages/courses.css — course list only.
+   ========================================================================== */
+
+/* One course per row inside a single section, so the gap between courses is
+   set here rather than by stacking four sections' padding against each other. */
+.course-rows {
+  display: grid;
+  gap: var(--space-25);
+}
+
+/* The client's course write-ups run to very different lengths. Three lines
+   then an ellipsis keeps every row's spec table, price and CTA at the same
+   height down the list; the full text lives on the course's detail page. */
+.course-rows__excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+/* The coming-soon row is an anchor target from the drawer and footer, and it is
+   a row rather than a <section>, so the .section[id] offset in components.css
+   misses it — it needs its own clearance for the sticky navbar. */
+.course-rows > [id] {
+  scroll-margin-top: calc(var(--navbar-height) + var(--space-6));
+}
+
+@media (max-width: 900px) {
+  .course-rows { gap: var(--space-16); }
+
+  /* The rows alternate image-left / image-right down the page, so stacking
+     them straight gives photo-then-text on odd rows and text-then-photo on
+     even ones. Pull the photo up in every row so the list reads the same way
+     all the way down. */
+  .course-rows .split > .ratio { order: -1; }
+}
+
+@media (max-width: 600px) {
+  /* Alternating bands: white, parchment, white, parchment down the list, so a
+     course reads as one block on a narrow screen. The rows sit inside .wrap,
+     so each one is pulled out by exactly the gutter and pads it back — the
+     tint reaches the screen edges without the page scrolling sideways.
+     Spacing moves from the flex gap to the rows' own padding, otherwise the
+     bands would be separated by strips of white. */
+  .course-rows { gap: 0; }
+  .course-rows > .split {
+    margin: 0 calc(var(--wrap-pad) * -1);
+    padding: var(--space-8) var(--wrap-pad);
+  }
+  .course-rows > .split:nth-child(even) { background: var(--parchment); }
+
+  /* The bands run to the edge of the section, so the section cannot hold a
+     strip of white under the last one. */
+  #courses_list_section { padding-bottom: 0; }
+}
