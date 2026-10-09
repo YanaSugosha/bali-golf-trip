@@ -82,3 +82,27 @@ way round. Change the photos and check it still holds.
 - "Popular" badges on the course cards — not in the sheet; the cards carry the
   season saving instead
 - Course card descriptions — the mockup of 10 Sep 2026 has none
+
+## Daily Tour by Request
+
+**Source:** client, 9 Oct 2026. An extra service, arranged **off the website**
+— the whole thing is discussed with the admin on WhatsApp. The site's job is
+to announce it and hand the reader over, nothing more.
+
+A light band **under About Bali Golf Trip**, before the course list: a green
+rule the width of the container (not full bleed), then the heading and one
+line on the left and the WhatsApp button on the right
+(`home_daily_tour_whatsapp_button`, "Chat WhatsApp"). No eyebrow
+and no line under the button, both dropped by the client.
+
+**Motion.** The client asked for the panel to slide down with the copy fading
+in behind it. On a white band a sliding white panel is invisible, so the rule
+carries it instead: it draws out from the left, and the copy follows on the
+site's own reveal, held back by a transition-delay. `home.js` arms it; with no
+script, or reduced motion, the rule and copy are simply in place.
+
+**The one line is in-house copy**, not the client's: "Have a preferred course
+or schedule? Tell us what you have in mind, and we will help arrange your golf
+day in Bali." It says only how the booking works. **Nothing about what the
+tour covers** — no itinerary, no price, no duration — until they send that
+copy.

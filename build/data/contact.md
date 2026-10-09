@@ -60,6 +60,7 @@ number — a bare number there reads as a detail rather than something to press:
 | Button | Label |
 |---|---|
 | `home_whatsapp_button` — homepage "Plan your round" | Chat WhatsApp |
+| `home_daily_tour_whatsapp_button` — homepage "Daily Tour by Request" | Chat WhatsApp |
 | `courses_lesson_whatsapp_button` — golf lesson section | Chat WhatsApp |
 | `received_whatsapp_button` — booking request received | Chat us on WhatsApp |
 | `confirmed_whatsapp_button` — booking confirmed | Chat us on WhatsApp |
@@ -75,6 +76,7 @@ Every other surface — the footer, the contact page — shows the value.
 | Contact page, detail table | WhatsApp, Instagram, Facebook, Email, Hours, address + Open in Maps |
 | Floating button, every page | WhatsApp |
 | Homepage "Plan your round" | WhatsApp |
+| Homepage "Daily Tour by Request" | WhatsApp |
 | Golf lesson section | WhatsApp |
 | Booking flow — received, confirmed, failed | WhatsApp |
 

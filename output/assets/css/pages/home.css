@@ -432,3 +432,46 @@
   .dots { gap: var(--space-1); }
   .dots button::after { inset: -14px -2px; }
 }
+
+/* --- Daily tour band ----------------------------------------------------- */
+/* No padding above: the About section's own bottom padding carries the gap
+   over the rule. */
+.daily-tour { padding-top: 0; }
+
+/* A light band under About. The rule sits inside the container rather than
+   bleeding to the edges, so it reads as the top of this block and not as a
+   page divider. Everything animated here is switched on by home.js: with no
+   script, or with reduced motion asked for, the rule and copy are in place. */
+.daily-tour__rule {
+  height: 1px;
+  border: 0;
+  margin: 0 0 var(--space-12);   /* half again the gap to the title, client 9 Oct 2026 */
+  background: var(--line-mid);
+}
+/* The panel itself cannot slide in on a white page - it would be white on
+   white - so the rule carries the entrance instead, drawing out from the left
+   before the copy arrives. */
+.daily-tour.is-armed .daily-tour__rule {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.daily-tour.is-in .daily-tour__rule {
+  transform: none;
+  transition: transform .55s cubic-bezier(.4, 0, .2, 1);
+}
+/* The copy uses the site's own reveal; this holds it back until the rule is
+   most of the way out. Its parent is a block, so main.js sets no inline delay
+   here to override. */
+#home_daily_tour_section .reveal { transition-delay: .3s; }
+
+.daily-tour__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-8);
+  align-items: center;
+}
+.daily-tour__title { margin-bottom: var(--space-2); }
+
+@media (max-width: 900px) {
+  .daily-tour__inner { grid-template-columns: minmax(0, 1fr); }
+}

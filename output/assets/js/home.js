@@ -248,4 +248,32 @@
       })(g);
     }
   }
+  /* --- Daily tour band ---------------------------------------------------- */
+  /* The panel slides down as the band scrolls in; main.js's own reveal fades
+     the copy a moment later, held back by a transition-delay in the CSS.
+     Nothing is hidden unless this runs, so a failed script leaves the band
+     visible, the same rule main.js follows. */
+
+  var daily = document.getElementById('home_daily_tour_section');
+
+  if (daily && window.IntersectionObserver &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+      /* Already on screen at load: animating it now would only flash. */
+      daily.getBoundingClientRect().top >= window.innerHeight) {
+
+    daily.classList.add('is-armed');
+
+    /* The same margin main.js uses, so the panel and the copy agree on when
+       the band has arrived. */
+    var dailyObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        daily.classList.add('is-in');
+        dailyObserver.unobserve(daily);
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
+
+    dailyObserver.observe(daily);
+  }
+
 })();
